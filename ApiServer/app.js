@@ -11,7 +11,7 @@ var mongoUrl = 'mongodb://127.0.0.1/nodeJsPocApiServer';
 
 app.configure(function() {
 	// all environments
-	app.set('port', process.env.PORT || 9000);
+	app.set('port', process.env.PORT || 8000);
 	app.set('views', path.join(__dirname, 'views'));
 	app.set('view engine', 'ejs');
 	app.use(express.favicon());
@@ -30,7 +30,7 @@ app.configure(function() {
 	}
 });
 
-//defining global varibales
+//defining global varibles
 global._MONGODB = mongoose.createConnection(mongoUrl);
 global._SCHEMA = mongoose.Schema;
 
@@ -47,7 +47,3 @@ http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
 });
 
-//closing mongo connection on exit
-process.on('SIGINT', function(){
-	global._MONGODB.close();
-});

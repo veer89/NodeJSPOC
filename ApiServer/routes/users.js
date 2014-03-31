@@ -31,7 +31,7 @@ userSchema.show = function (req, res, next) {
     });
 }
 userSchema.query = function (req, res, next) {
-    userModel.find(req.query.where, function (err, docs) {
+	userModel.find(req.query.where, function (err, docs) {
         if (err)
             return next(err);
         res.json(docs);
@@ -39,7 +39,7 @@ userSchema.query = function (req, res, next) {
 }
 userSchema.update = function (req, res, next) {
     userModel.findById(req.params.id, function (err, userData) {
-        userData.empId = req.body.empId,
+            userData.empId = req.body.empId,
             userData.first_name = req.body.first_name,
             userData.last_name = req.body.last_name,
             userData.phone_number = req.body.phone_number,
