@@ -56,6 +56,14 @@ app.get('/socials/query', routes.socials.query);
 app.put('/socials/update/:id', routes.socials.update);
 app.delete('/socials/delete/:id', routes.socials.delete);
 
+// declaring routes for login
+app.post('/login/create', routes.logins.add); // temporary
+app.get('/login/query', routes.logins.query); // temporary
+app.post('/login/:emailId/:password', routes.logins.authenticate); 
+app.delete('/login/delete/:id', routes.logins.delete); 
+app.post('/changePassword/:id/:password', routes.logins.changePassword); 
+app.post('logout', routes.logins.logout)
+
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
 });
