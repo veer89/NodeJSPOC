@@ -44,6 +44,9 @@ app.get('/users/query', routes.users.query);
 app.put('/users/update/:id', routes.users.update);
 app.delete('/users/delete/:id', routes.users.delete);
 
+app.post('/projects/create/:id', projects.add);
+app.get('/projects/query', projects.query);
+
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
 });
