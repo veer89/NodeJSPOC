@@ -50,6 +50,12 @@ app.put('/projects/update/:id', routes.projects.update);
 app.delete('/projects/delete/:id', routes.projects.delete);
 app.get('/projects/show/:projectName', routes.projects.show);
 
+app.post('/socials/create', routes.socials.add);
+app.get('/socials/show/:id', routes.socials.show);
+app.get('/socials/query', routes.socials.query);
+app.put('/socials/update/:id', routes.socials.update);
+app.delete('/socials/delete/:id', routes.socials.delete);
+
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
 });

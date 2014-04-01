@@ -1,5 +1,5 @@
 var socialSchema = new _SCHEMA({
-    empId: String,
+    empId: {type: String, unique: true},
     user_Id: String,
     twitter: String,
     facebook: String,
