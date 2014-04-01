@@ -34,14 +34,15 @@ app.configure(function() {
 global._MONGODB = mongoose.createConnection(mongoUrl);
 global._SCHEMA = mongoose.Schema;
 
-var users = require('./routes/users');
+//require export routes
+var routes = require('./routes/exports');
 
 //declaring route's for request
-app.post('/users/create', users.add);
-app.get('/users/show/:id', users.show);
-app.get('/users/query', users.query);
-app.put('/users/update/:id', users.update);
-app.delete('/users/delete/:id', users.delete);
+app.post('/users/create', routes.users.add);
+app.get('/users/show/:id', routes.users.show);
+app.get('/users/query', routes.users.query);
+app.put('/users/update/:id', routes.users.update);
+app.delete('/users/delete/:id', routes.users.delete);
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
