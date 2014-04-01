@@ -44,8 +44,11 @@ app.get('/users/query', routes.users.query);
 app.put('/users/update/:id', routes.users.update);
 app.delete('/users/delete/:id', routes.users.delete);
 
-app.post('/projects/create/:id', projects.add);
-app.get('/projects/query', projects.query);
+app.post('/projects/create/:id', routes.projects.add);
+app.get('/projects/query', routes.projects.query);
+app.put('/projects/update/:id', routes.projects.update);
+app.delete('/projects/delete/:id', routes.projects.delete);
+app.get('/projects/show/:projectName', routes.projects.show);
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
