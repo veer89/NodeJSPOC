@@ -44,6 +44,12 @@ app.get('/users/query', routes.users.query);
 app.put('/users/update/:id', routes.users.update);
 app.delete('/users/delete/:id', routes.users.delete);
 
+app.post('/socials/create', routes.socials.add);
+app.get('/socials/show/:id', routes.socials.show);
+app.get('/socials/query', routes.socials.query);
+app.put('/socials/update/:id', routes.socials.update);
+app.delete('/socials/delete/:id', routes.socials.delete);
+
 app.post('/projects/create/:id', projects.add);
 app.get('/projects/query', projects.query);
 
