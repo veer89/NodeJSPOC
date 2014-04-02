@@ -23,6 +23,7 @@ app.configure(function() {
 	app.use(express.session());
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
+	app.use(express.bodyParser());
 
 	// development only
 	if ('development' == app.get('env')) {
@@ -55,6 +56,13 @@ app.get('/socials/show/:id', routes.socials.show);
 app.get('/socials/query', routes.socials.query);
 app.put('/socials/update/:id', routes.socials.update);
 app.delete('/socials/delete/:id', routes.socials.delete);
+
+//routes declared for image events
+app.post('/upload/uploadPic', routes.usersPic.add);
+app.get('/upload/show/:id', routes.usersPic.show);
+/*app.get('/upload/query', routes.usersPic.query);
+app.put('/upload/update/:id', routes.socials.update);*/
+app.delete('/upload/delete/:id', routes.usersPic.delete);
 
 // declaring routes for login
 app.post('/login/create', routes.logins.add); // temporary
