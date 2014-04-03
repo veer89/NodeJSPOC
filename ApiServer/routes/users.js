@@ -98,7 +98,7 @@ userSchema.activateUser = function (req, res, next) {
             return res.json({error: "Unable to activate account"});
         if (userLoginData.emailId == req.query.email && userLoginData.activationCode == req.query.code) {
         	if(userLoginData.isActive == true){
-        		res.json({success: "Your cccount is already activated!"});
+        		res.json({success: "Your acccount is already activated!"});
         	}else{
             userLoginData.isActive = true;
             userLoginData.save(function (err, loginSaveData) {
