@@ -65,10 +65,7 @@ app.put('/upload/update/:id', routes.socials.update);*/
 app.delete('/upload/delete/:id', routes.usersPic.delete);
 
 // declaring routes for login
-app.post('/login/create', routes.logins.add); // temporary
-app.get('/login/query', routes.logins.query); // temporary
 app.post('/login/:emailId/:password', routes.logins.authenticate); 
-app.delete('/login/delete/:id', routes.logins.delete); 
 app.post('/changePassword/:id/:password', routes.logins.changePassword); 
 app.post('logout', routes.logins.logout);
 
