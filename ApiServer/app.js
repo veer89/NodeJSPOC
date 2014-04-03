@@ -70,7 +70,16 @@ app.get('/login/query', routes.logins.query); // temporary
 app.post('/login/:emailId/:password', routes.logins.authenticate); 
 app.delete('/login/delete/:id', routes.logins.delete); 
 app.post('/changePassword/:id/:password', routes.logins.changePassword); 
-app.post('logout', routes.logins.logout)
+app.post('logout', routes.logins.logout);
+
+
+//declaring routes for address
+app.post('/address/create', routes.address.add);
+app.get('/address/show/:id', routes.address.show);
+app.get('/address/query', routes.address.query);
+app.put('/address/update/:id', routes.address.update);
+app.delete('/address/delete/:id', routes.address.delete);
+
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
