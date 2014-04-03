@@ -6,12 +6,6 @@ var userSchema = new _SCHEMA({
     designation: String,
     salary: String,
     emailId: String,
-    profileId: String,
-    address: {
-    	street: String,
-    	city: String,
-    	country: String,
-    	pin: Number
-    }
+    profileId: String
 });
 exports.userModel = _MONGODB.model('users', userSchema);

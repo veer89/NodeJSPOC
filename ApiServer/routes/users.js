@@ -9,13 +9,7 @@ userSchema.add = function (req, res, next) {
         designation: req.body.designation,
         salary: req.body.salary,
         emailId: req.body.emailId,
-        profileId: req.body.profileId,
-        address: {
-            street: req.body.street,
-            city: req.body.city,
-            country: req.body.country,
-            pin: req.body.pin
-        }
+        profileId: req.body.profileId
     });
     user.save(function (err, doc) {
         if (err)
@@ -46,11 +40,7 @@ userSchema.update = function (req, res, next) {
             userData.designation = req.body.designation,
             userData.salary = req.body.salary,
             userData.emailId = req.body.emailId,
-            userData.profileId = req.body.profileId,
-            userData.address.street = req.body.street,
-            userData.address.city = req.body.city,
-            userData.address.country = req.body.country,
-            userData.address.pin = req.body.pin
+            userData.profileId = req.body.profileId
         userData.save(function (err, doc) {
             if (err)
                 return next(err);
