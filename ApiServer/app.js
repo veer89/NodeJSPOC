@@ -24,7 +24,9 @@ app.configure(function() {
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
 	app.use(express.bodyParser());
-
+	app.use(function(req, res,next){
+		res.send(404, 'Page not found')
+	})
 	// development only
 	if ('development' == app.get('env')) {
 		app.use(express.errorHandler());
@@ -38,8 +40,12 @@ global._SCHEMA = mongoose.Schema;
 //require export routes
 var routes = require('./routes/exports');
 
+function errorMsg(){
+	response.send("error");
+}
 //declaring route's for request
-app.post('/users/create', routes.users.add);
+app.post('/users/create/:activate', routes.users.add);
+app.get('/users/activate', routes.users.activateUser);
 app.get('/users/show/:id', routes.users.show);
 app.get('/users/query', routes.users.query);
 app.put('/users/update/:id', routes.users.update);

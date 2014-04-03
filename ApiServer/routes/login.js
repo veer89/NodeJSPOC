@@ -11,14 +11,11 @@ loginSchema.authenticate = function(req, res, next){
     schema.loginModel.find({emailId: req.params.emailId, password: base64Lib.encode(req.params.password)}, function(err, docs){
         if (err)
             return next(err);
-       
        // found record
-        if(docs[0]){ 
-           res.json({success: 'login successfully'});
-        }else{
+        if(docs[0])
+        	docs[0].isActive ? res.json({success: 'login successfully'}) : res.json({success: 'Your account is not yet activated,please activate it!'}) 
+        else
             res.json({failure: 'login failed!!! Enter Correct Username, Password'});
-        }
-         
     });    
 };
 
