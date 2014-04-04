@@ -10,7 +10,8 @@
     "ejs": "*",
     "pwd": "*",
     "mongoose":"*",
-    "emailjs": "*"
+    "emailjs": "*",
+    "pwd": "*"
   },
   "devDependencies":{
 	  "nodemon": "*"

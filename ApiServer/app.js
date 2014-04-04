@@ -75,7 +75,6 @@ app.post('/login/:emailId/:password', routes.logins.authenticate);
 app.post('/changePassword/:id/:password', routes.logins.changePassword); 
 app.post('logout', routes.logins.logout);
 
-
 //declaring routes for address
 app.post('/address/create', routes.address.add);
 app.get('/address/show/:id', routes.address.show);
