@@ -66,8 +66,7 @@ app.delete('/socials/delete/:id', routes.socials.delete);
 //routes declared for image events
 app.post('/upload/uploadPic', routes.usersPic.add);
 app.get('/upload/show/:id', routes.usersPic.show);
-/*app.get('/upload/query', routes.usersPic.query);
-app.put('/upload/update/:id', routes.socials.update);*/
+app.put('/upload/updatePic/:id', routes.usersPic.update);
 app.delete('/upload/delete/:id', routes.usersPic.delete);
 
 // declaring routes for login

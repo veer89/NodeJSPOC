@@ -9,7 +9,6 @@ picSchema.add = function (req, res, next) {
 	var pic = new schema.picModel({
         empId: req.body.empId,
         img: { data: fs.readFileSync(imgPath),
-        //	img: { data: req.body.image1,
         	contentType: 'image/png'
         }
     });
@@ -18,18 +17,11 @@ picSchema.add = function (req, res, next) {
     pic.save(function (err, doc) {
         if (err)
             return next(err);
-        //res.json(doc);
-        	res.contentType(doc.img.contentType);
-        	res.send(doc.img.data);
-        //res.writeHead(200, {'Content-Type': 'image/gif' });
-        //res.end(img, 'binary');
+        res.json("Pic Added Succussfully!!");
+
     });
     
-
-    res.json("Hey !!");
-    console.log(req.body.empId);
-    console.log(req.body.first_name);
-
+    
     //console.log(util.inspect(res, { showHidden: false, depth: null }));
 }
 
@@ -44,6 +36,22 @@ picSchema.show = function (req, res, next) {
     });
 	
 }
+picSchema.update = function (req, res, next) {
+	console.log(req.params.id)
+	var imgUpdated = 'images/flower.jpg';
+	
+	schema.picModel.findById(req.params.id, function (err, userPic) {
+            userPic.img.data = fs.readFileSync(imgUpdated),
+        userPic.save(function (err, doc) {
+            if (err)
+                return next(err);
+            res.json("Updated Pic !!");
+        });
+    });
+
+   
+}
+
 
 picSchema.delete = function (req, res, next) {
 	console.log(req.params.id)
@@ -52,7 +60,6 @@ picSchema.delete = function (req, res, next) {
 				if (err)
             return next(err);
 			res.json("Deleted Pic !!");
-			res.status('200');
 		});
 }	
 
