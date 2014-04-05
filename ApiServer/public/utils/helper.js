@@ -1,7 +1,7 @@
 var crypto = require('crypto'),
     email = require('emailjs');
 var helper = {
-	//get activation code	
+    //get activation code	
     getActivationCode: function (emailId) {
         var token = emailId + new Date().toString().split("").sort(function () {
             return Math.round(Math.random()) - 0.5;
@@ -22,7 +22,7 @@ var helper = {
             to: recepient,
             subject: subject,
             attachment: [
-                {data: "<html><body><div>Hi,</div><br><div>Please click below link to activate your account</div><br><div><a href="+ body +">Activation Link</a></div><br><div>Regards,</div><br><div>NodeJsPoc</div></body></html>", alternative: true}
+                {data: "<html><body><div>Hi,</div><br><div>Please click below link to activate your account</div><br><div><a href=" + body + ">Activation Link</a></div><br><div>Regards,</div><br><div>NodeJsPoc</div></body></html>", alternative: true}
             ]
         }, function (err, message) {
             callback();
@@ -45,6 +45,13 @@ var helper = {
                 });
             });
         }
+    },
+    genarateResponse: function (statusCode, data, successMsg, error) {
+        var response = {meta: {}};
+        response.meta.status = statusCode;
+        error ? (response.meta.message = error) : (successMsg ? (response.meta.message = successMsg) : (response.data = data))
+        		console.log(response)
+        return response;
     }
 }
 module.exports = helper;

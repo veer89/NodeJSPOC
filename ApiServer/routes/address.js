@@ -1,18 +1,8 @@
-var schema = require('../schema/exports.js');
+var schema = require('../schema/exports.js'),
+    helper = require('../public/utils/helper.js');
 var addressSchema = {};
 
-addressSchema.checkUser = function(user_id, res){
-    console.log(user_id+"userid");
-    schema.addressModel.findById(user_id, function (err, docs) {
-        if (err)
-            return next(err);
-        res(docs);
-    });
-};
-
 addressSchema.add = function (req, res, next) {
-	 addressSchema.checkUser(req.body.user_id, function(docs){
-        if(docs && docs.empId){
     var address = new schema.addressModel({
             empId: req.body.empId,
             street: req.body.street,
@@ -24,30 +14,27 @@ addressSchema.add = function (req, res, next) {
     address.save(function (err, doc) {
         if (err)
             return next(err);
-        res.json(doc);
+        res.json(helper.genarateResponse(200, doc, null, null));
     });
-    }
-    else{
-    	console.log("Sorry you cannot edit the address");
-    }
-});
 };
 addressSchema.query = function (req, res, next) {
 	schema.addressModel.find(req.query.where, function (err, docs) {
         if (err)
             return next(err);
-        res.json(docs);
+        res.json(helper.genarateResponse(200, docs, null, null));
     });
 };
 addressSchema.show = function (req, res, next) {
     schema.addressModel.findById(req.params.id, function (err, docs) {
         if (err)
             return next(err);
-        res.json(docs);
+        res.json(helper.genarateResponse(200, docs, null, null));
     });
 };
 addressSchema.update = function (req, res, next) {
-    schema.addressModel.findById(req.params.id, function (err, address) {
+    schema.addressModel.findById(req.params.id, function (addressErr, address) {
+    	if (addressErr)
+            return next(addressErr);
             address.empId = req.body.empId,
             address.street = req.body.street,
             address.city = req.body.city,
@@ -56,16 +43,18 @@ addressSchema.update = function (req, res, next) {
         address.save(function (err, doc) {
             if (err)
                 return next(err);
-            res.json(doc);
+            res.json(helper.genarateResponse(200, doc, null, null));
         });
     });
 };
 addressSchema.delete = function (req, res, next) {
-    schema.addressModel.findById(req.params.id, function (err, address) {
+    schema.addressModel.findById(req.params.id, function (addressErr, address) {
+    	if (addressErr)
+            return next(addressErr);
         address.remove(function (err, docs) {
             if (err)
                 return next(err);
-            res.json(docs);
+            res.json(helper.genarateResponse(200, docs, null, null));
         });
     });
 }
