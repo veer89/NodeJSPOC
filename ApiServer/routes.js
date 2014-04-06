@@ -44,4 +44,3 @@ module.exports = function(app){
     app.put('/address/update/:id', filter.keyFilter, filter.userFilter, routes.address.update);
     app.delete('/address/delete/:id', filter.keyFilter, filter.userFilter, routes.address.delete);
 };
-
