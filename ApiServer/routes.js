@@ -12,10 +12,11 @@ module.exports = function(app){
     app.delete('/users/delete/:id', filter.keyFilter, routes.users.delete);
 
 // declaring route's for project
-    app.post('/projects/create/:id', filter.keyFilter, filter.userFilter, routes.projects.add);
+    app.post('/projects/create', filter.keyFilter, routes.projects.addProject);
     app.get('/projects/query', filter.keyFilter, routes.projects.query);
-    app.put('/projects/update/:id', filter.keyFilter, filter.userFilter, routes.projects.update);
-    app.delete('/projects/delete/:id', filter.keyFilter,filter.userFilter, routes.projects.delete);
+    app.post('/projects/addUserToProject', filter.keyFilter, filter.userFilter, routes.projects.addUserToProject);
+    app.put('/projects/update/:id', filter.keyFilter, routes.projects.update);
+    app.delete('/projects/removeUserFromProject', filter.keyFilter,filter.userFilter, routes.projects.removeUserFromProject);
     app.get('/projects/show/:projectName', filter.keyFilter, routes.projects.show);
 
 // declaring route's for social integration
