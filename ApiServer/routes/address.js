@@ -4,12 +4,11 @@ var addressSchema = {};
 
 addressSchema.add = function (req, res, next) {
     var address = new schema.addressModel({
-            empId: req.body.empId,
             street: req.body.street,
             city: req.body.city,
             country: req.body.country,
             pin: req.body.pin,
-            user_id:req.body.user_id,
+            user_id: req.query.user_id,
     });
     address.save(function (err, doc) {
         if (err)
@@ -35,7 +34,6 @@ addressSchema.update = function (req, res, next) {
     schema.addressModel.findById(req.params.id, function (addressErr, address) {
     	if (addressErr)
             return next(addressErr);
-            address.empId = req.body.empId,
             address.street = req.body.street,
             address.city = req.body.city,
             address.country = req.body.country,

@@ -4,8 +4,7 @@ var schema = require('../schema/exports.js'),
 var socialSchema = {};
 socialSchema.add = function (req, res, next) {
             var social = new schema.socialModel({
-                empId: req.body.empId,
-                user_Id: req.body.user_Id,
+                user_id: req.query.user_id,
                 twitter: req.body.twitter,
                 facebook: req.body.facebook,
                 linkedIn: req.body.linkedIn,

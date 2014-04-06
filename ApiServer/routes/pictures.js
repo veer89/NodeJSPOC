@@ -5,7 +5,8 @@ var pictureSchema = {};
 pictureSchema.add = function (req, res, next) {
     var picture;
     picture = new schema.pictureModel({
-        empId: req.body.empId,
+        user_id: req.query.user_id,
+        name: req.body.name,
         img: { data: require('fs').readFileSync(req.files.photo.path),
             contentType: 'image/png'
         }
@@ -29,11 +30,12 @@ pictureSchema.update = function (req, res, next) {
         if (picErr)
             return next(picErr);
         userPic.img.data = require('fs').readFileSync(req.files.photo.path),
-            userPic.save(function (err, doc) {
-                if (err)
-                    return next(err);
-                res.json(helper.genarateResponse(200, null,"Picture updated successfully", null));
-            });
+            userPic.name = req.body.name
+        userPic.save(function (err, doc) {
+            if (err)
+                return next(err);
+            res.json(helper.genarateResponse(200, null, "Picture updated successfully", null));
+        });
     });
 }
 

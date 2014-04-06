@@ -1,5 +1,6 @@
 var picSchema = new _SCHEMA({
-    empId: {type: String},
+	user_id: {type:String, required :true},
+	name: String,
     img: {
     	data: Buffer,
     	contentType: String
