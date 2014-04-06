@@ -8,8 +8,8 @@ var path = require('path');
 var helper = require('./public/utils/helper.js');
 var mongoose = require('mongoose');
 var app = express();
-//var mongoUrl = 'mongodb://127.0.0.1/nodeJsPocApiServer';
-var mongoUrl = 'mongodb://admin:admin@ds049467.mongolab.com:49467/apiserver';
+var mongoUrl = 'mongodb://127.0.0.1/nodeJsPocApiServer';
+//var mongoUrl = 'mongodb://admin:admin@ds049467.mongolab.com:49467/apiserver';
 
 app.configure(function() {
 	// all environments
@@ -30,9 +30,9 @@ app.configure(function() {
 	app.use(function(req, res,next){
 		res.send(helper.genarateResponse(404, null, null, 'Please specify correct path'));
 	});
-//	app.use(function(error, req, res,next){
-//		res.send(helper.genarateResponse(401, null, null, 'Error occured in processing'));
-//	});
+	app.use(function(error, req, res,next){
+		res.send(helper.genarateResponse(401, null, null, 'Error occured in processing. ' + error));
+	});
 });
 
 //defining global variables
