@@ -66,7 +66,7 @@ projectSchema.removeUserFromProject = function (req, res, next) {
 			var pos = empArr.indexOf(empId);
 			empArr.splice(pos,1);
 		} else {
-			res.json("user_id not present in project");
+			res.json(helper.genarateResponse(400, null, null, 'user_id not present in project'));
 		}
 		projectData.user_id = empArr;
 		projectData.save(function (err, doc) {
@@ -103,7 +103,7 @@ projectSchema.show = function (req, res, next) {
         if (err)
             return next(err);
         if(!docs){
-        	res.json('No Match Found for input criteria '+req.params.projectName);
+        	res.json(helper.genarateResponse(400, null, null, 'No Match Found for input criteria ' + req.params.projectName));
         } else {
             res.json(docs);
         }

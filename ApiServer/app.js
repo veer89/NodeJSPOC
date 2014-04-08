@@ -8,8 +8,8 @@ var path = require('path');
 var helper = require('./public/utils/helper.js');
 var mongoose = require('mongoose');
 var app = express();
-var mongoUrl = 'mongodb://127.0.0.1/nodeJsPocApiServer';
-//var mongoUrl = 'mongodb://admin:admin@ds049467.mongolab.com:49467/apiserver';
+//var mongoUrl = 'mongodb://127.0.0.1/nodeJsPocApiServer';
+var mongoUrl = 'mongodb://admin:admin@ds049467.mongolab.com:49467/apiserver';
 
 app.configure(function() {
 	// all environments
