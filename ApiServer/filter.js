@@ -7,16 +7,20 @@ var filter = {
 	    else{
 	        if(req.query.appKey == global._APPKEY)
 	            next();
-	        else
+	        else{
 	        	res.json(helper.genarateResponse(400, null, null, "Invalid AppKey"));
+	        	global._LOGGER.error('Invalid AppKey : ' + req.query.appKey);
+	        }
 	    }
 	},
 	userFilter: function(req, res, next){
 		if(!req.query || !req.query.user_id)
 			res.json(helper.genarateResponse(400, null, null, "user_id required"));
 		schema.userModel.findById(req.query.user_id, function (err, docs) {
-	        if (err)
+	        if (err){
 	        	res.json(helper.genarateResponse(400, null, null, "Invalid user_id"));
+	        	global._LOGGER.error('Invalid user_id : ' + req.query.user_id);
+	        }
 	        next();
 	    });
 	}

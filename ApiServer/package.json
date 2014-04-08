@@ -11,7 +11,8 @@
     "pwd": "*",
     "mongoose":"*",
     "emailjs": "*",
-    "pwd": "*"
+    "pwd": "*",
+    "log4js": "*"
   },
   "devDependencies":{
 	  "nodemon": "*"
