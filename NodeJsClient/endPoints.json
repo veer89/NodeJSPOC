@@ -1,7 +1,7 @@
 {
 	"users" : {
 		"create" :{
-			"method_type" : "post",
+			"method_type" : "POST",
 			"end_point" : "/users/create/false",
 			"user_id" : ""
 		}

@@ -8,11 +8,17 @@ helper = {
 		if(endpoint.user_id) {
 			requestUrl += '&user_id=' + endpoint.user_id;
 		}
-		rest.post(requestUrl, {
-			data : data,
-		}).once('complete', function(data, response) {
-			callback(data);
-		});
+		if(endpoint.method_type == 'POST'){
+			rest.post(requestUrl, {
+				data : data,
+			}).once('complete', function(data, response) {
+				callback(data);
+			});
+		} else if(endpoint.method_type == 'GET'){
+			rest.get(requestUrl).once('complete', function(data, response) {
+				callback(data);
+			});
+		}
 	}
 };
 
