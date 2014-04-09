@@ -17,6 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(express.multipart());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -25,6 +26,8 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+global._BASEURL = 'http://127.0.0.1:8000';
+global._APPKEY = "ac5028363f1a32eed640de5d23195b499cc3146d";
 
 require('./routes.js')(app);
 

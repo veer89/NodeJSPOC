@@ -1,0 +1,9 @@
+{
+	"users" : {
+		"create" :{
+			"method_type" : "post",
+			"end_point" : "/users/create/false",
+			"user_id" : ""
+		}
+	}
+}
