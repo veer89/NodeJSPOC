@@ -1,12 +1,15 @@
 {
-  "name": "application-name",
+  "name": "NodeJsClient",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "express": "3.4.8",
     "ejs": "*"
+  },
+  "devDependencies":{
+	  "nodemon": "*"
   }
 }
