@@ -2,8 +2,7 @@
 	"users" : {
 		"create" :{
 			"method_type" : "POST",
-			"end_point" : "/users/create/false",
-			"user_id" : ""
+			"end_point" : "/users/create/false"
 		}
 	}
 }

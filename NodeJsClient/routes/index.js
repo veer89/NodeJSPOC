@@ -13,7 +13,7 @@ index.signup = function(req, res, next){
 		empId : req.body.username,
 		emailId : req.body.email
 	};
-	helper.sendRequest(endPoints.users.create, data, function(result) {
+	helper.sendRequest(endPoints.users.create, data, null, function(result) {
 		if (result && result.meta) {
 
 			if (result.meta.status == '200') {
