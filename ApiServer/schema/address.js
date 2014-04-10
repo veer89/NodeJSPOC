@@ -3,7 +3,6 @@ var addressSchema = new _SCHEMA({
     	city: String,
     	country: String,
     	pin: Number,
-    	user_id: String,
-    	empId: String
+    	user_id: {type:String, required :true}
 });
 exports.addressModel = _MONGODB.model('address', addressSchema);

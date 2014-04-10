@@ -1,11 +1,118 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NodeJsClient</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="stylesheets/style.css" rel="stylesheet">
+<link href="http://spbooks.github.com/nodejs1/docs.css" rel="stylesheet">
+<script
+	src="assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript"
+	src="assets/js/jquery.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-button.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-modal.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-transition.js"></script>
+</head>
+<body>
+	<div id="myModal" class="modal hide fade smallModal myModal">
+		<form id="signup-form" action="/signup" method="post"
+			class="form-horizontal">
+			<div class="modal-header">
+				<a data-dismiss="modal" class="close">X</a>
+				<h3>Register User</h3>
+			</div>
+			<div class="modal-body">
+				<fieldset>
+					<div class="control-group alignCenter">
+						<input type="text" name="empId" placeholder="Username"
+							class="input-large uname" /> <span id="imagePlaceHolder"></span>
+					</div>
+					<div class="control-group alignCenter">
+						<input type="password" name="password" placeholder="Password"
+							class="input-small" />
+					</div>
+					<div class="control-group">
+						<table style="margin-left:21%;">
+							<tr>
+								<td>
+									<input type="text" name="first_name" placeholder="First Name"
+									class="input-small" />
+								</td>
+								<td>
+									<input type="text" name="last_name" placeholder="Last Name"
+									class="input-small" />
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="control-group alignCenter">
+						<input type="text" name="phone_number" placeholder="Phone Number"
+							class="input-medium" />
+					</div>
+					<div class="control-group alignCenter">
+						<input type="text" name="designation" placeholder="Designation"
+							class="input-large" />
+					</div>
+					<div class="control-group alignCenter">
+						<input type="text" name="emailId" placeholder="Email"
+							class="input-large" />
+					</div>
+				</fieldset>
+			</div>
+			<div class="modal-footer alignCenter">
+				<a href="#" data-dismiss="modal" class="btn">Close</a>
+				<button class="btn btn-primary create-button" type="submit">Create
+					Account</button>
+			</div>
+		</form>
+	</div>
+	<div id="loginModal" class="modal hide fade smallModal">
+		<form id="login-form" action="/login" method="post"
+			class="form-horizontal">
+			<div class="modal-header">
+				<a data-dismiss="modal" class="close"></a>
+				<h3>Log In</h3>
+			</div>
+			<div class="modal-body">
+				<fieldset>
+					<div class="control-group">
+						<input type="text" name="username" placeholder="Username"
+							class="input-xlarge uname" /> <span id="imagePlaceHolder"></span>
+					</div>
+					<div class="control-group">
+						<input type="password" name="password" placeholder="Password"
+							class="input-xlarge" />
+					</div>
+				</fieldset>
+			</div>
+			<div class="modal-footer">
+				<a href="#" data-dismiss="modal" class="btn">Close</a>
+				<button class="btn btn-primary" type="submit">Log In</button>
+			</div>
+		</form>
+	</div>
+	<div class="container">
+		<div class="marketing">
+			<h1>NodeJsClient</h1>
+			<p class="marketing-byline">Welcome to NodeJsClient Implementation</p>
+			<div class="row offset2">
+				
+			</div>
+		</div>
+		<header class="jumbotron masthead">
+			<div class="inner">
+				<p class="download-info">
+					<a data-toggle="modal" href="#loginModal" class="btn btn-large">Log In </a>
+					<a data-toggle="modal" href="#myModal"
+						class="btn btn-primary btn-large">Sign Up</a>
+				</p>
+			</div>
+		</header>
+	</div>
+</body>
 </html>
