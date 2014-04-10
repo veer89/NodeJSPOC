@@ -3,6 +3,128 @@
 		"create" :{
 			"method_type" : "POST",
 			"end_point" : "/users/create/false"
+		},
+		"activate" :{
+			"method_type" : "GET",
+			"end_point" : "/users/activate"
+		},
+		"show" :{
+			"method_type" : "GET",
+			"end_point" : "/users/show"
+		},
+		"query" :{
+			"method_type" : "GET",
+			"end_point" : "/users/query"
+		},
+		"update" :{
+			"method_type" : "PUT",
+			"end_point" : "/users/update"
+		},
+		"delete" :{
+			"method_type" : "DELETE",
+			"end_point" : "/users/delete"
+		}
+	},
+	"projects" : {
+		"create" :{
+			"method_type" : "POST",
+			"end_point" : "/projects/create"
+		},
+		"query" :{
+			"method_type" : "GET",
+			"end_point" : "/projects/query"
+		},
+		"addUserToProject" :{
+			"method_type" : "POST",
+			"end_point" : "/projects/addUserToProject"
+		},
+		"update" :{
+			"method_type" : "PUT",
+			"end_point" : "/projects/update"
+		},
+		"removeUserFromProject" :{
+			"method_type" : "DELETE",
+			"end_point" : "/projects/removeUserFromProject"
+		},
+		"show" :{
+			"method_type" : "GET",
+			"end_point" : "/projects/show"
+		}
+	},
+	"socials" : {
+		"create" :{
+			"method_type" : "POST",
+			"end_point" : "/socials/create"
+		},
+		"query" :{
+			"method_type" : "GET",
+			"end_point" : "/socials/query"
+		},
+		"update" :{
+			"method_type" : "PUT",
+			"end_point" : "/socials/update"
+		},
+		"delete" :{
+			"method_type" : "DELETE",
+			"end_point" : "/socials/delete"
+		},
+		"show" :{
+			"method_type" : "GET",
+			"end_point" : "/socials/show"
+		}
+	},
+	"picture" : {
+		"create" :{
+			"method_type" : "POST",
+			"end_point" : "/picture/create"
+		},
+		"update" :{
+			"method_type" : "PUT",
+			"end_point" : "/picture/update"
+		},
+		"delete" :{
+			"method_type" : "DELETE",
+			"end_point" : "/picture/delete"
+		},
+		"show" :{
+			"method_type" : "GET",
+			"end_point" : "/picture/show"
+		}
+	},
+	"login" : {
+		"login" :{
+			"method_type" : "POST",
+			"end_point" : "/login"
+		},
+		"changePassword" :{
+			"method_type" : "POST",
+			"end_point" : "/changePassword"
+		},
+		"logout" :{
+			"method_type" : "DELETE",
+			"end_point" : "/logout"
+		}
+	},
+	"address" : {
+		"create" :{
+			"method_type" : "POST",
+			"end_point" : "/address/create"
+		},
+		"query" :{
+			"method_type" : "GET",
+			"end_point" : "/address/query"
+		},
+		"update" :{
+			"method_type" : "PUT",
+			"end_point" : "/address/update"
+		},
+		"delete" :{
+			"method_type" : "DELETE",
+			"end_point" : "/address/delete"
+		},
+		"show" :{
+			"method_type" : "GET",
+			"end_point" : "/address/show"
 		}
 	}
 }
