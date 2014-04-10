@@ -5,6 +5,7 @@
 <title>NodeJsClient</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="stylesheets/style.css" rel="stylesheet">
 <link href="http://spbooks.github.com/nodejs1/docs.css" rel="stylesheet">
 <script
 	src="assets/js/google-code-prettify/prettify.js"></script>
@@ -18,30 +19,52 @@
 	src="assets/js/bootstrap-transition.js"></script>
 </head>
 <body>
-	<div id="myModal" class="modal hide fade smallModal">
+	<div id="myModal" class="modal hide fade smallModal myModal">
 		<form id="signup-form" action="/signup" method="post"
 			class="form-horizontal">
 			<div class="modal-header">
 				<a data-dismiss="modal" class="close">X</a>
-				<h3>Sign Up Today</h3>
+				<h3>Register User</h3>
 			</div>
 			<div class="modal-body">
 				<fieldset>
-					<div class="control-group">
-						<input type="text" name="username" placeholder="Username"
-							class="input-xlarge uname" /> <span id="imagePlaceHolder"></span>
+					<div class="control-group alignCenter">
+						<input type="text" name="empId" placeholder="Username"
+							class="input-large uname" /> <span id="imagePlaceHolder"></span>
 					</div>
-					<div class="control-group">
-						<input type="text" name="email" placeholder="Email"
-							class="input-xlarge" />
-					</div>
-					<div class="control-group">
+					<div class="control-group alignCenter">
 						<input type="password" name="password" placeholder="Password"
-							class="input-xlarge" />
+							class="input-small" />
+					</div>
+					<div class="control-group">
+						<table style="margin-left:21%;">
+							<tr>
+								<td>
+									<input type="text" name="first_name" placeholder="First Name"
+									class="input-small" />
+								</td>
+								<td>
+									<input type="text" name="last_name" placeholder="Last Name"
+									class="input-small" />
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="control-group alignCenter">
+						<input type="text" name="phone_number" placeholder="Phone Number"
+							class="input-medium" />
+					</div>
+					<div class="control-group alignCenter">
+						<input type="text" name="designation" placeholder="Designation"
+							class="input-large" />
+					</div>
+					<div class="control-group alignCenter">
+						<input type="text" name="emailId" placeholder="Email"
+							class="input-large" />
 					</div>
 				</fieldset>
 			</div>
-			<div class="modal-footer">
+			<div class="modal-footer alignCenter">
 				<a href="#" data-dismiss="modal" class="btn">Close</a>
 				<button class="btn btn-primary create-button" type="submit">Create
 					Account</button>
