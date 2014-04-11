@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NodeJsClient</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../stylesheets/style.css" rel="stylesheet">
+<link href="http://spbooks.github.com/nodejs1/docs.css" rel="stylesheet">
+<script
+	src="../assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript"
+	src="../assets/js/jquery.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-button.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-modal.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-transition.js"></script>
+</head>
+<body>
+	
+	<div class="container">
+		<div class="marketing alignCenter">
+			<h1>NodeJsClient - Address </h1>
+			<div class="control-group alignCenter">
+			<form id="login-form" action="/changeAddress/<%=addressData.id%>" method="post">
+			<div class="control-group alignCenter">
+					<div class="control-group">
+						<input type="text" name="street" placeholder="Street" value="<%=addressData.street%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="text" name="city" placeholder="City" value="<%=addressData.city%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="text" name="country" placeholder="Country" value="<%=addressData.country%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="text" name="pin" placeholder="Zip Code" value="<%=addressData.pin%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="hidden" name="user_id" value="<%=addressData.user_id%>"
+							class="input-xlarge" />
+					</div>
+				<a href="/profile?id=<%=addressData.user_id%>" class="btn">Back to Profile</a>
+				<button class="btn btn-primary" type="submit">Submit</button>
+			</div>
+			<!-- <div>
+				<a href="#" data-dismiss="modal" class="btn">Close</a>
+				<button class="btn btn-primary" type="submit">Log In</button>
+			</div> -->
+		</form>
+		</div>
+		</div>
+		<header class="jumbotron masthead">
+		
+			<!-- <div class="inner">
+				<p class="download-info">
+					<a data-toggle="modal" href="#loginModal" class="btn btn-large">Log In </a>
+					<a data-toggle="modal" href="#myModal"
+						class="btn btn-primary btn-large">Sign Up</a>
+				</p>
+			</div> -->
+		</header>
+	</div>
+</body>
+</html>

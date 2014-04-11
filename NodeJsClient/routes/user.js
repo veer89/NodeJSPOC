@@ -7,6 +7,52 @@ var user = {
 		editProfile : function(req, res, next){
 			var empId = req.params.id;
 			res.render('settings', { empId: empId });
+		},
+		editAddress : function(req, res, next){
+			var empId = req.params.id;
+			var addressData = {};
+			helper.sendRequest(endPoints.address.showByEmpId, null, null, [empId], function(result) {
+		    	//var addressData = 'No Data Found';
+				if(result && result.meta){
+					if(result.meta.status == '200' && result.data){
+						addressData.street = result.data.street;
+						addressData.city = result.data.city;
+						addressData.country = result.data.country;
+						addressData.pin = result.data.pin;
+						addressData.id = result.data._id;
+						addressData.user_id = result.data.user_id;
+					}
+				}
+				res.render('editAddress', { 
+					addressData : addressData											
+				});
+			});
+		},
+		changeAddress : function(req, res, next){
+			var addrId = req.params.id;
+			var user_id = req.body.user_id;
+			var addressData = {};
+			var data = {
+					street : req.body.street,
+					city : req.body.city,
+					country : req.body.country,
+					pin : req.body.pin
+			}
+			helper.sendRequest(endPoints.address.update, data, user_id, [addrId], function(result) {
+				if(result && result.meta){
+					if(result.meta.status == '200' && result.data){
+						addressData.street = result.data.street;
+						addressData.city = result.data.city;
+						addressData.country = result.data.country;
+						addressData.pin = result.data.pin;
+						addressData.id = result.data._id;
+						addressData.user_id = result.data.user_id;
+					}
+				}
+				res.render('editAddress', { 
+					addressData : addressData											
+				});
+			});
 		}
 };
 

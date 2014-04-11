@@ -7,4 +7,6 @@ module.exports = function(app){
 	app.post('/login', routes.index.signin);
 	
 	app.get('/settings/:id', routes.user.editProfile);
+	app.get('/editAddress/:id', routes.user.editAddress);
+	app.post('/changeAddress/:id', routes.user.changeAddress);
 };
