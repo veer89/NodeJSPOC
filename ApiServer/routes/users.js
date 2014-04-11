@@ -59,6 +59,15 @@ userSchema.show = function (req, res, next) {
         res.json(helper.genarateResponse(200, docs, null, null));
     });
 };
+
+userSchema.showByEmpId = function (req, res, next) {
+    schema.userModel.findOne({empId : req.params.id}, function (err, docs) {
+        if (err)
+            return next(err);
+        res.json(helper.genarateResponse(200, docs, null, null));
+    });
+};
+
 userSchema.query = function (req, res, next) {
     schema.userModel.find(req.query.where, function (err, docs) {
     	console.log(err,docs)

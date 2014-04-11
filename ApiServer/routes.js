@@ -7,6 +7,7 @@ module.exports = function(app){
     app.post('/users/create/:activate', filter.keyFilter, routes.users.add);
     app.get('/users/activate', routes.users.activateUser);
     app.get('/users/show/:id', filter.keyFilter, routes.users.show);
+    app.get('/users/showById/:id', filter.keyFilter, routes.users.showByEmpId);
     app.get('/users/query', filter.keyFilter, routes.users.query);
     app.put('/users/update/:id', filter.keyFilter, routes.users.update);
     app.delete('/users/delete/:id', filter.keyFilter, routes.users.delete);
@@ -40,6 +41,7 @@ module.exports = function(app){
 // declaring routes for address
     app.post('/address/create', filter.keyFilter, filter.userFilter,  routes.address.add);
     app.get('/address/show/:id', filter.keyFilter, routes.address.show);
+    app.get('/address/showById/:id', filter.keyFilter, routes.address.showByEmpId);
     app.get('/address/query', filter.keyFilter, routes.address.query);
     app.put('/address/update/:id', filter.keyFilter, filter.userFilter, routes.address.update);
     app.delete('/address/delete/:id', filter.keyFilter, filter.userFilter, routes.address.delete);

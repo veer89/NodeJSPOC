@@ -12,6 +12,10 @@
 			"method_type" : "GET",
 			"end_point" : "/users/show"
 		},
+		"showById" :{
+			"method_type" : "GET",
+			"end_point" : "/users/showById"
+		},
 		"query" :{
 			"method_type" : "GET",
 			"end_point" : "/users/query"
@@ -122,9 +126,9 @@
 			"method_type" : "DELETE",
 			"end_point" : "/address/delete"
 		},
-		"show" :{
+		"showById" :{
 			"method_type" : "GET",
-			"end_point" : "/address/show"
+			"end_point" : "/address/showById"
 		}
 	}
 }
