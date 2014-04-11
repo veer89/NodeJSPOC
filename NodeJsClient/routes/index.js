@@ -13,11 +13,11 @@ index = {
 			res.render('index', { title: 'Express' });
 		},
 		getProfilePage : function(req, res, next){ 
-			var empId = req.query.empId;
+			var empId = req.query.id
 			var profileData = {};
 			async.series([function(callback) {
 				// gether data
-				helper.sendRequest(endPoints.users.showById, null, null, [empId], function(result) {
+				helper.sendRequest(endPoints.users.show, null, null, [empId], function(result) {
 					if(result && result.meta){
 						if(result.meta.status == '200'){
 							profileData.first_name = result.data.first_name;
@@ -33,7 +33,7 @@ index = {
 				
 			    },
 			    function(callback) {
-			    helper.sendRequest(endPoints.address.showById, null, null, [empId], function(result) {
+			    helper.sendRequest(endPoints.address.show, null, null, [empId], function(result) {
 			    	var addressData = 'No Data Found';
 					if(result && result.meta){
 						if(result.meta.status == '200' && result.data){
@@ -64,7 +64,7 @@ index = {
 			helper.sendRequest(endPoints.users.create, data, null, null, function(result) {
 				if (result && result.meta) {
 					if (result.meta.status == '200') {
-						res.redirect('/profile?empId='+req.body.empId);
+						res.redirect('/profile?id='+result.data._id);
 					} else {
 						res.send('Error Occured');
 					}
@@ -72,6 +72,22 @@ index = {
 				}
 			});
 			
-		}
+		},
+		signin : function(req, res, next){
+				var password = req.body.password,
+					emailId = req.body.emailId;
+				
+				helper.sendRequest(endPoints.login.login, null, null, [emailId, password], function(result) {
+					if (result && result.meta) {
+						if (result.meta.status == '200') {
+							res.redirect('/profile?id='+result.data.user_id);
+						} else {
+							res.send('Error Occured');
+						}
+
+					}
+				});
+				
+			}
 }
 module.exports = index;

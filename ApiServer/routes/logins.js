@@ -34,7 +34,7 @@ loginSchema.authenticate = function(req, res, next){
         	if (hashErr) 
                 return next(hashErr);
             if (hashVal.toString() == docs.hash) {               
-               return  docs.isActive ? (res.json(helper.genarateResponse(200, null, "login successfully", null))) : (res.json(helper.genarateResponse(400, null, "Your account is not yet activated,please activate it!", null)))
+               return  docs.isActive ? (res.json(helper.genarateResponse(200, docs, null, null))) : (res.json(helper.genarateResponse(400, null, "Your account is not yet activated,please activate it!", null)))
            }
            return res.json(helper.genarateResponse(400, null, null, "login failed, Enter Correct Username, Password"));	   
         });

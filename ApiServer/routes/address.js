@@ -31,14 +31,6 @@ addressSchema.show = function (req, res, next) {
     });
 };
 
-addressSchema.showByEmpId = function (req, res, next) {
-    schema.addressModel.findOne({user_id : req.params.id}, function (err, docs) {
-        if (err)
-            return next(err);
-        res.json(helper.genarateResponse(200, docs, null, null));
-    });
-};
-
 addressSchema.update = function (req, res, next) {
     schema.addressModel.findById(req.params.id, function (addressErr, address) {
     	if (addressErr)
