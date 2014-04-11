@@ -45,7 +45,7 @@ index = {
 				});
 			    },
 			    function(callback){
-			    	res.render('profilePage', { profileData: profileData });
+			    	res.render('profilePage', { profileData: profileData, empId : empId});
 			    	callback(null, "profile");
 			    }], function(err, results) {
 					console.log(results);

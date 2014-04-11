@@ -5,4 +5,6 @@ module.exports = function(app){
 	app.post('/signup', routes.index.signup);
 	app.get('/profile', routes.index.getProfilePage);
 	app.post('/login', routes.index.signin);
+	
+	app.get('/settings/:id', routes.user.editProfile);
 };
