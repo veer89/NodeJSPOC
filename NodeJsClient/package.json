@@ -8,7 +8,8 @@
   "dependencies": {
     "express": "3.4.8",
     "ejs": "*",
-    "restler" : "*"
+    "restler" : "*",
+    "async" : "*"
   },
   "devDependencies":{
 	  "nodemon": "*"

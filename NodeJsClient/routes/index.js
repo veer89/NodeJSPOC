@@ -1,8 +1,12 @@
 var rest = require('restler');
 var helper = require('../public/utils/helper.js');
 var endPoints = require('../endPoints.json');
+var async = require('async');
 
 var index = {};
+
+
+
 
 index = {
 		getIndex : function(req, res, next){   
@@ -10,32 +14,41 @@ index = {
 		},
 		getProfilePage : function(req, res, next){ 
 			var empId = req.query.empId;
-			helper.sendRequest(endPoints.users.showById, null, null, [empId], function(result) {
-				if (result && result.meta) {
-					if (result.meta.status == '200') {
-						var user_id = result.data._id;
-						var addressData = 'No Data Found';
-						helper.sendRequest(endPoints.address.showById, null, null, [user_id], function(result) {
-							if(result && result.meta){
-								if(result.meta.status == '200'){
-									addressData = result.data.street + ', ' + result.data.city +', ' + result.data.country +' - ' + result.data.pin;
-								}
-								var profileData = {
-										first_name : result.data.first_name,
-										last_name : result.data.last_name,
-										phone_number: result.data.phone_number,
-									    designation: result.data.designation,
-									    emailId: result.data.emailId,
-									    addressData : addressData
-								}
-								res.render('profilePage', { profileData: profileData });
-							}
-						});
-					} else {
-						res.send('Error Occured');
+			var profileData = {};
+			async.series([function(callback) {
+				// gether data
+				helper.sendRequest(endPoints.users.showById, null, null, [empId], function(result) {
+					if(result && result.meta){
+						if(result.meta.status == '200'){
+							profileData.first_name = result.data.first_name;
+							profileData.last_name = result.data.last_name;
+							profileData.phone_number = result.data.phone_number;
+							profileData.designation = result.data.designation;
+							profileData.emailId = result.data.emailId;
+							console.log(profileData);
+						}
 					}
-
-				}
+					callback(null, "users");
+				});
+				
+			    },
+			    function(callback) {
+			    helper.sendRequest(endPoints.address.showById, null, null, [empId], function(result) {
+			    	var addressData = 'No Data Found';
+					if(result && result.meta){
+						if(result.meta.status == '200' && result.data){
+							addressData = result.data.street + ', ' + result.data.city +', ' + result.data.country +' - ' + result.data.pin;
+						}
+					}
+					profileData.addressData = addressData;
+				    callback(null, "address");
+				});
+			    },
+			    function(callback){
+			    	res.render('profilePage', { profileData: profileData });
+			    	callback(null, "profile");
+			    }], function(err, results) {
+					console.log(results);
 			});
 		},
 		signup : function(req, res, next){
