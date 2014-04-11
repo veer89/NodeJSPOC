@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NodeJsClient</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="stylesheets/style.css" rel="stylesheet">
+<link href="http://spbooks.github.com/nodejs1/docs.css" rel="stylesheet">
+<script
+	src="assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript"
+	src="assets/js/jquery.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-button.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-modal.js"></script>
+<script type="text/javascript"
+	src="assets/js/bootstrap-transition.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="marketing">
+			<h1>Profile Page</h1>
+			<div class="control-group alignCenter">
+				Name : <%= profileData.first_name%> <%= profileData.last_name%> <br/>
+				Designation : <%=profileData.designation %><br/>
+				Phone : <%=profileData.phone_number %><br/>
+				EmailId : <%=profileData.emailId %><br/>
+				Address : <%=profileData.addressData %><br/>
+			</div>
+		</div>
+		<header class="jumbotron masthead">
+		</header>
+	</div>
+</body>
+</html>
