@@ -125,6 +125,10 @@
 		"show" :{
 			"method_type" : "GET",
 			"end_point" : "/address/show"
+		},
+		"showByEmpId" :{
+			"method_type" : "GET",
+			"end_point" : "/address/showByEmpId"
 		}
 	}
 }

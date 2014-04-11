@@ -33,7 +33,7 @@ index = {
 				
 			    },
 			    function(callback) {
-			    helper.sendRequest(endPoints.address.show, null, null, [empId], function(result) {
+			    helper.sendRequest(endPoints.address.showByEmpId, null, null, [empId], function(result) {
 			    	var addressData = 'No Data Found';
 					if(result && result.meta){
 						if(result.meta.status == '200' && result.data){
