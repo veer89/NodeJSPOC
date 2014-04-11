@@ -8,23 +8,35 @@ var helper = {
         });
         return crypto.createHash('sha1').update(token).digest('hex')
     },
+    getResetPassword: function(){
+        return Math.random().toString(36).slice(-8);
+    },
     //sends email 
-    sendEmail: function (subject, recepient, body, callback) {
+    sendEmail: function (subject, recepient, body, sendAttachment , callback) {        
         var server = email.server.connect({
             user: "nodejspoc@gmail.com",
             password: "Global@123",
             host: "smtp.gmail.com",
             ssl: true
         });
-        // send the message and get a callback with an error or details of the message that was sent
-        server.send({
+
+        // define mail Body
+        var mailBody = {            
             from: "NodeJsPoc <nodejspoc@gmail.com>",
             to: recepient,
-            subject: subject,
-            attachment: [
+            subject: subject           
+        };
+
+        if(sendAttachment){
+            mailBody.attachment = [
                 {data: "<html><body><div>Hi,</div><br><div>Please click below link to activate your account</div><br><div><a href=" + body + ">Activation Link</a></div><br><div>Regards,</div><br><div>NodeJsPoc</div></body></html>", alternative: true}
             ]
-        }, function (err, message) {
+        }else{
+            mailBody.text = body;
+        }
+
+        // send the message and get a callback with an error or details of the message that was sent
+        server.send(mailBody, function (err, message) {
             callback();
         });
     },

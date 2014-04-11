@@ -1,0 +1,20 @@
+"#navBar":{
+	width: Ti.UI.FILL,
+	height:45,
+	backgroundColor: '#f29135'
+},
+"#header":{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color:'black'
+},
+"#settings":{
+	height: Ti.UI.FILL,
+	width:45,
+	right:5
+},
+"#settingsImg":{
+	width:30,
+	height:30,
+	image: '/images/settings.png'
+}

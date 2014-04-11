@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="navBar">
+		<Label text="User Profile" id="header" />
+		<View id="settings" >
+			<ImageView id="settingsImg">
+		</View>
+		
+	</View>
+</Alloy>

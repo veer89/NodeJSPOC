@@ -40,9 +40,10 @@ userSchema.add = function (req, res, next) {
                     } else {
                         if (req.params.activate == "true") {
                             var activationLink = req.protocol + "://" + req.headers.host + "/users/activate?code=" + loginData.activationCode + "&email=" + loginData.emailId + "&userId=" + loginData.user_id;
-                            helper.sendEmail("Activation Mail", loginData.emailId, activationLink, function () {
-                            	res.json(helper.genarateResponse(200, null, 'Activation link is sent to user email id ,Please click it to activate acccount!', null));
+                            helper.sendEmail("Activation Mail", loginData.emailId, activationLink, true , function () {
+                                res.json(helper.genarateResponse(200, null, 'Activation link is sent to user email id ,Please click it to activate acccount!', null));
                             });
+                            
                         }
                         else
                         	res.json(helper.genarateResponse(200, doc, null, null));

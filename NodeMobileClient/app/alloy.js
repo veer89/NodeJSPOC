@@ -9,3 +9,7 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+Alloy.Globals.iOS7 = false;
+if( parseInt( Ti.Platform.version, 10 ) > 6 ){
+	Alloy.Globals.iOS7 = true;
+}
