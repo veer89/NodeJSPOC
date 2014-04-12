@@ -14,6 +14,5 @@ log4js.configure({
 	});
 
 var logger = log4js.getLogger('server');
-
 module.exports = logger;
 

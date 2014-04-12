@@ -12,7 +12,8 @@
     "mongoose":"*",
     "emailjs": "*",
     "pwd": "*",
-    "log4js": "*"
+    "log4js": "*",
+    "async": "*"
   },
   "devDependencies":{
 	  "nodemon": "*"

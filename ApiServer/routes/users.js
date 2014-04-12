@@ -1,21 +1,20 @@
 var schema = require('../schema/exports.js'),
-    helper = require('../public/utils/helper.js');
-
+    helper = require('../public/utils/helper.js'),
+    async = require('async');
+    
 var userSchema = {};
 userSchema.add = function (req, res, next) {
-	console.log(req.body.password)
     if (!req.body.password)
         return res.json(helper.genarateResponse(400, null, null, 'Password Required'));
-    console.log(req.body.password)
     var user = new schema.userModel({
-        empId: req.body.empId,
+    	_id: uniqueId,
+    	empId: req.body.empId,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         phone_number: req.body.phone_number,
         designation: req.body.designation,
-        salary: req.body.salary,
+        experience : req.body.experience,
         emailId: req.body.emailId,
-        profileId: req.body.profileId
     });
     user.save(function (err, doc) {
         if (err)
@@ -61,9 +60,71 @@ userSchema.show = function (req, res, next) {
     });
 };
 
+userSchema.showDetails = function (req, res, next) {
+	var responseObj = {};
+    async.series([
+    function(callback){
+    	// get basic userInfo
+    	schema.userModel.findById(req.params.id, function (err, docs) {
+            if (err)
+                return next(err);
+            responseObj.user = docs;
+         callback();   
+        });
+    },
+    function(callback){
+    	// get All projects
+    	schema.projectModel.find({user_id: {$in : [req.params.id]}}, function (err, docs) {
+            if (err)
+                return next(err);
+            responseObj.projects = docs;
+            callback();
+        });
+    },
+    function(callback){
+    // get all address
+    	schema.addressModel.find({user_id: req.params.id}, function (err, docs) {
+            if (err)
+                return next(err);
+            responseObj.address = docs;
+            callback();
+        });
+    },
+    function(callback){
+    	// get Photo object
+    	schema.pictureModel.find({user_id: req.params.id}, function (err, doc) {
+            if (err)
+                return next(err);
+            if(doc){
+            var customDoc = {
+            		_id : doc[0]._id,
+            		imgUrl : doc[0].img_url ,
+            		name : doc[0].name ? doc[0].name : ""
+            };
+            }
+            responseObj.picture = customDoc;
+            callback();
+        });
+    	
+    },
+    function(callback){
+    	// get social object
+    	schema.socialModel.find(req.query.where, function (err, docs) {
+            if (err)
+                return next(err);
+            responseObj.social = docs[0];
+            callback();
+        });
+    	
+    }], function(err, results){
+    	if(err) return next(err);
+    	else
+    		res.json(helper.genarateResponse(200, responseObj, null, null));
+    });
+};
+
 userSchema.query = function (req, res, next) {
     schema.userModel.find(req.query.where, function (err, docs) {
-    	console.log(err,docs)
         if (err)
             return next(err);
         res.json(helper.genarateResponse(200, docs, null, null));
@@ -80,7 +141,7 @@ userSchema.update = function (req, res, next) {
             userData.designation = req.body.designation,
             userData.salary = req.body.salary,
             userData.emailId = req.body.emailId,
-            userData.profileId = req.body.profileId
+            userData.experience = req.body.experience
         userData.save(function (saveErr, doc) {
             if (saveErr)
                 return next(saveErr);

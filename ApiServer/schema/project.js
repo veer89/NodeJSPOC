@@ -1,5 +1,5 @@
 var projectSchema = new _SCHEMA({
-    projectName: String,
+    projectName: { type: String, required: true , unique: true},
     projectLocation: String,
     projectDuration: String,
     user_id : [ { type: String } ]

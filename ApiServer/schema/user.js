@@ -4,8 +4,7 @@ var userSchema = new _SCHEMA({
     last_name: String,
     phone_number: Number,
     designation: String,
-    salary: String,
-    emailId: { type: String, required: true , unique: true},
-    profileId: String
+    experience : String,
+    emailId: { type: String, required: true , unique: true}
 });
 exports.userModel = _MONGODB.model('users', userSchema);

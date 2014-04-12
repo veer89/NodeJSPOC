@@ -7,6 +7,7 @@ module.exports = function(app){
     app.post('/users/create/:activate', filter.keyFilter, routes.users.add);
     app.get('/users/activate', routes.users.activateUser);
     app.get('/users/show/:id', filter.keyFilter, routes.users.show);
+    app.get('/users/showDetails/:id', filter.keyFilter, routes.users.showDetails);
     app.get('/users/query', filter.keyFilter, routes.users.query);
     app.put('/users/update/:id', filter.keyFilter, routes.users.update);
     app.delete('/users/delete/:id', filter.keyFilter, routes.users.delete);
@@ -14,9 +15,9 @@ module.exports = function(app){
 // declaring route's for project
     app.post('/projects/create', filter.keyFilter, routes.projects.addProject);
     app.get('/projects/query', filter.keyFilter, routes.projects.query);
-    app.post('/projects/addUserToProject', filter.keyFilter, filter.userFilter, routes.projects.addUserToProject);
+    app.post('/projects/addUser', filter.keyFilter, filter.userFilter, routes.projects.addUserToProject);
     app.put('/projects/update/:id', filter.keyFilter, routes.projects.update);
-    app.delete('/projects/removeUserFromProject', filter.keyFilter,filter.userFilter, routes.projects.removeUserFromProject);
+    app.delete('/projects/removeUser', filter.keyFilter,filter.userFilter, routes.projects.removeUserFromProject);
     app.get('/projects/show/:projectName', filter.keyFilter, routes.projects.show);
 
 // declaring route's for social integration
@@ -27,15 +28,15 @@ module.exports = function(app){
     app.delete('/socials/delete/:id', filter.keyFilter, filter.userFilter, routes.socials.delete);
 
 // routes declared for image events
-    app.post('/picture/create', filter.keyFilter, filter.userFilter, routes.picture.add);
-    app.get('/picture/show/:id', filter.keyFilter, routes.picture.show);
-    app.put('/picture/update/:id', filter.keyFilter, filter.userFilter, routes.picture.update);
-    app.delete('/picture/delete/:id', filter.keyFilter, filter.userFilter, routes.picture.delete);
+    app.post('/pictures/create', filter.keyFilter, filter.userFilter, routes.picture.add);
+    app.get('/pictures/show/:id', filter.keyFilter, routes.picture.show);
+    app.put('/pictures/update/:id', filter.keyFilter, filter.userFilter, routes.picture.update);
+    app.delete('/pictures/delete/:id', filter.keyFilter, filter.userFilter, routes.picture.delete);
 
 // declaring routes for login
-    app.post('/login/:emailId/:password', filter.keyFilter, routes.logins.authenticate);
-    app.post('/changePassword/:id/:password', filter.keyFilter, routes.logins.changePassword);
-    app.post('/resetPassword/:emailId', filter.keyFilter, routes.logins.resetPassword);
+    app.post('/login', filter.keyFilter, routes.logins.authenticate);
+    app.post('/changePassword/:id/', filter.keyFilter, routes.logins.changePassword);
+    app.post('/resetPassword', filter.keyFilter, routes.logins.resetPassword);
     app.post('logout', filter.keyFilter, routes.logins.logout);
 
 // declaring routes for address

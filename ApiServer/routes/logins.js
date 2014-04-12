@@ -16,7 +16,6 @@ var generateHash = function(objectId, password, msg, res, next){
        if(loginErr)
            return res.json(helper.genarateResponse(400, null, null, "Invalid Id"));
        helper.hash(password, function(err, salt, hash){
-        console.log('salt generated', userData);
                 userData.salt = salt;
                 userData.hash = hash;
                 // save the generated hash and salt value into database
@@ -33,10 +32,10 @@ var generateHash = function(objectId, password, msg, res, next){
 function to authenticate users 
 */
 loginSchema.authenticate = function(req, res, next){  
-    schema.loginModel.findOne({emailId: req.params.emailId}, function(err, docs){
+    schema.loginModel.findOne({emailId: req.body.emailId}, function(err, docs){
         if (err)
             return next(err);
-        helper.hash(req.params.password, docs.salt, function(hashErr, hashVal){
+        helper.hash(req.body.password, docs.salt, function(hashErr, hashVal){
         	if (hashErr) 
                 return next(hashErr);
             if (hashVal.toString() == docs.hash) {               
@@ -50,7 +49,7 @@ loginSchema.authenticate = function(req, res, next){
 function to change passwords
 */
 loginSchema.changePassword = function(req, res, next){  
-    generateHash(req.params.id, req.params.password, null, res, next); 
+    generateHash(req.params.id, req.body.password, null, res, next); 
 };
 
 
@@ -60,11 +59,10 @@ Function to reset password
 */
 
 loginSchema.resetPassword = function(req, res, next){
-    schema.loginModel.findOne({emailId: req.params.emailId}, function (loginErr, userData) {
+    schema.loginModel.findOne({emailId: req.body.emailId}, function (loginErr, userData) {
         if(loginErr)
            return res.json(helper.genarateResponse(400, null, null, "Account does not exist"));
        else{
-            console.log(userData.id);
             var newPwd = helper.getResetPassword();
            helper.sendEmail("Reset Password", userData.emailId, newPwd, false , function () {
                 // save password into logins table

@@ -4,6 +4,7 @@ var picSchema = new _SCHEMA({
     img: {
     	data: Buffer,
     	contentType: String
-    }
+    },
+    img_url: String
 });
 exports.pictureModel = _MONGODB.model('pictures', picSchema);

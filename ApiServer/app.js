@@ -10,8 +10,8 @@ var mongoose = require('mongoose');
 var app = express();
 var log4js = require('log4js');
 var logger = require('./public/utils/logger.js');
-//var mongoUrl = 'mongodb://127.0.0.1/nodeJsPocApiServer';
-var mongoUrl = 'mongodb://admin:admin@ds029277.mongolab.com:29277/apiserver';
+var mongoUrl = 'mongodb://127.0.0.1/nodeJsPocApiServer';
+//var mongoUrl = 'mongodb://admin:admin@ds029277.mongolab.com:29277/apiserver';
 
 app.configure(function() {
 	// all environments

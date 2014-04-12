@@ -62,7 +62,6 @@ var helper = {
         var response = {meta: {}};
         response.meta.status = statusCode;
         error ? (response.meta.message = error) : (successMsg ? (response.meta.message = successMsg) : (response.data = data))
-        		console.log(response)
         return response;
     }
 }

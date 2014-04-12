@@ -2,45 +2,22 @@ var schema = require('../schema/exports.js');
 var projectSchema = {};
 
 projectSchema.addProject = function (req, res, next) {
-
-    	
 	var projectName = req.body.projectName;
-	
-	schema.projectModel.findOne({projectName : projectName}, function (err, docs) {
+	var project = new schema.projectModel({
+    	projectName: req.body.projectName,
+    	projectLocation: req.body.projectLocation,
+    	projectDuration: req.body.projectDuration
+    });
+    project.save(function (err, doc) {
         if (err)
             return next(err);
-        if(!docs){
-        	var project = new schema.projectModel({
-    	    	projectName: req.body.projectName,
-    	    	projectLocation: req.body.projectLocation,
-    	    	projectDuration: req.body.projectDuration
-    	    });
-    	    project.save(function (err, doc) {
-    	        if (err)
-    	            return next(err);
-    	        res.json(doc);
-    	    });
-        } else {
-            var projId = docs._id;
-            schema.projectModel.findById(projId, function (err, projectData) {
-        		projectData.projectName = req.body.projectName,
-        		projectData.projectLocation = req.body.projectLocation,
-        		projectData.projectDuration = req.body.projectDuration;
-        		projectData.save(function (err, doc) {
-                if (err)
-                    return next(err);
-                res.json(doc);
-            });
-        });
-        }
+        res.json(helper.genarateResponse(200, doc, null, null));
     });
-
 }
 
 projectSchema.addUserToProject = function (req, res, next) {
     var projId = req.body.projectId;
     var empId = req.query.user_id;
-
     schema.projectModel.findById(projId, function (err, projectData) {
 		var empArr = projectData.user_id;
 		if(empArr.indexOf(empId) == -1){
@@ -50,16 +27,14 @@ projectSchema.addUserToProject = function (req, res, next) {
 		projectData.save(function (err, doc) {
         if (err)
             return next(err);
-        res.json(doc);
+        res.json(helper.genarateResponse(200, doc, null, null));
+		});
     });
-});
-
 }
 
 projectSchema.removeUserFromProject = function (req, res, next) {
     var projId = req.body.projectId;
     var empId = req.query.user_id;
-
     schema.projectModel.findById(projId, function (err, projectData) {
 		var empArr = projectData.user_id;
 		if(empArr.indexOf(empId) != -1){
@@ -72,17 +47,16 @@ projectSchema.removeUserFromProject = function (req, res, next) {
 		projectData.save(function (err, doc) {
         if (err)
             return next(err);
-        res.json(doc);
+        res.json(helper.genarateResponse(200, doc, null, null));
+		});
     });
-});
-
 }
 
 projectSchema.query = function (req, res, next) {
 	schema.projectModel.find(req.query.where, function (err, docs) {
         if (err)
             return next(err);
-        res.json(docs);
+        res.json(helper.genarateResponse(200, docs, null, null));
     });
 }
 
@@ -94,10 +68,11 @@ projectSchema.update = function (req, res, next) {
     		projectData.save(function (err, doc) {
             if (err)
                 return next(err);
-            res.json(doc);
+            res.json(helper.genarateResponse(200, doc, null, null));
         });
     });
 }
+
 projectSchema.show = function (req, res, next) {
 	schema.projectModel.findOne({projectName : req.params.projectName}, function (err, docs) {
         if (err)
@@ -105,7 +80,7 @@ projectSchema.show = function (req, res, next) {
         if(!docs){
         	res.json(helper.genarateResponse(400, null, null, 'No Match Found for input criteria ' + req.params.projectName));
         } else {
-            res.json(docs);
+        	res.json(helper.genarateResponse(200, docs, null, null));
         }
     });
 }
@@ -114,7 +89,7 @@ projectSchema.delete = function (req, res, next) {
 		project.remove(function (err, docs) {
             if (err)
                 return next(err);
-            res.json(docs);
+            res.json(helper.genarateResponse(200, docs, null, null));
         });
     });
 }
