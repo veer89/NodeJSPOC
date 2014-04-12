@@ -84,11 +84,11 @@
 			<div class="modal-body">
 				<fieldset>
 					<div class="control-group">
-						<input type="text" name="emailId" placeholder="Email Id" id="loginEmailId" value="<%=emailId%>"
+						<input type="text" name="emailId" placeholder="Email Id" id="loginEmailId" value="<%=emailId%>" required="required" 
 							class="input-xlarge" />
 					</div>
 					<div class="control-group">
-						<input type="password" name="password" placeholder="Password" id="loginPassword" value="<%=password%>"
+						<input type="password" name="password" placeholder="Password" id="loginPassword" value="<%=password%>" required="required" 
 							class="input-xlarge" />
 					</div>
 					<span id="error" class="<%=showMsg%>" ><%=errorMsg%></span>
