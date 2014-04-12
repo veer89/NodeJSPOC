@@ -4,6 +4,41 @@ var endPoints = require('../endPoints.json');
 var async = require('async');
 
 var user = {
+		uploadImage : function(req, res, next){
+			var empId = req.params.id;
+			var fileData = req.files.image.path;
+			console.log("fileData  ",fileData);
+			var name = "photo.png";
+			var data = {
+					name : name,
+					data : fileData
+			}
+			helper.sendRequest(endPoints.picture.create, data, empId, null, function(result) {
+		    	//var addressData = 'No Data Found';
+				if(result && result.meta){
+					if(result.meta.status == '200'){
+						res.redirect('/profile?id='+empId);
+					}
+				}
+			});
+		},
+		showImage : function(req, res, next){
+			var empId = req.params.id;
+			helper.sendRequest(endPoints.picture.show, null, null, [empId], function(result) {
+		    	//var addressData = 'No Data Found';
+				if(result && result.meta){
+					if(result.meta.status == '200'){
+						res.writeHead(200, {'Content-Type': 'image/png'});
+						res.write(new Buffer(result.data.img.data));
+						res.end();
+					} else {
+						res.writeHead(200, {'Content-Type': 'image/png'});
+						res.write(new Buffer(require('fs').readFileSync('public/defaultProfile.png')));
+						res.end();
+					}
+				} 
+			});
+		},
 		editProfile : function(req, res, next){
 			var empId = req.params.id;
 			res.render('settings', { empId: empId });

@@ -14,3 +14,14 @@ a {
 .alignCenter{
 	text-align: center !important;
 }
+
+.leftContainerProfile{
+	padding-left: 30%;
+    padding-right: 40%;
+    width: 100%;
+}
+
+.rightContainerProfile{
+	width : 100%;
+	font-size: 18px;
+}

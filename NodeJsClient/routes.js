@@ -9,4 +9,6 @@ module.exports = function(app){
 	app.get('/settings/:id', routes.user.editProfile);
 	app.get('/editAddress/:id', routes.user.editAddress);
 	app.post('/changeAddress/:id', routes.user.changeAddress);
+	app.post('/uploadImage/:id', routes.user.uploadImage);
+	app.get('/image.png/:id', routes.user.showImage); 
 };
