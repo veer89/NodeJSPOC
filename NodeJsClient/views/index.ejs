@@ -71,9 +71,12 @@
 			</div>
 		</form>
 	</div>
-	<div id="loginModal" class="modal hide fade smallModal">
-		<form id="login-form" action="/login" method="post"
-			class="form-horizontal">
+	<div class="container">
+		<div class="marketing">
+			<h1>NodeJsClient</h1>
+			<div class="row offset2">
+				<form id="login-form" action="/login" method="post"
+			class="form-horizontal loginPageForm">
 			<div class="modal-header">
 				<a data-dismiss="modal" class="close"></a>
 				<h3>Log In</h3>
@@ -81,38 +84,39 @@
 			<div class="modal-body">
 				<fieldset>
 					<div class="control-group">
-						<input type="text" name="emailId" placeholder="Email Id"
+						<input type="text" name="emailId" placeholder="Email Id" id="loginEmailId" value="<%=emailId%>" required="required" 
 							class="input-xlarge" />
 					</div>
 					<div class="control-group">
-						<input type="password" name="password" placeholder="Password"
+						<input type="password" name="password" placeholder="Password" id="loginPassword" value="<%=password%>" required="required" 
 							class="input-xlarge" />
 					</div>
+					<span id="error" class="<%=showMsg%>" ><%=errorMsg%></span>
 				</fieldset>
 			</div>
-			<div class="modal-footer">
-				<a href="#" data-dismiss="modal" class="btn">Close</a>
+			<div class="modal-footer login-footer alignCenter">
+				<a data-toggle="modal" href="#myModal"
+						class="btn">Sign Up</a>
 				<button class="btn btn-primary" type="submit">Log In</button>
 			</div>
 		</form>
-	</div>
-	<div class="container">
-		<div class="marketing">
-			<h1>NodeJsClient</h1>
-			<p class="marketing-byline">Welcome to NodeJsClient Implementation</p>
-			<div class="row offset2">
-				
 			</div>
 		</div>
 		<header class="jumbotron masthead">
 			<div class="inner">
-				<p class="download-info">
-					<a data-toggle="modal" href="#loginModal" class="btn btn-large">Log In </a>
-					<a data-toggle="modal" href="#myModal"
-						class="btn btn-primary btn-large">Sign Up</a>
-				</p>
 			</div>
 		</header>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('[id*=loginEmailId]').change(function(){
+				$('span#error').removeClass('showErrorMessage').addClass('hideErrorMessage');
+			});
+			$('[id*=loginPassword]').change(function(){
+				$('span#error').removeClass('showErrorMessage').addClass('hideErrorMessage');
+			});
+			
+		});
+	</script>
 </body>
 </html>

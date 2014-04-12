@@ -6,9 +6,9 @@ module.exports = function(app){
 	app.get('/profile', routes.index.getProfilePage);
 	app.post('/login', routes.index.signin);
 	
-	app.get('/settings/:id', routes.user.editProfile);
-	app.get('/editAddress/:id', routes.user.editAddress);
-	app.post('/changeAddress/:id', routes.user.changeAddress);
-	app.post('/uploadImage/:id', routes.user.uploadImage);
-	app.get('/image.png/:id', routes.user.showImage); 
+	app.get('/settings', routes.user.editProfile);
+	app.get('/editAddress', routes.user.editAddress);
+	app.post('/changeAddress', routes.user.changeAddress);
+	app.post('/uploadImage', routes.user.uploadImage);
+	app.get('/image.png', routes.user.showImage); 
 };

@@ -9,11 +9,16 @@ var index = {};
 
 
 index = {
-		getIndex : function(req, res, next){   
-			res.render('index', { title: 'Express' });
-		},
+		getIndex : function(req, res, next) {
+		res.render('index', {
+			showMsg : 'hideErrorMessage',
+			errorMsg : '',
+			emailId : '',
+			password : ''
+		});
+	},
 		getProfilePage : function(req, res, next){ 
-			var empId = req.query.id
+			var empId = req.session.user_id
 			var profileData = {};
 			async.series([function(callback) {
 				// gether data
@@ -64,7 +69,8 @@ index = {
 			helper.sendRequest(endPoints.users.create, data, null, null, function(result) {
 				if (result && result.meta) {
 					if (result.meta.status == '200') {
-						res.redirect('/profile?id='+result.data._id);
+						req.session.user_id = user_id;
+						res.redirect('/profile');
 					} else {
 						res.send('Error Occured');
 					}
@@ -80,9 +86,11 @@ index = {
 				helper.sendRequest(endPoints.login.login, null, null, [emailId, password], function(result) {
 					if (result && result.meta) {
 						if (result.meta.status == '200') {
-							res.redirect('/profile?id='+result.data.user_id);
+							req.session.user_id = result.data.user_id;
+							res.redirect('/profile');
 						} else {
-							res.send('Error Occured');
+							res.render('index', { showMsg: 'showErrorMessage', errorMsg :  result.meta.message,
+													emailId : emailId, password : password});
 						}
 
 					}
