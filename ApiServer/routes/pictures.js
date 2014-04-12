@@ -35,8 +35,8 @@ pictureSchema.update = function (req, res, next) {
     schema.pictureModel.findById(req.params.id, function (picErr, userPic) {
         if (picErr)
             return next(picErr);
-        userPic.img.data = require('fs').readFileSync(req.files.photo.path),
-            userPic.name = req.body.name
+        userPic.img.data = require('fs').readFileSync(req.body.data);
+        userPic.name = req.body.name;
         userPic.save(function (err, doc) {
             if (err)
                 return next(err);

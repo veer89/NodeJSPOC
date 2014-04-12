@@ -6,6 +6,8 @@ var async = require('async');
 var user = {
 		uploadImage : function(req, res, next){
 			var empId = req.params.id;
+			var pictureExist = false;
+			var pictureId = '';
 			var fileData = req.files.image.path;
 			console.log("fileData  ",fileData);
 			var name = "photo.png";
@@ -13,13 +15,43 @@ var user = {
 					name : name,
 					data : fileData
 			}
-			helper.sendRequest(endPoints.picture.create, data, empId, null, function(result) {
-		    	//var addressData = 'No Data Found';
-				if(result && result.meta){
-					if(result.meta.status == '200'){
-						res.redirect('/profile?id='+empId);
-					}
-				}
+			async.series([function(callback) {
+				helper.sendRequest(endPoints.picture.show, null, null, [empId], function(result) {
+					if(result && result.meta){
+						if(result.meta.status == '200'){
+							pictureExist = true;
+							pictureId = result.data._id;
+						}
+					} 
+					callback(null, "users");
+				});
+				
+			    },
+			    function(callback) {
+			    	if(!pictureExist){
+			    		helper.sendRequest(endPoints.picture.create, data, empId, null, function(result) {
+							if(result && result.meta){
+								if(result.meta.status == '200'){
+									res.redirect('/profile?id='+empId);
+								}
+							}
+							callback(null, "new picture");
+						});
+			    	} else {
+			    		helper.sendRequest(endPoints.picture.update, data, empId, [pictureId], function(result) {
+							if(result && result.meta){
+								if(result.meta.status == '200'){
+									res.redirect('/profile?id='+empId);
+								}
+							}
+							callback(null, "update picture");
+						});
+			    	}
+					
+				    }
+			    
+			    ], function(err,results){
+				console.log(results);
 			});
 		},
 		showImage : function(req, res, next){
