@@ -19,7 +19,7 @@ var user = {
 						addressData.city = (result.data.city == undefined ? '' : result.data.city);
 						addressData.country = (result.data.country == undefined ? '' : result.data.country);
 						addressData.pin = (result.data.pin == undefined ? '' : result.data.pin);
-						addressData.id = (result.data._id == undefined ? '' : result.data._id);;
+						addressData.id = (result.data._id == undefined ? '' : result.data._id);
 						addressData.user_id = empId;
 					} else {
 						addressData.street = '';
@@ -49,11 +49,11 @@ var user = {
 				helper.sendRequest(endPoints.address.update, data, user_id, [addrId], function(result) {
 					if(result && result.meta){
 						if(result.meta.status == '200' && result.data){
-							addressData.street = result.data.street;
-							addressData.city = result.data.city;
-							addressData.country = result.data.country;
-							addressData.pin = result.data.pin;
-							addressData.id = result.data._id;
+							addressData.street = (result.data.street == undefined ? '' : result.data.street);
+							addressData.city = (result.data.city == undefined ? '' : result.data.city);
+							addressData.country = (result.data.country == undefined ? '' : result.data.country);
+							addressData.pin = (result.data.pin == undefined ? '' : result.data.pin);
+							addressData.id = (result.data._id == undefined ? '' : result.data._id);
 							addressData.user_id = result.data.user_id;
 						}
 					}
@@ -65,11 +65,11 @@ var user = {
 				helper.sendRequest(endPoints.address.create, data, user_id, null, function(result) {
 					if(result && result.meta){
 						if(result.meta.status == '200' && result.data){
-							addressData.street = result.data.street;
-							addressData.city = result.data.city;
-							addressData.country = result.data.country;
-							addressData.pin = result.data.pin;
-							addressData.id = result.data._id;
+							addressData.street = (result.data.street == undefined ? '' : result.data.street);
+							addressData.city = (result.data.city == undefined ? '' : result.data.city);
+							addressData.country = (result.data.country == undefined ? '' : result.data.country);
+							addressData.pin = (result.data.pin == undefined ? '' : result.data.pin);
+							addressData.id = (result.data._id == undefined ? '' : result.data._id);
 							addressData.user_id = result.data.user_id;
 						}
 					}
