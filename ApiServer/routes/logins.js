@@ -5,8 +5,13 @@ var loginSchema = {};
 
 /*
 Generate hash for a password
+params{objectId}: User Id,
+params{password}: password for which hash and salt to be generated
+params{msg} : message to dispaly to the end user
+params{res} : successcallback
+params{next} : errorcallback 
 */
-var generateHash = function(objectId, password, res, next){
+var generateHash = function(objectId, password, msg, res, next){
     schema.loginModel.findById(objectId, function (loginErr, userData) {
        if(loginErr)
            return res.json(helper.genarateResponse(400, null, null, "Invalid Id"));
@@ -14,10 +19,11 @@ var generateHash = function(objectId, password, res, next){
         console.log('salt generated', userData);
                 userData.salt = salt;
                 userData.hash = hash;
+                // save the generated hash and salt value into database
         userData.save(function (err, doc) {
             if (err)
                 return next(err);
-            return res.json(helper.genarateResponse(200, doc, null, null));
+            return res.json(helper.genarateResponse(200, doc, msg, null));
         });
     });
    });
@@ -44,7 +50,7 @@ loginSchema.authenticate = function(req, res, next){
 function to change passwords
 */
 loginSchema.changePassword = function(req, res, next){  
-    generateHash(req.params.id, req.params.password, res, next); 
+    generateHash(req.params.id, req.params.password, null, res, next); 
 };
 
 
@@ -62,8 +68,7 @@ loginSchema.resetPassword = function(req, res, next){
             var newPwd = helper.getResetPassword();
            helper.sendEmail("Reset Password", userData.emailId, newPwd, false , function () {
                 // save password into logins table
-                generateHash(userData.id, newPwd, res, next);
-                res.json(helper.genarateResponse(200, null, 'Password is sent to user email id ,Please check it!', null));
+                generateHash(userData.id, newPwd, 'Password is sent to user email id ,Please check it!',res, next);                
             });
        }
     });
