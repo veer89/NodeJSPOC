@@ -1,7 +1,7 @@
 "#wrapper" : {
   width: Ti.UI.FILL,
   height: Ti.UI.FILL,
-  layout: 'vertical',
+  layout: 'vertical',  
   backgroundColor: 'black'  
 },
 "#topSection":{
@@ -43,10 +43,13 @@
 	width: Ti.UI.FILL	
 },
 ".leftItem":{
-	left: 10	
+	left: 10,
+	textAlign: 'left'
 },
 ".rightItem":{
-	right: 10	
+	right: 10,
+	width: 150,
+	textAlign: 'right'	
 },
 ".separator":{
 	height: 1,

@@ -1,5 +1,6 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"white",
+	navBarHidden:true
 },
 "Label": {
 	width: Ti.UI.SIZE,

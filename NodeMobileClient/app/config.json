@@ -1,5 +1,8 @@
 {
-	"global": {}, 
+	"global": {
+		"BASE_URL": "http://localhost:7000", 
+		"APP_KEY": "ac5028363f1a32eed640de5d23195b499cc3146d"
+		}, 
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 
