@@ -24,7 +24,7 @@
 		<div class="marketing alignCenter">
 			<h1>NodeJsClient - Address </h1>
 			<div class="control-group alignCenter">
-			<form id="login-form" action="/changeAddress/<%=addressData.id%>" method="post">
+			<form id="login-form" action="/changeAddress" method="post">
 			<div class="control-group alignCenter">
 					<div class="control-group">
 						<input type="text" name="street" placeholder="Street" value="<%=addressData.street%>"
@@ -43,10 +43,10 @@
 							class="input-xlarge" />
 					</div>
 					<div class="control-group">
-						<input type="hidden" name="user_id" value="<%=addressData.user_id%>"
+						<input type="hidden" name="addrId" value="<%=addressData.id%>"
 							class="input-xlarge" />
 					</div>
-				<a href="/profile?id=<%=addressData.user_id%>" class="btn">Back to Profile</a>
+				<a href="/profile" class="btn">Back to Profile</a>
 				<button class="btn btn-primary" type="submit">Submit</button>
 			</div>
 			<!-- <div>

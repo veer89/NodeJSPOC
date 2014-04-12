@@ -5,7 +5,7 @@ var async = require('async');
 
 var user = {
 		uploadImage : function(req, res, next){
-			var empId = req.params.id;
+			var empId = req.session.user_id;
 			var pictureExist = false;
 			var pictureId = '';
 			var fileData = req.files.image.path;
@@ -32,7 +32,7 @@ var user = {
 			    		helper.sendRequest(endPoints.picture.create, data, empId, null, function(result) {
 							if(result && result.meta){
 								if(result.meta.status == '200'){
-									res.redirect('/profile?id='+empId);
+									res.redirect('/profile');
 								}
 							}
 							callback(null, "new picture");
@@ -41,7 +41,7 @@ var user = {
 			    		helper.sendRequest(endPoints.picture.update, data, empId, [pictureId], function(result) {
 							if(result && result.meta){
 								if(result.meta.status == '200'){
-									res.redirect('/profile?id='+empId);
+									res.redirect('/profile');
 								}
 							}
 							callback(null, "update picture");
@@ -55,7 +55,7 @@ var user = {
 			});
 		},
 		showImage : function(req, res, next){
-			var empId = req.params.id;
+			var empId = req.session.user_id;
 			helper.sendRequest(endPoints.picture.show, null, null, [empId], function(result) {
 		    	//var addressData = 'No Data Found';
 				if(result && result.meta){
@@ -72,11 +72,11 @@ var user = {
 			});
 		},
 		editProfile : function(req, res, next){
-			var empId = req.params.id;
+			var empId = req.session.user_id;
 			res.render('settings', { empId: empId });
 		},
 		editAddress : function(req, res, next){
-			var empId = req.params.id;
+			var empId = req.session.user_id;
 			var addressData = {};
 			helper.sendRequest(endPoints.address.showByEmpId, null, null, [empId], function(result) {
 		    	//var addressData = 'No Data Found';
@@ -87,14 +87,14 @@ var user = {
 						addressData.country = (result.data.country == undefined ? '' : result.data.country);
 						addressData.pin = (result.data.pin == undefined ? '' : result.data.pin);
 						addressData.id = (result.data._id == undefined ? '' : result.data._id);
-						addressData.user_id = empId;
+						//addressData.user_id = empId;
 					} else {
 						addressData.street = '';
 						addressData.city = '';
 						addressData.country = '';
 						addressData.pin = '';
 						addressData.id = 'new';
-						addressData.user_id = empId;
+						//addressData.user_id = empId;
 					}
 				} 
 				res.render('editAddress', { 
@@ -103,8 +103,9 @@ var user = {
 			});
 		},
 		changeAddress : function(req, res, next){
-			var addrId = req.params.id;
-			var user_id = req.body.user_id;
+			var addrId = req.body.addrId;
+			var user_id = req.session.user_id;
+			console.log("user_ID   "+user_id)
 			var addressData = {};
 			var data = {
 					street : req.body.street,
@@ -121,7 +122,7 @@ var user = {
 							addressData.country = (result.data.country == undefined ? '' : result.data.country);
 							addressData.pin = (result.data.pin == undefined ? '' : result.data.pin);
 							addressData.id = (result.data._id == undefined ? '' : result.data._id);
-							addressData.user_id = result.data.user_id;
+							//addressData.user_id = req.session.user_id;
 						}
 					}
 					res.render('editAddress', { 
@@ -137,7 +138,7 @@ var user = {
 							addressData.country = (result.data.country == undefined ? '' : result.data.country);
 							addressData.pin = (result.data.pin == undefined ? '' : result.data.pin);
 							addressData.id = (result.data._id == undefined ? '' : result.data._id);
-							addressData.user_id = result.data.user_id;
+							//addressData.user_id = req.session.user_id;
 						}
 					}
 					res.render('editAddress', { 
