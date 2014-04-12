@@ -25,3 +25,22 @@ a {
 	width : 100%;
 	font-size: 18px;
 }
+
+.loginPageForm {
+	margin-left : 18%;
+	width : 41%;
+}
+
+.login-footer{
+	padding: 10px 14px 15px !important;
+	background-color: #FFFFFF !important;
+}
+
+.showErrorMessage {
+	color : red;
+	display : block;
+}
+
+.hideErrorMessage {
+	display : none;
+}

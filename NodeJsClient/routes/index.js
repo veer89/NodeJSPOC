@@ -9,9 +9,14 @@ var index = {};
 
 
 index = {
-		getIndex : function(req, res, next){   
-			res.render('index', { title: 'Express' });
-		},
+		getIndex : function(req, res, next) {
+		res.render('index', {
+			showMsg : 'hideErrorMessage',
+			errorMsg : '',
+			emailId : '',
+			password : ''
+		});
+	},
 		getProfilePage : function(req, res, next){ 
 			var empId = req.session.user_id
 			var profileData = {};
@@ -84,7 +89,8 @@ index = {
 							req.session.user_id = result.data.user_id;
 							res.redirect('/profile');
 						} else {
-							res.send('Error Occured');
+							res.render('index', { showMsg: 'showErrorMessage', errorMsg :  result.meta.message,
+													emailId : emailId, password : password});
 						}
 
 					}
