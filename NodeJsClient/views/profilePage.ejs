@@ -35,7 +35,7 @@
 				<tr>
 					<td>
 						<div class="leftContainerProfile">
-							<img src="/image.png"
+							<img src="<%=profileData.picture.imgUrl%>"
 								style="width: 140px; height: 160px;" /> <br />
 								<a data-toggle="modal" href="#pictureModal" class="btn btn-primary" style="margin-left:10px;margin-top:20px;">Change
 								Image </a>
@@ -44,11 +44,11 @@
 					<td>
 						<div class="rightContainerProfile">
 							<div class="control-group">
-								Name : <%= profileData.first_name%> <%= profileData.last_name%>
-								<br /> Designation : <%=profileData.designation %><br /> Phone
-								: <%=profileData.phone_number %><br /> EmailId :
-								<%=profileData.emailId %><br /> Address :
-								<%=profileData.addressData %><br />
+								Name : <%= profileData.user.first_name%> <%= profileData.user.last_name%>
+								<br /> Designation : <%=profileData.user.designation %><br /> Phone
+								: <%=profileData.user.phone_number %><br /> EmailId :
+								<%=profileData.user.emailId %><br /> Address :
+								<%=profileData.user.addressData %><br />
 							</div>
 						</div>
 					</td>

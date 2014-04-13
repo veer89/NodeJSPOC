@@ -20,40 +20,16 @@ index = {
 		getProfilePage : function(req, res, next){ 
 			var empId = req.session.user_id
 			var profileData = {};
-			async.series([function(callback) {
-				// gether data
-				helper.sendRequest(endPoints.users.show, null, null, [empId], function(result) {
-					if(result && result.meta){
-						if(result.meta.status == '200'){
-							profileData.first_name = result.data.first_name;
-							profileData.last_name = result.data.last_name;
-							profileData.phone_number = result.data.phone_number;
-							profileData.designation = result.data.designation;
-							profileData.emailId = result.data.emailId;
-							console.log(profileData);
-						}
+			helper.sendRequest(endPoints.users.showDetails, null, null, [empId], function(result) {
+				if (result && result.meta) {
+					if (result.meta.status == '200') {
+						console.log("Result : ",result);
+						res.render('profilePage', { profileData: result.data });
+					} else {
+						res.send('Error Occured');
 					}
-					callback(null, "users");
-				});
-				
-			    },
-			    function(callback) {
-			    helper.sendRequest(endPoints.address.showByEmpId, null, null, [empId], function(result) {
-			    	var addressData = 'No Data Found';
-					if(result && result.meta){
-						if(result.meta.status == '200' && result.data){
-							addressData = result.data.street + ', ' + result.data.city +', ' + result.data.country +' - ' + result.data.pin;
-						}
-					}
-					profileData.addressData = addressData;
-				    callback(null, "address");
-				});
-			    },
-			    function(callback){
-			    	res.render('profilePage', { profileData: profileData, empId : empId});
-			    	callback(null, "profile");
-			    }], function(err, results) {
-					console.log(results);
+
+				}
 			});
 		},
 		signup : function(req, res, next){
@@ -69,7 +45,7 @@ index = {
 			helper.sendRequest(endPoints.users.create, data, null, null, function(result) {
 				if (result && result.meta) {
 					if (result.meta.status == '200') {
-						req.session.user_id = user_id;
+						req.session.user_id = result.data.user_id;
 						res.redirect('/profile');
 					} else {
 						res.send('Error Occured');
@@ -82,8 +58,11 @@ index = {
 		signin : function(req, res, next){
 				var password = req.body.password,
 					emailId = req.body.emailId;
-				
-				helper.sendRequest(endPoints.login.login, null, null, [emailId, password], function(result) {
+				var data =  {
+					emailId : emailId,
+					password : password
+				};
+				helper.sendRequest(endPoints.login.login, data, null, null, function(result) {
 					if (result && result.meta) {
 						if (result.meta.status == '200') {
 							req.session.user_id = result.data.user_id;

@@ -35,14 +35,19 @@ loginSchema.authenticate = function(req, res, next){
     schema.loginModel.findOne({emailId: req.body.emailId}, function(err, docs){
         if (err)
             return next(err);
-        helper.hash(req.body.password, docs.salt, function(hashErr, hashVal){
-        	if (hashErr) 
-                return next(hashErr);
-            if (hashVal.toString() == docs.hash) {               
-               return  docs.isActive ? (res.json(helper.genarateResponse(200, docs, null, null))) : (res.json(helper.genarateResponse(400, null, "Your account is not yet activated,please activate it!", null)))
-           }
-           return res.json(helper.genarateResponse(400, null, null, "login failed, Enter Correct Username, Password"));	   
-        });
+        if(docs){
+        	helper.hash(req.body.password, docs.salt, function(hashErr, hashVal){
+            	if (hashErr) 
+                    return next(hashErr);
+                if (hashVal.toString() == docs.hash) {               
+                   return  docs.isActive ? (res.json(helper.genarateResponse(200, docs, null, null))) : (res.json(helper.genarateResponse(400, null, "Your account is not yet activated,please activate it!", null)))
+               }
+               return res.json(helper.genarateResponse(400, null, null, "login failed, Enter Correct Username, Password"));	   
+            });
+        } else {
+        	return res.json(helper.genarateResponse(400, null, null, "The server was unable to process your request at this time. Please try later"));	   
+        }
+        
     });    
 };
 /*

@@ -7,7 +7,7 @@ userSchema.add = function (req, res, next) {
     if (!req.body.password)
         return res.json(helper.genarateResponse(400, null, null, 'Password Required'));
     var user = new schema.userModel({
-    	_id: uniqueId,
+    	//_id: uniqueId,
     	empId: req.body.empId,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -97,9 +97,9 @@ userSchema.showDetails = function (req, res, next) {
                 return next(err);
             if(doc){
             var customDoc = {
-            		_id : doc[0]._id,
-            		imgUrl : doc[0].img_url ,
-            		name : doc[0].name ? doc[0].name : ""
+            		_id : doc._id,
+            		imgUrl : doc.img_url ? doc.img_url : req.protocol + "://" + "localhost:3000" +"/defaultProfile.png",
+            		name : doc.name ? doc.name : ""
             };
             }
             responseObj.picture = customDoc;
@@ -112,7 +112,7 @@ userSchema.showDetails = function (req, res, next) {
     	schema.socialModel.find(req.query.where, function (err, docs) {
             if (err)
                 return next(err);
-            responseObj.social = docs[0];
+            responseObj.social = docs;
             callback();
         });
     	
