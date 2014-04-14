@@ -78,14 +78,15 @@
 			 <div class="col-lg-6">
 				<div class="control-group">
 					Name : <%= profileData.user.first_name%> <%=
-					profileData.user.last_name%> <br /> Designation :
-					<%=profileData.user.designation %><br /> Phone :
-					<%=profileData.user.phone_number %><br /> EmailId :
+					profileData.user.last_name%>
+					<br /> Designation : <%=profileData.user.designation %><br /> Phone
+					: <%=profileData.user.phone_number %><br /> EmailId :
 					<%=profileData.user.emailId %><br /> Address : <%
-					if(profileData.address && profileData.address.length > 0){%>
-					<%=profileData.address.street%> , <%=profileData.address.city%> ,
-					<%=profileData.address.country%> <% } else {%> No Data Found <% }
-					%><br />
+					if(profileData.address && profileData.address.length > 0){ 
+					var addresses = profileData.address; 
+					addresses.forEach(function(el, index) { %> 
+					<%=el.street%>, <%=el.city%>, <%=el.country%>, <%=el.pin%> <br/>
+					 <% });} else {%> No Data Found <% } %><br />
 				</div>
 			</div>
 </div>

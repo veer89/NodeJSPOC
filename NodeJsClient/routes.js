@@ -7,8 +7,9 @@ module.exports = function(app){
 	app.post('/login', routes.index.signin);
 	
 	app.get('/settings', routes.user.editProfile);
-	app.get('/editAddress', routes.user.editAddress);
+	app.get('/listAddress', routes.user.listAddress);
+	app.get('/addNewAddress', routes.user.addAddress);
+	app.post('/editAddress', routes.user.editAddress);
 	app.post('/changeAddress', routes.user.changeAddress);
 	app.post('/uploadImage', routes.user.uploadImage);
-	app.get('/image.png', routes.user.showImage); 
 };

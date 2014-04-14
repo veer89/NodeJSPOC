@@ -23,7 +23,7 @@ index = {
 			helper.sendRequest(endPoints.users.showDetails, null, null, [empId], function(result) {
 				if (result && result.meta) {
 					if (result.meta.status == '200') {
-						console.log("Result : ",result);
+						req.session.userObj = result.data;
 						res.render('profilePage', { profileData: result.data });
 					} else {
 						res.send('Error Occured');
@@ -45,7 +45,6 @@ index = {
 			helper.sendRequest(endPoints.users.create, data, null, null, function(result) {
 				if (result && result.meta) {
 					if (result.meta.status == '200') {
-						console.log(result);
 						req.session.user_id = result.data._id;
 						res.redirect('/profile');
 					} else {
