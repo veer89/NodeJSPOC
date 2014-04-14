@@ -18,21 +18,30 @@ pictureSchema.add = function (req, res, next) {
     picture.save(function (err, doc) {
         if (err)
             return next(err);
-        var responseObj = {
+        var responseObj = null;
+        if(doc){
+          responseObj = {
         		_id : doc._id,
         		imgUrl : doc.img_url ,
         		user_id: doc.user_id,
         		name : doc.name
         };
-        res.json(helper.genarateResponse(200, responseObj, null, null));
+          res.json(helper.genarateResponse(200, responseObj, null, null));  
+        }else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to create picture'));	
+        
     });
 }
 pictureSchema.show = function (req, res, next) {
     schema.pictureModel.findById(req.params.id, function (err, docs) {
         if (err)
             return next(err);
+        if(docs){
         res.contentType(docs.img.contentType);
         res.send(docs.img.data);
+        }
+        else
+        	res.send("no image");	
     });
 };
 pictureSchema.update = function (req, res, next) {
@@ -44,13 +53,17 @@ pictureSchema.update = function (req, res, next) {
         userPic.save(function (err, doc) {
             if (err)
                 return next(err);
-            var responseObj = {
+            var responseObj = null;
+            if(doc){
+             responseObj = {
             		_id : doc._id,
             		imgUrl : doc.img_url ,
             		user_id: doc.user_id,
             		name : doc.name
             };
-            res.json(helper.genarateResponse(200, responseObj, null, null));
+             res.json(helper.genarateResponse(200, responseObj, null, null)); 
+            }else
+             res.json(helper.genarateResponse(400, null, null, 'unable to update picture'));	
         });
     });
 }
@@ -59,7 +72,10 @@ pictureSchema.delete = function (req, res, next) {
     schema.pictureModel.findById(req.params.id).remove(function (err, docs) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, null, "Picture deleted successfully", null));
+        if(docs)
+        	res.json(helper.genarateResponse(200, null, 'picture deleted successfully', null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to delete picture'));
     });
 }
 module.exports = pictureSchema;

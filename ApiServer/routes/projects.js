@@ -11,7 +11,10 @@ projectSchema.addProject = function (req, res, next) {
     project.save(function (err, doc) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, doc, null, null));
+        if(doc)
+        	res.json(helper.genarateResponse(200, doc, null, null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to create project'));
     });
 }
 
@@ -27,7 +30,10 @@ projectSchema.addUserToProject = function (req, res, next) {
 		projectData.save(function (err, doc) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, doc, null, null));
+        if(doc)
+        	res.json(helper.genarateResponse(200, doc, null, null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to add user to project'));
 		});
     });
 }
@@ -47,7 +53,10 @@ projectSchema.removeUserFromProject = function (req, res, next) {
 		projectData.save(function (err, doc) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, doc, null, null));
+        if(doc)
+        	res.json(helper.genarateResponse(200, doc, null, null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to remove user for project'));
 		});
     });
 }
@@ -56,7 +65,11 @@ projectSchema.query = function (req, res, next) {
 	schema.projectModel.find(req.query.where, function (err, docs) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, docs, null, null));
+        if(docs)
+        	res.json(helper.genarateResponse(200, docs, null, null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to query projects'));
+        	
     });
 }
 
@@ -68,7 +81,10 @@ projectSchema.update = function (req, res, next) {
     		projectData.save(function (err, doc) {
             if (err)
                 return next(err);
-            res.json(helper.genarateResponse(200, doc, null, null));
+            if(doc)
+            	res.json(helper.genarateResponse(200, doc, null, null));
+            else
+            	res.json(helper.genarateResponse(400, null, null, 'unable to update project'));
         });
     });
 }
@@ -89,7 +105,10 @@ projectSchema.delete = function (req, res, next) {
 		project.remove(function (err, docs) {
             if (err)
                 return next(err);
-            res.json(helper.genarateResponse(200, docs, null, null));
+            if(docs)
+            	res.json(helper.genarateResponse(200, docs, null, null));
+            else
+            	res.json(helper.genarateResponse(400, null, null, 'unable to delete project'));
         });
     });
 }

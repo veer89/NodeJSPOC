@@ -13,32 +13,32 @@ addressSchema.add = function (req, res, next) {
     address.save(function (err, doc) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, doc, null, null));
+        if(doc)
+        	res.json(helper.genarateResponse(200, doc, null, null));
+        else
+            res.json(helper.genarateResponse(400, null, null, 'unable to create address'));
     });
 };
 addressSchema.query = function (req, res, next) {
 	schema.addressModel.find(req.query.where, function (err, docs) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, docs, null, null));
+        if(docs)
+        	res.json(helper.genarateResponse(200, docs, null, null));
+        else
+            res.json(helper.genarateResponse(400, null, null, 'unable to query address'));
     });
 };
 addressSchema.show = function (req, res, next) {
     schema.addressModel.findById(req.params.id, function (err, docs) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, docs, null, null));
+        if(docs)
+        	res.json(helper.genarateResponse(200, docs, null, null));
+        else
+            res.json(helper.genarateResponse(400, null, null, 'unable to show address'));
     });
 };
-
-addressSchema.showByEmpId = function (req, res, next) {
-    schema.addressModel.findOne({user_id : req.params.id}, function (err, docs) {
-        if (err)
-            return next(err);
-        res.json(helper.genarateResponse(200, docs, null, null));
-    });
-};
-
 
 addressSchema.update = function (req, res, next) {
     schema.addressModel.findById(req.params.id, function (addressErr, address) {
@@ -51,7 +51,10 @@ addressSchema.update = function (req, res, next) {
         address.save(function (err, doc) {
             if (err)
                 return next(err);
-            res.json(helper.genarateResponse(200, doc, null, null));
+            if(doc)
+            	res.json(helper.genarateResponse(200, doc, null, null));
+            else
+                res.json(helper.genarateResponse(400, null, null, 'unable to update address'));
         });
     });
 };
@@ -62,7 +65,10 @@ addressSchema.delete = function (req, res, next) {
         address.remove(function (err, docs) {
             if (err)
                 return next(err);
-            res.json(helper.genarateResponse(200, docs, null, null));
+            if(docs)
+            	res.json(helper.genarateResponse(200, docs, null, null));
+            else
+                res.json(helper.genarateResponse(400, null, null, 'unable to delete address'));
         });
     });
 }

@@ -42,7 +42,6 @@ module.exports = function(app){
 // declaring routes for address
     app.post('/address/create', filter.keyFilter, filter.userFilter,  routes.address.add);
     app.get('/address/show/:id', filter.keyFilter, routes.address.show);
-    app.get('/address/showByEmpId/:id', filter.keyFilter, routes.address.showByEmpId);
     app.get('/address/query', filter.keyFilter, routes.address.query);
     app.put('/address/update/:id', filter.keyFilter, filter.userFilter, routes.address.update);
     app.delete('/address/delete/:id', filter.keyFilter, filter.userFilter, routes.address.delete);

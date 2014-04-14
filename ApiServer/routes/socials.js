@@ -12,21 +12,30 @@ socialSchema.add = function (req, res, next) {
             social.save(function (err, doc) {
                 if (err)
                     return next(err);
-                res.json(helper.genarateResponse(200, doc, null, null));
+                if(doc)
+                	res.json(helper.genarateResponse(200, doc, null, null));
+                else
+                	res.json(helper.genarateResponse(400, null, null, 'unable to create social linking'));
             });
 }
 socialSchema.show = function (req, res, next) {
     schema.socialModel.findById(req.params.id, function (err, docs) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, docs, null, null));
+        if(docs)
+        	res.json(helper.genarateResponse(200, docs, null, null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to show social linking'));
     });
 }
 socialSchema.query = function (req, res, next) {
 	schema.socialModel.find(req.query.where, function (err, docs) {
         if (err)
             return next(err);
-        res.json(helper.genarateResponse(200, docs, null, null));
+        if(docs)
+        	res.json(helper.genarateResponse(200, docs, null, null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to query social linking'));
     });
 }
 socialSchema.update = function (req, res, next) {
@@ -40,7 +49,10 @@ socialSchema.update = function (req, res, next) {
         socialData.save(function (err, doc) {
             if (err)
                 return next(err);
-            res.json(helper.genarateResponse(200, doc, null, null));
+            if(doc)
+            	res.json(helper.genarateResponse(200, doc, null, null));
+            else
+            	res.json(helper.genarateResponse(400, null, null, 'unable to update social linking'));
         });
     });
 }
@@ -51,7 +63,10 @@ socialSchema.delete = function (req, res, next) {
         social.remove(function (err, docs) {
             if (err)
                 return next(err);
-            res.json(helper.genarateResponse(200, docs, null, null));
+            if(doc)
+            	res.json(helper.genarateResponse(200, docs, null, null));
+            else
+            	res.json(helper.genarateResponse(400, null, null, 'unable to delete social linking'));
         });
     });
 }
