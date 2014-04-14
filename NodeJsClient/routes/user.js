@@ -8,15 +8,14 @@ var user = {
 			var empId = req.session.user_id;
 			var pictureExist = false;
 			var pictureId = '';
-			var fileData = req.files.image.path;
-			console.log("fileData  ",fileData);
+			//var fileData = req.files.photo.path;
 			var name = "photo.png";
 			var data = {
 					name : name,
-					data : fileData
+					photo : require('fs').readFileSync(req.files.photo.path)
 			}
 			async.series([function(callback) {
-				helper.sendRequest(endPoints.picture.show, null, null, [empId], function(result) {
+				helper.sendRequest(endPoints.picture.query, null, null, [empId], function(result) {
 					if(result && result.meta){
 						if(result.meta.status == '200'){
 							pictureExist = true;

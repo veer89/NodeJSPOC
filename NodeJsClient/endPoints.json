@@ -80,19 +80,23 @@
 	"picture" : {
 		"create" :{
 			"method_type" : "POST",
-			"end_point" : "/picture/create"
+			"end_point" : "/pictures/create"
 		},
 		"update" :{
 			"method_type" : "PUT",
-			"end_point" : "/picture/update"
+			"end_point" : "/pictures/update"
 		},
 		"delete" :{
 			"method_type" : "DELETE",
-			"end_point" : "/picture/delete"
+			"end_point" : "/pictures/delete"
 		},
 		"show" :{
 			"method_type" : "GET",
-			"end_point" : "/picture/show"
+			"end_point" : "/pictures/show"
+		},
+		"query" :{
+			"method_type" : "GET",
+			"end_point" : "/pictures/query"
 		}
 	},
 	"login" : {

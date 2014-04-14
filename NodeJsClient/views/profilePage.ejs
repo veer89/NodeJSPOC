@@ -25,7 +25,7 @@
 			<div id="pictureModal" class="modal hide fade smallModal myModal">
 				<form method='post' action='/uploadImage'
 					enctype='multipart/form-data'>
-					<input type='file' name='image' /> 
+					<input type='file' name='photo' /> 
 					<button class="btn btn-primary" type="submit"> Change </button>
 				</form>
 			</div>
@@ -35,7 +35,11 @@
 				<tr>
 					<td>
 						<div class="leftContainerProfile">
-							<img src="<%=profileData.picture.imgUrl%>"
+							<img <% if(profileData.picture && profileData.picture.imgUrl != ''){%>
+									src="<%=profileData.picture.imgUrl%>"
+									<% }  else {%>
+									src="../defaultProfile.png"
+									<% } %>
 								style="width: 140px; height: 160px;" /> <br />
 								<a data-toggle="modal" href="#pictureModal" class="btn btn-primary" style="margin-left:10px;margin-top:20px;">Change
 								Image </a>
