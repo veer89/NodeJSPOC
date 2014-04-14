@@ -12,7 +12,7 @@ var user = {
 			var name = "photo.png";
 			var data = {
 					name : name,
-					photo : require('fs').readFileSync(req.files.photo.path)
+					path : req.files.photo.path
 			}
 			async.series([function(callback) {
 				helper.sendRequest(endPoints.picture.query, null, null, [empId], function(result) {

@@ -6,62 +6,92 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../assets/css/bootstrap.css" rel="stylesheet">
 <link href="../stylesheets/style.css" rel="stylesheet">
-<link href="http://spbooks.github.com/nodejs1/docs.css" rel="stylesheet">
-<script
-	src="../assets/js/google-code-prettify/prettify.js"></script>
-<script type="text/javascript"
-	src="../assets/js/jquery.js"></script>
-<script type="text/javascript"
-	src="../assets/js/bootstrap-button.js"></script>
-<script type="text/javascript"
-	src="../assets/js/bootstrap-modal.js"></script>
+<link href="../assets/css/docs.css" rel="stylesheet">
+<script src="../assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap-button.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap-modal.js"></script>
 <script type="text/javascript"
 	src="../assets/js/bootstrap-transition.js"></script>
 </head>
 <body>
-	<div class="container"> <a href="/settings"> Settings</a>
-		<div class="marketing">
 
-			<div id="pictureModal" class="modal hide fade smallModal myModal">
-				<form method='post' action='/uploadImage'
-					enctype='multipart/form-data'>
-					<input type='file' name='photo' /> 
-					<button class="btn btn-primary" type="submit"> Change </button>
-				</form>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav pull-right">
+            <li class="active"><a href="/settings" class="pull-right"> Settings</a></li>
+         
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+	<div class="container">
+
+
+
+
+
+		 
+
+
+			<h3>Profile Page</h3>
+ <div class="row">
+
+			 <div class="col-lg-6">
+			 <div class="modal fade bs-example-modal-sm" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			 
+			<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+					<form method='post' action='/uploadImage'
+						enctype='multipart/form-data'>
+						<input type='file' name='photo' />
+						<button class="btn btn-primary" type="submit">Change</button>
+					</form>
+					</div>
+					</div>
+				</div>
+
+				<img<% if(profileData.picture && profileData.picture.imgUrl
+				!= ''){%> src="<%=profileData.picture.imgUrl%>" <% } else {%>
+				src="../defaultProfile.png" <% } %> style="width: 140px; height:
+				160px;" /> <br /> 
+				<a data-toggle="modal" href="#pictureModal"
+					class="btn btn-primary"
+					style="margin-left: 10px; margin-top: 20px;">Change Image </a>
+
 			</div>
-			
-			<h1>Profile Page</h1>
-			<table>
-				<tr>
-					<td>
-						<div class="leftContainerProfile">
-							<img <% if(profileData.picture && profileData.picture.imgUrl != ''){%>
-									src="<%=profileData.picture.imgUrl%>"
-									<% }  else {%>
-									src="../defaultProfile.png"
-									<% } %>
-								style="width: 140px; height: 160px;" /> <br />
-								<a data-toggle="modal" href="#pictureModal" class="btn btn-primary" style="margin-left:10px;margin-top:20px;">Change
-								Image </a>
-						</div>
-					</td>
-					<td>
-						<div class="rightContainerProfile">
-							<div class="control-group">
-								Name : <%= profileData.user.first_name%> <%= profileData.user.last_name%>
-								<br /> Designation : <%=profileData.user.designation %><br /> Phone
-								: <%=profileData.user.phone_number %><br /> EmailId :
-								<%=profileData.user.emailId %><br /> Address :
-								<%=profileData.user.addressData %><br />
-							</div>
-						</div>
-					</td>
-				</tr>
-			</table>
 
-		</div>
-		<header class="jumbotron masthead">
-		</header>
+
+			 <div class="col-lg-6">
+				<div class="control-group">
+					Name : <%= profileData.user.first_name%> <%=
+					profileData.user.last_name%> <br /> Designation :
+					<%=profileData.user.designation %><br /> Phone :
+					<%=profileData.user.phone_number %><br /> EmailId :
+					<%=profileData.user.emailId %><br /> Address : <%
+					if(profileData.address && profileData.address.length > 0){%>
+					<%=profileData.address.street%> , <%=profileData.address.city%> ,
+					<%=profileData.address.country%> <% } else {%> No Data Found <% }
+					%><br />
+				</div>
+			</div>
+</div>
+
+
+		
 	</div>
 </body>
 </html>

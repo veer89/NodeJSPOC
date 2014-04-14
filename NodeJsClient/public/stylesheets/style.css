@@ -1,46 +1,20 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-
-.myModal{
-	width : 400px !important;
-}
-
-.alignCenter{
-	text-align: center !important;
-}
-
-.leftContainerProfile{
-	padding-left: 30%;
-    padding-right: 40%;
-    width: 100%;
-}
-
-.rightContainerProfile{
-	width : 100%;
-	font-size: 18px;
-}
-
-.loginPageForm {
-	margin-left : 18%;
-	width : 41%;
-}
-
-.login-footer{
-	padding: 10px 14px 15px !important;
-	background-color: #FFFFFF !important;
-}
-
 .showErrorMessage {
-	color : red;
-	display : block;
+	color: red;
+	display: block;
 }
 
 .hideErrorMessage {
-	display : none;
+	display: none;
+}
+
+.form-signin {
+	width: 400px;
+	margin: 20px auto;
+}
+
+.form-inner {
+	padding: 20px 20px 10px;
+	border: 1px solid #ccc;
+	display: block;
+	border-radius: 5px;
 }
