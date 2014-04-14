@@ -7,7 +7,6 @@ userSchema.add = function (req, res, next) {
     if (!req.body.password)
         return res.json(helper.genarateResponse(400, null, null, 'Password Required'));
     var user = new schema.userModel({
-        _id: uniqueId,
         empId: req.body.empId,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
