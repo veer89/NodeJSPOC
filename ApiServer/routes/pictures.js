@@ -5,7 +5,7 @@ var schema = require('../schema/exports.js'),
 var pictureSchema = {};
 pictureSchema.add = function (req, res, next) {
 	var uniqueId = mongoose.Types.ObjectId();
-	var imgUrl = req.protocol + "://" + req.headers.host + "/pictures/show/" + uniqueId + "?appKey=" + _APPKEY; 
+	var imgUrl = req.protocol + "://" + req.headers.host + "/pictures/show/" + uniqueId + "?appKey=" + _APPKEY;
     var picture = new schema.pictureModel({
     	_id: uniqueId,
     	img_url: imgUrl,
