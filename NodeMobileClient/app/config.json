@@ -10,5 +10,7 @@
 	"os:blackberry": {},
 	"os:ios": {},
 	"os:mobileweb": {},
-	"dependencies": {}
+	"dependencies": {
+		"com.appcelerator.acslogin":"1.0"
+	}
 }

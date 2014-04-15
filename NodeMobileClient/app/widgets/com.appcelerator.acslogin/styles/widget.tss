@@ -1,0 +1,114 @@
+".acsloginLbl" : {
+	height:25,
+	color: "#606060",
+	font: {fontSize: 12},
+	shadowOffset: 1,
+	shadowColor: "#363636"
+},
+".acsloginMsg" : {
+	top: 5,
+	height:0, /* hiding message for now */
+	color: "#000000",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {fontSize: "14dp"},
+	shadowOffset: 1,
+	shadowColor: "#363636",
+	width: "80%"
+},
+".acsLoginTxt" : {
+	color: "#333",
+	height: 50,
+	left: 20,
+	right: 20,
+	backgroundImage: "/common/field-bg.png",
+	backgroundLeftCap: 8,
+	backgroundTopCap:24,
+	paddingLeft:15,
+	autocapitalize:false,
+	autocorrect:false
+},
+".acsLoginBtn" : {
+	height:44,
+	top:0,
+	backgroundImage:"/common/btn-light-flex.png",
+	backgroundSelectedImage:"/common/btn-light-touch-flex.png",
+	backgroundLeftCap: 5
+},
+"#loginLbl" : {
+	color:"#000000",
+	font:{fontSize:14},
+	textAlign:"center",
+	height:Ti.UI.SIZE,
+	width:Ti.UI.SIZE
+},
+"#acsloginMain" : {
+backgroundColor:"black"
+},
+"#loginContainer" : {
+	backgroundImage:"/common/login-bg-flex.png",
+	backgroundTopCap:14,
+	backgroundLeftCap:12,
+	width:319,
+	height:164,
+	layout:"vertical"
+},
+"#titleContainer" : {
+	top:2,
+	layout:"vertical",
+	height:Ti.UI.SIZE
+},
+"#bodyContainer" : {
+	top:0,
+	height:Ti.UI.SIZE
+},
+"#acsLogin" : {
+	top:0,
+	height: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
+	layout: "vertical",
+	opacity:0.0
+},
+
+"#header" : {
+	height:150,
+	width:319,
+	top:0,
+	backgroundImage:"/common/header.png"
+},
+"#divider" : {
+	height:2,
+	width:309,
+	backgroundImage:"/common/divider.png",
+	opacity:0.0
+},
+".controlContainer" : {
+	top : 17,
+	left: 20,
+	right: 20,
+	height:Ti.UI.SIZE
+},
+"#loginBtn" : {
+	width:100,
+	right:3
+},
+"#helpImg" : {
+	height:25,
+	width:25,
+	left:25,
+	backgroundImage:"/common/help-btn.png",
+	backgroundSelectedImage:"/common/help-btn-touch.png"
+},
+"#forgotLbl" : {
+	left:52,
+	color:"#999"
+},
+"#usernameTxt" : {
+	top: 16,
+	hintText: "Username",
+	returnKeyType:Ti.UI.RETURNKEY_NEXT
+},
+"#passwordTxt" : {
+	top: 4,
+	hintText: "Password",
+	passwordMask: true
+}
