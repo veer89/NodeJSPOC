@@ -8,15 +8,14 @@ var user = {
 			var empId = req.session.user_id;
 			var pictureExist = false;
 			var pictureId = '';
-			var fileData = req.files.image.path;
-			console.log("fileData  ",fileData);
+			//var fileData = req.files.photo.path;
 			var name = "photo.png";
 			var data = {
 					name : name,
-					data : fileData
+					path : req.files.photo.path
 			}
 			async.series([function(callback) {
-				helper.sendRequest(endPoints.picture.show, null, null, [empId], function(result) {
+				helper.sendRequest(endPoints.picture.query, null, null, [empId], function(result) {
 					if(result && result.meta){
 						if(result.meta.status == '200'){
 							pictureExist = true;
@@ -54,31 +53,35 @@ var user = {
 				console.log(results);
 			});
 		},
-		showImage : function(req, res, next){
-			var empId = req.session.user_id;
-			helper.sendRequest(endPoints.picture.show, null, null, [empId], function(result) {
-		    	//var addressData = 'No Data Found';
-				if(result && result.meta){
-					if(result.meta.status == '200'){
-						res.writeHead(200, {'Content-Type': 'image/png'});
-						res.write(new Buffer(result.data.img.data));
-						res.end();
-					} else {
-						res.writeHead(200, {'Content-Type': 'image/png'});
-						res.write(new Buffer(require('fs').readFileSync('public/defaultProfile.png')));
-						res.end();
-					}
-				} 
-			});
-		},
 		editProfile : function(req, res, next){
 			var empId = req.session.user_id;
 			res.render('settings', { empId: empId });
 		},
+		listAddress : function(req, res, next){
+			var empId = req.session.user_id;
+			var addressData = req.session.userObj.address;
+			res.render('listAddress', { 
+				addressData : addressData									
+			});
+		},
+		addAddress : function(req, res, next) {
+			var empId = req.session.user_id;
+			var addressData = {
+					id : 'new',
+					street : '',
+					city : '',
+					country : '',
+					pin : ''
+			};
+			res.render('editAddress', {
+				addressData : addressData
+			});
+		},
 		editAddress : function(req, res, next){
 			var empId = req.session.user_id;
+			var addrId = req.body.addrId;
 			var addressData = {};
-			helper.sendRequest(endPoints.address.showByEmpId, null, null, [empId], function(result) {
+			helper.sendRequest(endPoints.address.show, null, null, [addrId], function(result) {
 		    	//var addressData = 'No Data Found';
 				if(result && result.meta){
 					if(result.meta.status == '200' && result.data){
@@ -88,14 +91,7 @@ var user = {
 						addressData.pin = (result.data.pin == undefined ? '' : result.data.pin);
 						addressData.id = (result.data._id == undefined ? '' : result.data._id);
 						//addressData.user_id = empId;
-					} else {
-						addressData.street = '';
-						addressData.city = '';
-						addressData.country = '';
-						addressData.pin = '';
-						addressData.id = 'new';
-						//addressData.user_id = empId;
-					}
+					} 
 				} 
 				res.render('editAddress', { 
 					addressData : addressData											

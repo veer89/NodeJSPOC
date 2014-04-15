@@ -30,6 +30,7 @@ module.exports = function(app){
 // routes declared for image events
     app.post('/pictures/create', filter.keyFilter, filter.userFilter, routes.picture.add);
     app.get('/pictures/show/:id', filter.keyFilter, routes.picture.show);
+    app.get('/pictures/query/:id', filter.keyFilter, routes.picture.query);
     app.put('/pictures/update/:id', filter.keyFilter, filter.userFilter, routes.picture.update);
     app.delete('/pictures/delete/:id', filter.keyFilter, filter.userFilter, routes.picture.delete);
 

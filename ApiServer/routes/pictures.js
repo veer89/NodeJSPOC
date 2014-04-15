@@ -44,6 +44,19 @@ pictureSchema.show = function (req, res, next) {
         	res.send("no image");	
     });
 };
+
+pictureSchema.query = function (req, res, next) {
+    schema.pictureModel.findById(req.params.id, function (err, docs) {
+        if (err)
+            return next(err);
+        if(docs){
+        	res.json(helper.genarateResponse(200, docs, null, null));  
+        }
+        else
+        	res.json(helper.genarateResponse(400, docs, null, null));  
+    });
+};
+
 pictureSchema.update = function (req, res, next) {
     schema.pictureModel.findById(req.params.id, function (picErr, userPic) {
         if (picErr)
