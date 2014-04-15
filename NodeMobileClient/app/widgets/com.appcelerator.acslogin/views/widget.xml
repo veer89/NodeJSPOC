@@ -1,0 +1,26 @@
+<Alloy>
+	<View id="acsloginMain">
+		<View id="loginContainer">
+			<View id="titleContainer">
+				<View id="header"/>
+				<View id="divider"/>
+				<Label class="acsloginMsg" id="msgLbl"/>
+			</View>
+			<View id="bodyContainer">
+				<View id="acsLogin">
+					<TextField class="acsLoginTxt" id="usernameTxt" />
+					<TextField class="acsLoginTxt" id="passwordTxt"/>
+					<View class="controlContainer">
+						<Button id="helpImg" />
+						<Label class="acsloginLbl" id="forgotLbl" class="acsloginLbl" >Forgot Password</Label>
+						<View class="acsLoginBtn" id="loginBtn" onClick="loginClick">
+							<Label id="loginLbl">Login</Label>
+						</View>		
+					</View>
+				</View>
+				
+				
+			</View>
+		</View>
+	</View>
+</Alloy> 
