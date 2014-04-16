@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="navBar">
-		<View id="backBtn" visible ="false" onClick="closeEdit">
+		<View id="backBtn" onClick="closeEdit">
 			<ImageView id="backImg">
 		</View>
 		<Label text="User Profile" id="header" />		

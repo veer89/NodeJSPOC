@@ -1,0 +1,62 @@
+"#wrapper" : {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  layout: 'vertical',  
+  backgroundColor: 'black'  
+},
+"#topSection":{
+	top:10,
+	layout: 'horizontal',	
+	width: Ti.UI.FILL,
+  	height: 120  
+},
+"#bottomSection":{
+	layout: 'vertical',
+	top:10
+},
+"#leftSection":{
+	top:0,
+	height: Ti.UI.FILL,
+	width: 100,
+	left: 10	
+},
+"#rightSection":{
+	top:0,
+	height: Ti.UI.FILL,
+	left:0,
+	width: Ti.UI.FILL,
+	layout: 'vertical'	
+},
+"Label":{
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	color: '#ffffff'	
+},
+"#profilePic":{
+	height: 80,
+	width: 80,
+	image: '/images/defaultProfile.png'
+},
+".subRow":{
+	top:10,
+	height: Ti.UI.SIZE,
+	width: Ti.UI.FILL	
+},
+".leftItem":{
+	left: 10,
+	textAlign: 'left'
+},
+".rightItem":{
+	right: 10,
+	width: 150,
+	textAlign: 'right',
+	backgroundColor: '#f29135'	
+},
+".separator":{
+	height: 1,
+	width: Ti.UI.FILL,
+	left:10,
+	right:10,
+	backgroundColor: '#ffe1b5',
+	bottom: 0	
+}

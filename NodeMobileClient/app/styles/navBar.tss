@@ -23,6 +23,7 @@
 	image: '/images/back.png'
 },
 "#settings":{
+	visible: false,
 	height: Ti.UI.FILL,
 	width:45,
 	right:5
@@ -32,7 +33,7 @@
 	height:30,
 	image: '/images/settings.png'
 }
-"#back":{
+"#backBtn":{
 	height: Ti.UI.FILL,
 	visible: false,
 	width:45,

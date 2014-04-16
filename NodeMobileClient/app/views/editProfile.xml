@@ -1,0 +1,33 @@
+<Alloy>
+	<View id="wrapper">
+		<Require id="navBar" src="navBar" backBtn="true" title="Edit Profile"/>
+		<View id="topSection">
+			<View id="leftSection" >
+				<ImageView id="profilePic" />
+			</View>
+			<View id="rightSection" >
+				<Label id="name" class="rightItem" text="Test" top="30" />
+				<Label id="designation" class="rightItem" text="Test Engineer" top="10"/>
+			</View>			
+		</View>
+		<View class="separator" left="0" right="0"/>
+		<ScrollView id="bottomSection">
+			<View class="subRow">
+				<Label id="empIdTitle" class="leftItem" text="Employee Id:"/>
+				<Label id="empId" class="rightItem" text="134"/>
+			</View>		
+			<View class="subRow">
+				<Label id="emailIdTitle" class="leftItem" text="Email Id:"/>
+				<Label id="emailId" class="rightItem" text="test@gmail.com"/>
+			</View>	
+			<View class="subRow">
+				<Label id="phoneNumberTitle" class="leftItem" text="Phone Number:"/>
+				<Label id="phoneNumber" class="rightItem" text="1133334"/>
+			</View>	
+			<View class="subRow">
+				<Label id="addressTitle" class="leftItem" text="Address:"/>
+				<Label id="address" class="rightItem" text="Park Venue: 1, Noida"/>
+			</View>				
+		</ScrollView>
+	</View>
+</Alloy>
