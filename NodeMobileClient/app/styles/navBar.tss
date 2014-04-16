@@ -32,3 +32,14 @@
 	height:30,
 	image: '/images/settings.png'
 }
+"#back":{
+	height: Ti.UI.FILL,
+	visible: false,
+	width:45,
+	left:5
+},
+"#backImg":{
+	width:30,
+	height:30,
+	image: '/images/back.png'
+}

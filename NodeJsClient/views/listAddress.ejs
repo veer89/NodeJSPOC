@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NodeJsClient</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../stylesheets/style.css" rel="stylesheet">
+<link href="../assets/css/docs.css" rel="stylesheet">
+<script
+	src="../assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript"
+	src="../assets/js/jquery.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-button.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-modal.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-transition.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="marketing alignCenter">
+			<h1>NodeJsClient - Address</h1>
+			<div class="control-group alignCenter">
+				<%if(addressData && addressData.length > 0){ 
+					var	addresses = addressData; 
+					addresses.forEach(function(el, index) { %> 
+					<div class="list-group-item" style="width:30%;margin-left:35%"><bold>Street :</bold><%=el.street%><br/> <bold>City : </bold><%=el.city%> <br/> <bold>Country : </bold><%=el.country%><br/> <bold>Pin/Zip Code : </bold><%=el.pin%>  <form action="/editAddress" method="post"> <input type="hidden" value="<%=el._id%>" name="addrId"/> <button type="submit"> Edit </button></form></div></br>
+					<% });}	else {%> <div class="list-group-item" style="width:30%;margin-left:35%"> No Data Found </div> <% } %>
+			</div>
+			<div>
+				<a href="/profile" class="btn btn-success">Back to Profile</a>
+				<a href="/addNewAddress" class="btn btn-primary">Add New Address</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
