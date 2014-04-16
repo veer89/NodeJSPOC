@@ -1,7 +1,10 @@
 <Alloy>
 	<View id="navBar">
 		<Label text="User Profile" id="header" />
-		<View id="settings" >
+		<View id="back" onClick="closeEdit" >
+			<ImageView id="backImg">
+		</View>
+		<View id="settings" onClick="editProfile" >
 			<ImageView id="settingsImg">
 		</View>
 		

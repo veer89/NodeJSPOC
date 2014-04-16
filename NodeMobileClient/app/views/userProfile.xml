@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="wrapper">
-		<Require id="navBar" src="navBar"/>
+		<Require id="navBar" src="navBar" settings="true"/>
 		<View id="topSection">
 			<View id="leftSection" >
 				<ImageView id="profilePic" />
