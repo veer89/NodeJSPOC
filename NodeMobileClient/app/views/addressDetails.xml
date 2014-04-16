@@ -1,0 +1,6 @@
+<Alloy>
+	<Window id="detailWin">
+		<Require id="navBar" src="navBar" backBtn ="true" title="Address"/>
+		<View id="container" />
+	</Window>
+</Alloy>

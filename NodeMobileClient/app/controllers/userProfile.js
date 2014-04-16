@@ -7,27 +7,15 @@ if (Alloy.Globals.iOS7) {
 
 function init() {
 	// hit the get user profile API
-
 	// declared the parameters
 	var apiData = {
-		userId : params.userId ? params : "5348d3098337140000bbc0df", //TODO: remove hard coded local value
+		userId : params.userId ? params : "534e260908df30122e79c00a", //TODO: remove hard coded local value
 		callback : {
 			successCallback : userSuccessCallback,
 			errorCallback : errorCallback
 		}
 	};
-	apiClient.sendRequest(endPoints.users.show, null, null, [apiData.userId], apiData.callback);
-
-	// declared the parameters
-	var apiAddressData = {
-		userId : params.userId ? params : "5348d3098337140000bbc0df", //TODO: remove hard coded local value
-		callback : {
-			successCallback : addressSuccessCallback,
-			errorCallback : errorCallback
-		}
-	};
-	apiClient.sendRequest(endPoints.address.showByEmpId, null, null, [apiData.userId], apiAddressData.callback);
-
+	apiClient.sendRequest(endPoints.users.showDetails, null, null, [apiData.userId], apiData.callback);
 };
 
 /**
@@ -35,29 +23,65 @@ function init() {
  * @param {Object} data
  */
 function setUserData(data) {
-	$.profilePic.image = (data && data.img && data.img.data) ? data.img.data : '/images/defaultProfile.png';
+	console.log("user data " + JSON.stringify(data));
+	var userData = data.user;
+	$.profilePic.image = (userData && userData.img && userData.img.data) ? userData.img.data : '/images/defaultProfile.png';
 	//check image property later
-	$.name.text = data && data.first_name ? data.first_name + ' ' + (data.last_name ? data.last_name : '' ) : 'NA';
-	$.designation.text = data && data.designation ? data.designation : 'NA';
-	$.empId.text = data && data.empId ? data.empId : 'NA';
-	$.emailId.text = data && data.emailId ? data.emailId : 'NA';
-	$.phoneNumber.text = data && data.phone_number ? data.phone_number : 'NA';
+	$.name.text = userData && userData.first_name ? userData.first_name + ' ' + (userData.last_name ? userData.last_name : '' ) : 'NA';
+	$.designation.text = userData && userData.designation ? userData.designation : 'NA';
+	$.empId.text = userData && userData.empId ? userData.empId : 'NA';
+	$.emailId.text = userData && userData.emailId ? userData.emailId : 'NA';
+	$.phoneNumber.text = userData && userData.phone_number ? userData.phone_number : 'NA';
+	
+	
+	// set Project Result
+	var projectResult = data && data.projects ? data.projects : null;
+	setProjectData(projectResult);
+		
+	// set address Result 
+	var addressResult = data.address ? data.address : null;
+	setAddressData(addressResult);
+
+};
+
+
+/**
+ * Function to set Project Details
+ */
+function setProjectData(projectResult){	
+	for(var i=0, length = projectResult.length; i< length; i++){		
+		if(i > 0){
+			$.project.text = ", " + projectResult[i].projectName;
+		}else{
+			$.project.text = projectResult[i].projectName;
+		}
+	}
+	
+	if ($.project.text == '') {
+		$.name.top = 30;
+	}
+	
+	// set project data
+	$.project.rowData = projectResult;
 };
 
 /**
- * Success Function on get address API
- * @param {Object} response
+ * Function to set Address Details
  */
-function addressSuccessCallback(response) {
-	console.log('success' + JSON.stringify(response));
-	if (response.meta.status == '200') {
-		var data = response.data;
-		var address = data.street ? data.street + ' ' + (data.city ? data.city : '' + ' ' + (data.pin ? data.pin : '' + ' ' + (data.country ? data.country : ''))) : 'NA';
-		$.address.text = address;
-	} else {
-		errorCallback({
-			message : "No data found for this user"
-		});
+function setAddressData(addressResult) {
+	console.log(" address data " + JSON.stringify(addressResult));
+	if (addressResult) {
+		for (var i = 0, length = addressResult.length; i < length; i++) {
+			var addressData = addressResult[i];
+			var address = addressData && addressData.street ? addressData.street + ', ' : '';
+			address += addressData.city ? addressData.city + ', ' : '';
+			address += addressData.state ? addressData.state + ', ' : '';
+			address += addressData.country ? addressData.country + ', ' : '';
+			address += addressData.pin ? addressData.pin : '';
+
+			$["address" + (i+1)].text = address;
+		}
+
 	}
 
 };
@@ -70,7 +94,6 @@ function userSuccessCallback(response) {
 	console.log('success' + JSON.stringify(response));
 	if (response.meta.status == '200') {
 		var data = response.data;
-		//TODO: check for array and JSON object
 		setUserData(data);
 	} else {
 		errorCallback({
@@ -90,6 +113,16 @@ function errorCallback(event) {
 		message : event.message ? event.message : 'Found error while loading data'
 	});
 	alertDialog.show();
+};
+
+/**
+ * EVENT LISTENERS
+ */
+function openProjectDetails(_event){	
+	if(_event.source.rowData){
+		var detailWin = Alloy.createController('addressDetails', { projectData: _event.source.rowData}).getView();		
+		detailWin.open();
+	}
 };
 
 // initial logic

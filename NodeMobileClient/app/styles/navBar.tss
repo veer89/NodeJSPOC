@@ -6,7 +6,21 @@
 "#header":{
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	color:'black'
+	color:'black',
+	font:{
+		fontWeight: 'bold',
+		fontSize: 18
+	}
+},
+"#backBtn":{
+	height: Ti.UI.FILL,
+	width:45,
+	left:5
+},
+"#backImg":{
+	width:27,
+	height:27,
+	image: '/images/back.png'
 },
 "#settings":{
 	height: Ti.UI.FILL,

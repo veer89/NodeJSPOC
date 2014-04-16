@@ -12,7 +12,8 @@
 },
 "#bottomSection":{
 	layout: 'vertical',
-	top:10
+	top:10,
+	touchEnabled: false
 },
 "#leftSection":{
 	top:0,

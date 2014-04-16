@@ -1,0 +1,10 @@
+"#detailWin":{
+	navBarHidden: true,
+	layout: 'vertical'
+},
+"#container":{
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	backgroundColor: 'black',
+	layout: 'vertical'	
+}

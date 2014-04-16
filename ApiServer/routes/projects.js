@@ -1,4 +1,5 @@
-var schema = require('../schema/exports.js');
+var schema = require('../schema/exports.js'),
+helper = require('../public/utils/helper.js');
 var projectSchema = {};
 
 projectSchema.addProject = function (req, res, next) {

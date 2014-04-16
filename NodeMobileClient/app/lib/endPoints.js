@@ -15,6 +15,11 @@ var endPoints = {
 			"end_point" : "/users/show",
 			"format" : "json"
 		},
+		"showDetails":{
+			"method_type" : "GET",
+			"end_point" : "/users/showDetails",
+			"format" : "json"
+		},
 		"query" :{
 			"method_type" : "GET",
 			"end_point" : "/users/query",

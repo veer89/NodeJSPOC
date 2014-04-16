@@ -73,7 +73,12 @@ backgroundColor:"black"
 	height:150,
 	width:319,
 	top:0,
-	backgroundImage:"/common/header.png"
+	//backgroundImage:"/common/header.png"
+},
+"#headerTitle":{
+	height:Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	color: 'black'
 },
 "#divider" : {
 	height:2,

@@ -1,5 +1,8 @@
 <Alloy>
 	<View id="navBar">
+		<View id="backBtn" visiable ="false">
+			<ImageView id="backImg">
+		</View>
 		<Label text="User Profile" id="header" />
 		<View id="settings" >
 			<ImageView id="settingsImg">
