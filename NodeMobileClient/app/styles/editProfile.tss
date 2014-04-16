@@ -43,13 +43,15 @@
 	width: Ti.UI.FILL	
 },
 ".leftItem":{
+	top: 0,
 	left: 10,
 	textAlign: 'left'
 },
 ".rightItem":{
+	top: 0,
 	right: 10,
 	width: 150,
-	textAlign: 'right',
+	textAlign: 'left',
 	backgroundColor: '#f29135'	
 },
 ".separator":{
