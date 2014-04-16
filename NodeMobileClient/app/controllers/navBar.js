@@ -10,6 +10,13 @@ if(args.backBtn){
 if(args.title){
 	$.header.text = args.title;
 
+
+/**
+ * ************************************
+ * EVENT LISTENERS
+ * ************************************
+ */
+
 function closeEdit(){
 	
 }

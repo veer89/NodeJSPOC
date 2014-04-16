@@ -1,12 +1,9 @@
 <Alloy>
 	<View id="navBar">
-		<View id="backBtn" visiable ="false">
+		<View id="backBtn" visible ="false" onClick="closeEdit">
 			<ImageView id="backImg">
 		</View>
-		<Label text="User Profile" id="header" />
-		<View id="back" onClick="closeEdit" >
-			<ImageView id="backImg">
-		</View>
+		<Label text="User Profile" id="header" />		
 		<View id="settings" onClick="editProfile" >
 			<ImageView id="settingsImg">
 		</View>
