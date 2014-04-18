@@ -1,7 +1,11 @@
 
 var settings = {
 	loginCallback: null,
- 	createCallback: null
+ 	createCallback: null,
+ 	resetPwdCallback:null
+};
+$.forgotPwd = function() {
+  forgotPwd();
 };
 
 $.loginClick = function() {
@@ -42,10 +46,29 @@ function loginClick() {
 }
 
 
-
-
-
-
+function forgotPwd() {
+	var alertDialog = Ti.UI.createAlertDialog({
+		message :  'Are You sure. Want to Reset Password?',
+		buttonNames: ['Yes', 'No']
+	});
+	alertDialog.show(); 
+	alertDialog.addEventListener('click', function(e){
+    Ti.API.info('e.index: ' + e.index);
+    if(e.index==0) {
+    	if($.usernameTxt.value)
+    	{
+    		Ti.API.info('username ' + $.usernameTxt.value);
+    		settings.resetPwdCallback && settings.resetPwdCallback({
+	    	emailId: $.usernameTxt.value
+	    });
+    	}
+    	else{
+    		alert("Please enter valid user name");
+    	}
+    }
+  });
+  
+}
 
 
 function focusStyle(evt){
@@ -86,6 +109,7 @@ function moveLoginContainer(evt){
 
 $.init = function(params) {
 	settings.loginCallback = params.loginCallback;
+	settings.resetPwdCallback = params.resetPwdCallback;
 };
 
 $.open = function(){

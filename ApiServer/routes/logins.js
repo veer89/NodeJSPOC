@@ -24,7 +24,7 @@ var generateHash = function (objectId, password, msg, res, next) {
                     if (err)
                         return next(err);
                     if (doc)
-                        return res.json(helper.genarateResponse(200, doc, null, null));
+                        return res.json(helper.genarateResponse(200, msg ? msg: doc, null, null));
                     else
                         return res.json(helper.genarateResponse(400, null, null, 'unable to generate password'));
                 });

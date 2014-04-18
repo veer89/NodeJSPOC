@@ -132,6 +132,11 @@ var endPoints = {
 			"method_type" : "DELETE",
 			"end_point" : "/logout",
 			"format" : "json"
+		},
+		"resetPassword" :{
+			"method_type" : "POST",
+			"end_point" : "/resetPassword",
+			"format" : "json"
 		}
 	},
 	"address" : {

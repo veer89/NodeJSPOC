@@ -103,7 +103,7 @@ backgroundColor:"black"
 	backgroundImage:"/common/help-btn.png",
 	backgroundSelectedImage:"/common/help-btn-touch.png"
 },
-"#forgotLbl" : {
+"#forgotPwdLbl" : {
 	left:52,
 	color:"#999"
 },

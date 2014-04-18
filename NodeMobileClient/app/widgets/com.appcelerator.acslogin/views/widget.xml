@@ -14,7 +14,7 @@
 					<TextField class="acsLoginTxt" id="passwordTxt"/>
 					<View class="controlContainer">
 						<Button id="helpImg" />
-						<Label class="acsloginLbl" id="forgotLbl" class="acsloginLbl" >Forgot Password</Label>
+						<Label class="acsloginLbl" id="forgotPwdLbl" class="acsloginLbl" onClick="forgotPwd">Forgot Password</Label>
 						<View class="acsLoginBtn" id="loginBtn" onClick="loginClick">
 							<Label id="loginLbl">Login</Label>
 						</View>		
