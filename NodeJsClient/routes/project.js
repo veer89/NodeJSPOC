@@ -84,6 +84,46 @@ var project = {
 					projectData : projectData											
 				});
 			});
+		},
+		showUserProjects : function(req, res, next){
+			var empId = req.session.user_id;
+			var userData = req.session.userObj;
+			var projectList;
+			helper.sendRequest(endPoints.projects.query, null, null, null, function(result) {
+		    	var projectData;
+				if(result && result.meta){
+					if(result.meta.status == '200' && result.data){
+						projectList = result.data;
+					} 
+				} 
+				res.render('userProjects', { 
+					userData : userData,
+					projectList : projectList
+				});
+			});
+			
+		},
+		addUserToProject : function(req, res, next){
+			var empId = req.session.user_id;
+			var projId = req.body.projId;
+			var userData = req.session.userObj;
+			var data = {
+					projectId : projId
+			}
+			var projectList;
+			helper.sendRequest(endPoints.projects.addUserToProject, data, empId, null, function(result) {
+		    	var projectData;
+				if(result && result.meta){
+					if(result.meta.status == '200' && result.data){
+						projectList = result.data;
+					} 
+				} 
+				res.render('userProjects', { 
+					userData : userData,
+					projectList : projectList
+				});
+			});
+			
 		}
 			
 	}

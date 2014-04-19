@@ -15,6 +15,7 @@ module.exports = function(app){
 // declaring route's for project
     app.post('/projects/create', filter.keyFilter, routes.projects.addProject);
     app.get('/projects/query', filter.keyFilter, routes.projects.query);
+    app.get('/projects/queryByUserId/:id', filter.keyFilter, routes.projects.queryByUserId);
     app.post('/projects/addUser', filter.keyFilter, filter.userFilter, routes.projects.addUserToProject);
     app.post('/projects/addProject', filter.keyFilter,  routes.projects.addProject);
     app.put('/projects/update/:id', filter.keyFilter, routes.projects.update);

@@ -74,6 +74,18 @@ projectSchema.query = function (req, res, next) {
     });
 }
 
+projectSchema.queryByUserId = function (req, res, next) {
+	schema.projectModel.find({user_id: {$in: [req.params.id]}}, function (err, docs) {
+        if (err)
+            return next(err);
+        if(docs)
+        	res.json(helper.genarateResponse(200, docs, null, null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to query projects'));
+        	
+    });
+}
+
 projectSchema.update = function (req, res, next) {
 	schema.projectModel.findById(req.params.id, function (err, projectData) {
     		projectData.projectName = req.body.projectName,

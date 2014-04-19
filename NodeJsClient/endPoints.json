@@ -40,7 +40,7 @@
 		},
 		"addUserToProject" :{
 			"method_type" : "POST",
-			"end_point" : "/projects/addUserToProject"
+			"end_point" : "/projects/addUser"
 		},
 		"update" :{
 			"method_type" : "PUT",
@@ -53,6 +53,10 @@
 		"show" :{
 			"method_type" : "GET",
 			"end_point" : "/projects/show"
+		},
+		"queryByUserId" :{
+			"method_type" : "GET",
+			"end_point" : "/projects/queryByUserId"
 		}
 	},
 	"socials" : {

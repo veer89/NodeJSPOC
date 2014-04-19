@@ -8,3 +8,23 @@
 [2014-04-19 16:20:08.008] [DEBUG] server - Express server listening on port 8000
 [2014-04-19 16:20:53.375] [DEBUG] server - Express server listening on port 8000
 [2014-04-19 16:22:28.980] [DEBUG] server - Express server listening on port 8000
+[2014-04-19 18:23:47.823] [DEBUG] server - Express server listening on port 8000
+[2014-04-19 18:25:50.592] [DEBUG] server - 127.0.0.1 - - "GET /projects/showById/534bbd62449a251b09fb3d23?appKey=ac5028363f1a32eed640de5d23195b499cc3146d HTTP/1.1" 200 83 "" "Restler for node.js"
+[2014-04-19 18:25:50.592] [ERROR] server - Please specify correct path
+[2014-04-19 18:27:58.718] [DEBUG] server - 127.0.0.1 - - "GET /projects/showById/534bbd62449a251b09fb3d23?appKey=ac5028363f1a32eed640de5d23195b499cc3146d HTTP/1.1" 200 83 "" "Restler for node.js"
+[2014-04-19 18:27:58.719] [ERROR] server - Please specify correct path
+[2014-04-19 18:29:55.736] [DEBUG] server - 127.0.0.1 - - "GET /projects/showById/534bbd62449a251b09fb3d23?appKey=ac5028363f1a32eed640de5d23195b499cc3146d HTTP/1.1" 200 83 "" "Restler for node.js"
+[2014-04-19 18:29:55.748] [ERROR] server - Please specify correct path
+[2014-04-19 18:31:23.180] [DEBUG] server - 127.0.0.1 - - "GET /projects/showById/534bbd62449a251b09fb3d23?appKey=ac5028363f1a32eed640de5d23195b499cc3146d HTTP/1.1" 200 83 "" "Restler for node.js"
+[2014-04-19 18:31:23.181] [ERROR] server - Please specify correct path
+[2014-04-19 23:09:54.524] [DEBUG] server - Express server listening on port 8000
+[2014-04-19 23:25:19.836] [DEBUG] server - 127.0.0.1 - - "POST /projects/addUserToProject?appKey=ac5028363f1a32eed640de5d23195b499cc3146d&user_id=534bbd62449a251b09fb3d23 HTTP/1.1" 200 83 "" "Restler for node.js"
+[2014-04-19 23:25:19.841] [ERROR] server - Please specify correct path
+[2014-04-19 23:29:13.272] [DEBUG] server - 127.0.0.1 - - "POST /projects/addUserToProject?appKey=ac5028363f1a32eed640de5d23195b499cc3146d&user_id=534bbd62449a251b09fb3d23 HTTP/1.1" 200 83 "" "Restler for node.js"
+[2014-04-19 23:29:13.273] [ERROR] server - Please specify correct path
+[2014-04-19 23:29:25.213] [DEBUG] server - Express server listening on port 8000
+[2014-04-19 23:30:41.460] [DEBUG] server - 127.0.0.1 - - "POST /projects/addUserToProject?appKey=ac5028363f1a32eed640de5d23195b499cc3146d&user_id=534bbd62449a251b09fb3d23 HTTP/1.1" 200 83 "" "Restler for node.js"
+[2014-04-19 23:30:41.462] [ERROR] server - Please specify correct path
+[2014-04-19 23:37:36.521] [DEBUG] server - Express server listening on port 8000
+[2014-04-19 23:46:08.975] [DEBUG] server - Express server listening on port 8000
+[2014-04-19 23:46:51.973] [DEBUG] server - Express server listening on port 8000

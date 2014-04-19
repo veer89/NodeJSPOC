@@ -21,4 +21,7 @@ module.exports = function(app){
 	app.get('/addNewProject', routes.project.addProject);
 	app.post('/changeProject', routes.project.changeProject);
 	app.post('/editProject', routes.project.editProject);
+	
+	app.get('/showUserProjects', routes.project.showUserProjects);
+	app.post('/addUserToProject', routes.project.addUserToProject);
 };
