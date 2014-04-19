@@ -15,4 +15,10 @@ module.exports = function(app){
 	app.get('/addNewAddress', routes.address.addAddress);
 	app.post('/editAddress', routes.address.editAddress);
 	app.post('/changeAddress', routes.address.changeAddress);
+	
+	//project
+	app.get('/listProject',routes.project.listProject);
+	app.get('/addNewProject', routes.project.addProject);
+	app.post('/changeProject', routes.project.changeProject);
+	app.post('/editProject', routes.project.editProject);
 };

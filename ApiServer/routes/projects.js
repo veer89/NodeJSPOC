@@ -91,7 +91,7 @@ projectSchema.update = function (req, res, next) {
 }
 
 projectSchema.show = function (req, res, next) {
-	schema.projectModel.findOne({projectName : req.params.projectName}, function (err, docs) {
+	schema.projectModel.findById(req.params.id, function (err, docs) {
         if (err)
             return next(err);
         if(!docs){

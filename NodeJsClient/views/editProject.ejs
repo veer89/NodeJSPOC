@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NodeJsClient</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../stylesheets/style.css" rel="stylesheet">
+<link href="../assets/css/docs.css" rel="stylesheet">
+<script
+	src="../assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript"
+	src="../assets/js/jquery.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-button.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-modal.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-transition.js"></script>
+</head>
+<body>
+	
+	<div class="container">
+		<div class="marketing alignCenter">
+			<h1>NodeJsClient - Project </h1>
+			<div class="control-group alignCenter">
+			<form id="login-form" action="/changeProject" method="post">
+			<div class="control-group alignCenter">
+					<div class="control-group">
+						<input type="text" name="projectName" placeholder="Project Name" value="<%=projectData.projectName%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="text" name="projectLocation" placeholder="Project Location" value="<%=projectData.projectLocation%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="text" name="projectDuration" placeholder="Project Duration" value="<%=projectData.projectDuration%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="hidden" name="projId" value="<%=projectData.id%>"
+							class="input-xlarge" />
+					</div>
+				<a href="/profile" class="btn btn-success">Back to Profile</a>
+				<button class="btn btn-primary" type="submit">Submit</button>
+			</div>
+		</form>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
