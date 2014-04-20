@@ -88,18 +88,37 @@ var project = {
 		showUserProjects : function(req, res, next){
 			var empId = req.session.user_id;
 			var userData = req.session.userObj;
+			var userProjectList;
 			var projectList;
-			helper.sendRequest(endPoints.projects.query, null, null, null, function(result) {
-		    	var projectData;
-				if(result && result.meta){
-					if(result.meta.status == '200' && result.data){
-						projectList = result.data;
-					} 
-				} 
-				res.render('userProjects', { 
-					userData : userData,
-					projectList : projectList
-				});
+			
+			async.series([function(callback) {
+			    	helper.sendRequest(endPoints.projects.queryByUserId, null, null, [empId], function(result) {
+						if(result && result.meta){
+							if(result.meta.status == '200' && result.data){
+								userProjectList = result.data;
+							} 
+						}
+						callback(null, "retrieve projects")
+					});
+			    	},
+			    	function(callback) {
+				    	helper.sendRequest(endPoints.projects.query, null, null, null, function(result) {
+							if(result && result.meta){
+								if(result.meta.status == '200' && result.data){
+									projectList = result.data;
+								} 
+							} 
+							res.render('userProjects', { 
+								userData : userData,
+								projectList : projectList,
+								userProjectList : userProjectList
+							});
+							callback(null, "retrieve projects")
+						});
+				    	}
+			    
+			    ], function(err,results){
+				console.log(results);
 			});
 			
 		},
@@ -110,18 +129,48 @@ var project = {
 			var data = {
 					projectId : projId
 			}
+			var userProjectList;
 			var projectList;
-			helper.sendRequest(endPoints.projects.addUserToProject, data, empId, null, function(result) {
-		    	var projectData;
-				if(result && result.meta){
-					if(result.meta.status == '200' && result.data){
-						projectList = result.data;
+			async.series([function(callback) {
+				helper.sendRequest(endPoints.projects.addUserToProject, data, empId, null, function(result) {
+			    	var projectData;
+					if(result && result.meta){
+						if(result.meta.status == '200' && result.data){
+							projectList = result.data;
+						} 
 					} 
-				} 
-				res.render('userProjects', { 
-					userData : userData,
-					projectList : projectList
+					callback(null, "addUser");
 				});
+				
+			    },
+			    function(callback) {
+			    	helper.sendRequest(endPoints.projects.queryByUserId, null, null, [empId], function(result) {
+						if(result && result.meta){
+							if(result.meta.status == '200' && result.data){
+								userProjectList = result.data;
+							} 
+						}
+						callback(null, "retrieve user projects")
+					});
+			    	},
+			    	function(callback) {
+				    	helper.sendRequest(endPoints.projects.query, null, null, null, function(result) {
+							if(result && result.meta){
+								if(result.meta.status == '200' && result.data){
+									projectList = result.data;
+								} 
+							} 
+							res.render('userProjects', { 
+								userData : userData,
+								projectList : projectList,
+								userProjectList : userProjectList
+							});
+							callback(null, "retrieve all projects")
+						});
+				    	}
+			    
+			    ], function(err,results){
+				console.log(results);
 			});
 			
 		}

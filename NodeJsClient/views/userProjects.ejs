@@ -57,8 +57,8 @@
 				<div class="control-group">
 					Name : <%= userData.user.first_name%> <%= userData.user.last_name%><br/>
 					Existing Projects : <%
-					if(userData.projects && userData.projects.length > 0){ 
-					var projects = userData.projects; 
+					if(userProjectList && userProjectList.length > 0){ 
+					var projects = userProjectList; 
 					projects.forEach(function(el, index) { %> 
 					<%=el.projectName%>
 					 <% });} else {%> No Projects Found <% } %><br />
