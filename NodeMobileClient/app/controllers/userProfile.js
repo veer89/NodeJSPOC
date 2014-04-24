@@ -9,7 +9,7 @@ function init() {
 	// hit the get user profile API
 	// declared the parameters
 	var apiData = {
-		userId : params.userId ? params : "534e260908df30122e79c00a", //TODO: remove hard coded local value
+		userId : Alloy.Globals.user_id,
 		callback : {
 			successCallback : userSuccessCallback,
 			errorCallback : errorCallback

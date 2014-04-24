@@ -53,7 +53,8 @@ function resetPasswordSuccessCallback(response) {
  * @param {Object} response
  */
 function userSuccessCallback(response) {
-	console.log('success' + JSON.stringify(response));
+	console.log('success' + JSON.stringify(response) + response.data.user_id);
+	Alloy.Globals.user_id = response.data.user_id;
 	if (response.meta.status == '200') {
 		var userProfile = Alloy.createController('userProfile').getView();
 	    $.index.add(userProfile);

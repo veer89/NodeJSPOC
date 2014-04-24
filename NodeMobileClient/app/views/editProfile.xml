@@ -6,28 +6,79 @@
 				<ImageView id="profilePic" />
 			</View>
 			<View id="rightSection" >
-				<TextField id="name" class="rightItem" value="Test" top="30" />
-				<TextField id="designation" class="rightItem" value="Test Engineer" top="10"/>
-			</View>			
+				<TextField class="rightItem" id="name" top="5" />
+				<TextField class="rightItem" id="designation" top="5" />
+				<TextField class="rightItem" id="emailId" top="5" />
+				<TextField class="rightItem" id="phoneNumber" top="5" />
+			</View>
 		</View>
 		<View class="separator" left="0" right="0"/>
 		<ScrollView id="bottomSection">
+			<Label text="Address" class="leftItem" textAlign="center" width="90%"/>
 			<View class="subRow">
-				<Label id="empIdTitle" class="leftItem" text="Employee Id:"/>
-				<TextField id="empId" class="rightItem" value="134"/>
-			</View>		
+				<Label class="leftItem header" text="House Number:"/>
+				<TextField class="rightItem" id="house_number"/>
+			</View>
 			<View class="subRow">
-				<Label id="emailIdTitle" class="leftItem" text="Email Id:"/>
-				<TextField id="emailId" class="rightItem" value="test@gmail.com"/>
-			</View>	
+				<Label class="leftItem header" text="Street:"/>
+				<TextField class="rightItem" id="street"/>
+			</View>
 			<View class="subRow">
-				<Label id="phoneNumberTitle" class="leftItem" text="Phone Number:"/>
-				<TextField id="phoneNumber" class="rightItem" value="1133334"/>
-			</View>	
+				<Label class="leftItem header" text="City:"/>
+				<TextField class="rightItem" id="city"/>
+			</View>
 			<View class="subRow">
-				<Label id="addressTitle" class="leftItem" text="Address:"/>
-				<TextArea id="address" class="rightItem" height="60" value="Park Venue: 1, Noida"/>
-			</View>				
+				<Label class="leftItem header" text="State:"/>
+				<TextField class="rightItem" id="state"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="Country:"/>
+				<TextField class="rightItem" id="country"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="PIN Code:"/>
+				<TextField class="rightItem" id="pin"/>
+			</View>
+			<View class="subRow">
+				<Button class="updateBtn" id="btnAddress" />
+			</View>
+			<View class="separator"/>
+			
+			<Label text="Social Links" class="leftItem" textAlign="center" width="90%"/>
+			<View class="subRow">
+				<Label class="leftItem header" text="Twitter:"/>
+				<TextField class="rightItem" id="twitter"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="Facebook:"/>
+				<TextField class="rightItem" id="facebook"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="LinkedIn:"/>
+				<TextField class="rightItem" id="linkedIn"/>
+			</View>
+			<View class="subRow">
+				<Button class="updateBtn" id="btnSocial"  />
+			</View>
+			<View class="separator"/>
+			
+			<Label text="Project" class="leftItem" textAlign="center" width="90%"/>
+			<View class="subRow">
+				<Label class="leftItem header" text="Project Name:"/>
+				<TextField class="rightItem" id="projectName"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="Project Location:"/>
+				<TextField class="rightItem" id="projectLocation"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="Project Duration:"/>
+				<TextField class="rightItem" id="projectDuration"/>
+			</View>
+			<View class="subRow">
+				<Button class="updateBtn" id="btnProject" />
+			</View>
 		</ScrollView>
+		<View id="bottom" height="10"/>
 	</View>
 </Alloy>

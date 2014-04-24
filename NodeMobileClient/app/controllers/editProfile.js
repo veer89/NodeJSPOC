@@ -3,31 +3,20 @@ var params = arguments[0] || {}, apiClient = require('apiClient'), endPoints = r
 // if ios7, set top as 20
 if (Alloy.Globals.iOS7) {
 	$.wrapper.top = 20;
+	$.bottom.height = 30;
 }
 
 function init() {
 	// hit the get user profile API
-
 	// declared the parameters
 	var apiData = {
-		userId : params.userId ? params : "5348d3098337140000bbc0df", //TODO: remove hard coded local value
+		userId : Alloy.Globals.user_id, //TODO: remove hard coded local value
 		callback : {
 			successCallback : userSuccessCallback,
 			errorCallback : errorCallback
 		}
 	};
-	//apiClient.sendRequest(endPoints.users.show, null, null, [apiData.userId], apiData.callback);
-
-	// declared the parameters
-	var apiAddressData = {
-		userId : params.userId ? params : "5348d3098337140000bbc0df", //TODO: remove hard coded local value
-		callback : {
-			successCallback : addressSuccessCallback,
-			errorCallback : errorCallback
-		}
-	};
-	//apiClient.sendRequest(endPoints.address.showByEmpId, null, null, [apiData.userId], apiAddressData.callback);
-
+	apiClient.sendRequest(endPoints.users.showDetails, null, null, [apiData.userId], apiData.callback);
 };
 
 /**
@@ -35,31 +24,31 @@ function init() {
  * @param {Object} data
  */
 function setUserData(data) {
-	$.profilePic.image = (data && data.img && data.img.data) ? data.img.data : '/images/defaultProfile.png';
-	//check image property later
-	$.name.text = data && data.first_name ? data.first_name + ' ' + (data.last_name ? data.last_name : '' ) : 'NA';
-	$.designation.text = data && data.designation ? data.designation : 'NA';
-	$.empId.text = data && data.empId ? data.empId : 'NA';
-	$.emailId.text = data && data.emailId ? data.emailId : 'NA';
-	$.phoneNumber.text = data && data.phone_number ? data.phone_number : 'NA';
-};
-
-/**
- * Success Function on get address API
- * @param {Object} response
- */
-function addressSuccessCallback(response) {
-	console.log('success' + JSON.stringify(response));
-	if (response.meta.status == '200') {
-		var data = response.data;
-		var address = data.street ? data.street + ' ' + (data.city ? data.city : '' + ' ' + (data.pin ? data.pin : '' + ' ' + (data.country ? data.country : ''))) : 'NA';
-		$.address.text = address;
-	} else {
-		errorCallback({
-			message : "No data found for this user"
-		});
+	$.profilePic.image = (data && data.picture && data.picture.imgUrl) ? data.picture.imgUrl : '/images/defaultProfile.png';
+	if(data && data.user){
+		$.name.value = data.user.first_name ? data.user.first_name + ' ' + (data.user.last_name ? data.user.last_name : '' ) : '';
+		$.designation.value = data.user.designation ? data.user.designation : '';
+		$.emailId.value = data.user.emailId ? data.user.emailId : '';
+		$.phoneNumber.value = data.user.phone_number ? data.user.phone_number : '';
 	}
-
+	if(data && data.address){
+		$.house_number.value = data.address.house_number ? data.address.house_number: '';
+		$.street.value = data.address.street ? data.address.street : '';
+		$.city.value = data.address.city ? data.address.city : '';
+		$.state.value = data.address.state ? data.address.state : '';
+		$.country.value = data.address.country ? data.address.country : '';
+		$.pin.value = data.address.pin ? data.address.pin : '';
+	}
+	if(data && data.social){
+		$.twitter.value = data.social.twitter ? data.social.twitter : '';
+		$.facebook.value = data.social.facebook ? data.social.facebook : '';
+		$.linkedIn.value = data.social.linkedIn ? data.social.linkedIn : '';
+	}
+	if(data && data.projects){
+		$.projectName.value = data.projects.projectName ? data.projects.projectName : '';
+		$.projectLocation.value = data.projects.projectLocation ? data.projects.projectLocation : '';
+		$.projectDuration.value = data.projects.projectDuration ? data.projects.projectDuration : '';
+	}
 };
 
 /**

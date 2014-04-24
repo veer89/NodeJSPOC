@@ -30,7 +30,7 @@
 				<View class="separator"/>
 			</View>	
 			<View class="subRow">
-				<Label id="addressTitle2" class="leftItem" text="Address 1:"/>
+				<Label id="addressTitle1" class="leftItem" text="Address 1:"/>
 				<Label id="address1" text="NA" class="rightItem" />
 				<View class="separator"/>
 			</View>	

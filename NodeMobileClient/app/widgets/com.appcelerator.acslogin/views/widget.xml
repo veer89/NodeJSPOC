@@ -2,9 +2,7 @@
 	<View id="acsloginMain">
 		<View id="loginContainer">
 			<View id="titleContainer">
-				<View id="header">
-					<Label id="headerTitle" text="NodeJS Demo"/>
-				</View>
+				<ImageView id="header"/>
 				<View id="divider"/>
 				<Label class="acsloginMsg" id="msgLbl"/>
 			</View>
@@ -20,8 +18,6 @@
 						</View>		
 					</View>
 				</View>
-				
-				
 			</View>
 		</View>
 	</View>

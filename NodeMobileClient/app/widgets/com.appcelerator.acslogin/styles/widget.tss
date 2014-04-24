@@ -71,9 +71,9 @@ backgroundColor:"black"
 
 "#header" : {
 	height:150,
-	width:319,
+	//width:272,
 	top:0,
-	//backgroundImage:"/common/header.png"
+	image:"/images/header.png"
 },
 "#headerTitle":{
 	height:Ti.UI.SIZE,
