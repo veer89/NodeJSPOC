@@ -120,7 +120,7 @@ function errorCallback(event) {
  */
 function openProjectDetails(_event){	
 	if(_event.source.rowData){
-		var detailWin = Alloy.createController('addressDetails', { projectData: _event.source.rowData}).getView();		
+		var detailWin = Alloy.createController('projectDetails', { projectData: _event.source.rowData}).getView();		
 		detailWin.open();
 	}
 };

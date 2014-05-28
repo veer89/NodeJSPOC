@@ -7,7 +7,7 @@ if (Alloy.Globals.iOS7) {
 
 function init(){
 	for(var i=0, length = params.projectData.length; i< length; i++){
-		var addressTemplate = Alloy.createController('addressTemplate', { projectInfo : params.projectData[i]}).getView();
+		var addressTemplate = Alloy.createController('projectTemplate', { projectInfo : params.projectData[i]}).getView();
 		$.container.add(addressTemplate);
 	}
 };
