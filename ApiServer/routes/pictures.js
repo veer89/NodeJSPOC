@@ -4,6 +4,7 @@ var schema = require('../schema/exports.js'),
 
 var pictureSchema = {};
 pictureSchema.add = function (req, res, next) {
+	console.log(req.body.name);
 	var uniqueId = mongoose.Types.ObjectId();
 	var imgUrl = req.protocol + "://" + req.headers.host + "/pictures/show/" + uniqueId + "?appKey=" + _APPKEY;
     var picture = new schema.pictureModel({
@@ -11,7 +12,7 @@ pictureSchema.add = function (req, res, next) {
     	img_url: imgUrl,
         user_id: req.query.user_id,
         name: req.body.name,
-        img: { data: require('fs').readFileSync(req.files.photo.path),
+        img: { data: require('fs').readFileSync(req.body.path),
             contentType: 'image/png'
         }
     });
@@ -46,7 +47,7 @@ pictureSchema.show = function (req, res, next) {
 };
 
 pictureSchema.query = function (req, res, next) {
-    schema.pictureModel.findById(req.params.id, function (err, docs) {
+    schema.pictureModel.findOne({user_id:req.params.id}, function (err, docs) {
         if (err)
             return next(err);
         if(docs){
@@ -61,7 +62,7 @@ pictureSchema.update = function (req, res, next) {
     schema.pictureModel.findById(req.params.id, function (picErr, userPic) {
         if (picErr)
             return next(picErr);
-        userPic.img.data = require('fs').readFileSync(req.files.photo.path);
+        userPic.img.data = require('fs').readFileSync(req.body.path);
         userPic.name = req.body.name;
         userPic.save(function (err, doc) {
             if (err)
