@@ -1,4 +1,5 @@
-var schema = require('../schema/exports.js');
+var schema = require('../schema/exports.js'),
+helper = require('../public/utils/helper.js');
 var projectSchema = {};
 
 projectSchema.addProject = function (req, res, next) {
@@ -73,6 +74,18 @@ projectSchema.query = function (req, res, next) {
     });
 }
 
+projectSchema.queryByUserId = function (req, res, next) {
+	schema.projectModel.find({user_id: {$in: [req.params.id]}}, function (err, docs) {
+        if (err)
+            return next(err);
+        if(docs)
+        	res.json(helper.genarateResponse(200, docs, null, null));
+        else
+        	res.json(helper.genarateResponse(400, null, null, 'unable to query projects'));
+        	
+    });
+}
+
 projectSchema.update = function (req, res, next) {
 	schema.projectModel.findById(req.params.id, function (err, projectData) {
     		projectData.projectName = req.body.projectName,
@@ -90,7 +103,7 @@ projectSchema.update = function (req, res, next) {
 }
 
 projectSchema.show = function (req, res, next) {
-	schema.projectModel.findOne({projectName : req.params.projectName}, function (err, docs) {
+	schema.projectModel.findById(req.params.id, function (err, docs) {
         if (err)
             return next(err);
         if(!docs){

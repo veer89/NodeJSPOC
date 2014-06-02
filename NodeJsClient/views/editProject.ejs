@@ -39,21 +39,33 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="container">
 		<div class="marketing alignCenter">
-			<h1>NodeJsClient - Address</h1>
+			<h1>NodeJsClient - Add/Edit Project </h1>
 			<div class="control-group alignCenter">
-				<%if(addressData && addressData.length > 0){ 
-					var	addresses = addressData; 
-					addresses.forEach(function(el, index) { %> 
-					<div class="list-group-item" style="width:30%;margin-left:35%"><bold>Street :</bold><%=el.street%><br/> <bold>City : </bold><%=el.city%> <br/> <bold>Country : </bold><%=el.country%><br/> <bold>Pin/Zip Code : </bold><%=el.pin%>  <form action="/editAddress" method="post"> <input type="hidden" value="<%=el._id%>" name="addrId"/> <button type="submit"> Edit </button></form></div></br>
-					<% });}	else {%> <div class="list-group-item" style="width:30%;margin-left:35%"> No Data Found </div> <% } %>
-			</div>
-			<div>
+			<form id="login-form" action="/changeProject" method="post">
+			<div class="control-group alignCenter">
+					<div class="control-group">
+						<input type="text" name="projectName" placeholder="Project Name" value="<%=projectData.projectName%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="text" name="projectLocation" placeholder="Project Location" value="<%=projectData.projectLocation%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="text" name="projectDuration" placeholder="Project Duration" value="<%=projectData.projectDuration%>"
+							class="input-xlarge" />
+					</div>
+					<div class="control-group">
+						<input type="hidden" name="projId" value="<%=projectData.id%>"
+							class="input-xlarge" />
+					</div>
 				<a href="/profile" class="btn btn-success">Back to Profile</a>
-				<a href="/addNewAddress" class="btn btn-primary">Add New Address</a>
+				<button class="btn btn-primary" type="submit">Submit</button>
 			</div>
+		</form>
+		</div>
 		</div>
 	</div>
 </body>

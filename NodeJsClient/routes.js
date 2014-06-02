@@ -1,15 +1,28 @@
 var routes = require('./routes/exports');
 
 module.exports = function(app){
+	//index
 	app.get('/', routes.index.getIndex);	
 	app.post('/signup', routes.index.signup);
 	app.get('/profile', routes.index.getProfilePage);
 	app.post('/login', routes.index.signin);
-	
+	//user
 	app.get('/settings', routes.user.editProfile);
-	app.get('/listAddress', routes.user.listAddress);
-	app.get('/addNewAddress', routes.user.addAddress);
-	app.post('/editAddress', routes.user.editAddress);
-	app.post('/changeAddress', routes.user.changeAddress);
 	app.post('/uploadImage', routes.user.uploadImage);
+	
+	//address
+	app.get('/listAddress', routes.address.listAddress);
+	app.get('/addNewAddress', routes.address.addAddress);
+	app.post('/editAddress', routes.address.editAddress);
+	app.post('/changeAddress', routes.address.changeAddress);
+	
+	//project
+	app.get('/listProject',routes.project.listProject);
+	app.get('/addNewProject', routes.project.addProject);
+	app.post('/changeProject', routes.project.changeProject);
+	app.post('/editProject', routes.project.editProject);
+	
+	app.get('/showUserProjects', routes.project.showUserProjects);
+	app.post('/addUserToProject', routes.project.addUserToProject);
+	app.post('/addUserToNewProject', routes.project.addUserToNewProject);
 };

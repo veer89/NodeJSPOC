@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NodeJsClient</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../stylesheets/style.css" rel="stylesheet">
+<link href="../assets/css/docs.css" rel="stylesheet">
+<script src="../assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap-button.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap-modal.js"></script>
+<script type="text/javascript"
+	src="../assets/js/bootstrap-transition.js"></script>
+</head>
+<body>
+
+	<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/profile">Home</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li class="active"><a href="/settings" class="pull-right">
+							Settings</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="container">
+
+
+
+
+
+
+
+
+		<h3>Profile Page</h3>
+		<div class="row">
+
+
+
+
+			<div class="col-lg-6">
+				<div class="control-group">
+					Name : <%= userData.user.first_name%> <%= userData.user.last_name%><br />
+					Existing Projects : <% if(userProjectList && userProjectList.length
+					> 0){ var projects = userProjectList; projects.forEach(function(el,
+					index) { %> <%=el.projectName%> <% });} else {%> No Projects Found
+					<% } %><br />
+					<table>
+						<tr>
+							<td style="vertical-align:top; padding-top : 5px;">Add to Project : <select name="project" id="project">
+									<option value="">No Project Selected</option> <%if(projectList
+									&& projectList.length > 0){ projectList.forEach(function(el,
+									index) { %>
+									<option value="<%=el._id%>"><%=el.projectName%></option> <%
+									});}%>
+									<option value="new">Create New</option>
+
+							</select>
+							</td>
+							<td style="padding-top : 5px; padding-left:10px;">
+								<div id="submitBtn" class="hideDiv">
+									<form action="/addUserToProject" method="post">
+										<input type="hidden" id="projId" name="projId" />
+										<button class="btn btn-primary" type="submit"
+											style="width: 40px; font-size: 12px;height:27px;">Add</button>
+									</form>
+								</div>
+							</td>
+							<td style="padding-top : 5px; padding-left:10px;">
+								<div id="addProjDiv" class="hideDiv text-center">
+									<div class="control-group">
+										<form id="login-form" action="/addUserToNewProject"
+											method="post">
+											<div class="control-group">
+												<div class="control-group">
+													<input type="text" name="projectName"
+														placeholder="Project Name" class="input-xlarge" />
+												</div>
+												<div class="control-group">
+													<input type="text" name="projectLocation"
+														placeholder="Project Location" class="input-xlarge" />
+												</div>
+												<div class="control-group">
+													<input type="text" name="projectDuration"
+														placeholder="Project Duration" class="input-xlarge" />
+												</div>
+												<div class="control-group">
+													<input type="hidden" name="projId" value="new"
+														class="input-xlarge" />
+												</div>
+												<button class="btn btn-primary" type="submit"
+											style="width: 40px; font-size: 12px;height:27px;margin-top:5px;">Add</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+					</table>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					$("select#project").change(
+							function() {
+								var currentVal = $(this).val();
+								if (currentVal) {
+									if (currentVal == "new") {
+										$("div#addProjDiv").removeClass(
+												'hideDiv').addClass('showDiv');
+										$("div#submitBtn").removeClass(
+												'showDiv').addClass('hideDiv');
+									} else {
+										$("[id$=projId]").val(currentVal);
+										$("div#submitBtn").removeClass(
+												'hideDiv').addClass('showDiv');
+										$("div#addProjDiv").removeClass(
+												'showDiv').addClass('hideDiv');
+									}
+								} else {
+									$("[id$=projId]").val('');
+									$("div#submitBtn").removeClass('showDiv')
+											.addClass('hideDiv');
+									$("div#addProjDiv").removeClass('showDiv')
+											.addClass('hideDiv');
+								}
+							});
+				});
+	</script>
+</body>
+</html>

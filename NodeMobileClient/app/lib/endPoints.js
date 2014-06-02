@@ -15,6 +15,11 @@ var endPoints = {
 			"end_point" : "/users/show",
 			"format" : "json"
 		},
+		"showDetails":{
+			"method_type" : "GET",
+			"end_point" : "/users/showDetails",
+			"format" : "json"
+		},
 		"query" :{
 			"method_type" : "GET",
 			"end_point" : "/users/query",
@@ -126,6 +131,11 @@ var endPoints = {
 		"logout" :{
 			"method_type" : "DELETE",
 			"end_point" : "/logout",
+			"format" : "json"
+		},
+		"resetPassword" :{
+			"method_type" : "POST",
+			"end_point" : "/resetPassword",
 			"format" : "json"
 		}
 	},

@@ -1,37 +1,44 @@
 <Alloy>
 	<View id="wrapper">
-		<Require id="navBar" src="navBar"/>
+		<Require id="navBar" src="navBar" backBtn="false" settings="true"/>
 		<View id="topSection">
 			<View id="leftSection" >
 				<ImageView id="profilePic" />
 			</View>
 			<View id="rightSection" >
-				<Label id="name" text="Test" left="10" top="30" />
-				<Label id="designation" text="Test Engineer" left="10"/>
+				<Label id="name" left="10" top="25" />
+				<Label id="designation" left="10"/>
+				<Label id="project" left="10" onSingletap="openProjectDetails"/>
+				
 			</View>			
 		</View>
 		<View class="separator" left="0" right="0"/>
 		<ScrollView id="bottomSection">
 			<View class="subRow">
 				<Label id="empIdTitle" class="leftItem" text="Employee Id:"/>
-				<Label id="empId" class="rightItem" text="134"/>
+				<Label id="empId" class="rightItem"/>
 				<View class="separator"/>
 			</View>		
 			<View class="subRow">
 				<Label id="emailIdTitle" class="leftItem" text="Email Id:"/>
-				<Label id="emailId" class="rightItem" text="test@gmail.com"/>
+				<Label id="emailId" class="rightItem" />
 				<View class="separator"/>
 			</View>	
 			<View class="subRow">
 				<Label id="phoneNumberTitle" class="leftItem" text="Phone Number:"/>
-				<Label id="phoneNumber" class="rightItem" text="1133334"/>
+				<Label id="phoneNumber" class="rightItem"/>
 				<View class="separator"/>
 			</View>	
 			<View class="subRow">
-				<Label id="addressTitle" class="leftItem" text="Address:"/>
-				<Label id="address" class="rightItem" text="Park Venue: 1, Noida"/>
+				<Label id="addressTitle1" class="leftItem" text="Address 1:"/>
+				<Label id="address1" text="NA" class="rightItem" />
 				<View class="separator"/>
-			</View>				
+			</View>	
+			<View class="subRow">
+				<Label id="addressTitle2" class="leftItem" text="Address 2:"/>
+				<Label id="address2" text="NA" class="rightItem" />
+				<View class="separator"/>
+			</View>			
 		</ScrollView>
 	</View>
 </Alloy>

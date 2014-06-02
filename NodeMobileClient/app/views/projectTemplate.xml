@@ -1,0 +1,17 @@
+<Alloy>
+	<View id="addressWrapper">
+		<View id="header">
+			<Label id="projectName" />
+		</View>
+		<View class="subRow">
+				<Label class="leftItem" text="On Team Since:"/>
+				<Label id="duration" class="rightItem" />
+				<View class="separator"/>
+		</View>	
+		<View class="subRow">
+				<Label class="leftItem" text="Location:"/>
+				<Label id="location" class="rightItem" />
+				<View class="separator"/>
+		</View>	
+	</View>
+</Alloy>

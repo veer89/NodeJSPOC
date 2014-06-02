@@ -71,9 +71,14 @@ backgroundColor:"black"
 
 "#header" : {
 	height:150,
-	width:319,
+	//width:272,
 	top:0,
-	backgroundImage:"/common/header.png"
+	image:"/images/header.png"
+},
+"#headerTitle":{
+	height:Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	color: 'black'
 },
 "#divider" : {
 	height:2,
@@ -98,7 +103,7 @@ backgroundColor:"black"
 	backgroundImage:"/common/help-btn.png",
 	backgroundSelectedImage:"/common/help-btn-touch.png"
 },
-"#forgotLbl" : {
+"#forgotPwdLbl" : {
 	left:52,
 	color:"#999"
 },

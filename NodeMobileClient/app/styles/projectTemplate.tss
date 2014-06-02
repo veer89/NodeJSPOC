@@ -1,0 +1,42 @@
+"#addressWrapper":{
+	height: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
+	top: 0,
+	layout: 'vertical',
+	touchEnabled: false		
+},
+"#header":{
+	height: 45,
+	width: Ti.UI.FILL,
+	backgroundColor: 'gray'
+},
+"Label":{
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	color: '#ffffff'
+},
+"#projectName":{	
+	left: 10	
+},
+".subRow":{
+	top:0,
+	height: 45,
+	width: Ti.UI.FILL	
+},
+".leftItem":{
+	left: 10,
+	textAlign: 'left'
+},
+".rightItem":{
+	right: 10,
+	width: 150,
+	textAlign: 'right'	
+},
+".separator":{
+	height: 1,
+	width: Ti.UI.FILL,
+	left:10,
+	right:10,
+	backgroundColor: '#ffe1b5',
+	bottom: 0	
+}
