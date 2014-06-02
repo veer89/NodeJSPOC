@@ -24,6 +24,18 @@ var filter = {
 	        }
 	        next();
 	    });
+	},
+	addressFilter: function(req, res, next){
+		 // maximum two address allowed
+        schema.addressModel.find({user_id: req.query.user_id}, function (err, docs) {
+        	console.log(docs)
+            if (err)
+                return next(err);
+            if (docs.length > 1)
+            	return res.json(helper.genarateResponse(400, null, null, 'User can ony have two address'));
+            next();
+        });
+		
 	}
 }
 module.exports = filter;

@@ -41,7 +41,7 @@ module.exports = function(app){
     app.post('logout', filter.keyFilter, routes.logins.logout);
 
 // declaring routes for address
-    app.post('/address/create', filter.keyFilter, filter.userFilter,  routes.address.add);
+    app.post('/address/create', filter.keyFilter, filter.userFilter,  filter.addressFilter, routes.address.add);
     app.get('/address/show/:id', filter.keyFilter, routes.address.show);
     app.get('/address/query', filter.keyFilter, routes.address.query);
     app.put('/address/update/:id', filter.keyFilter, filter.userFilter, routes.address.update);
