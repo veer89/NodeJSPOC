@@ -1,6 +1,11 @@
-"#wrapper" : {
+"#container" : {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL  
+},
+"#container" : {
   width: Ti.UI.FILL,
   height: Ti.UI.FILL,
+  top:0,
   layout: 'vertical',  
   backgroundColor: 'black'  
 },
@@ -59,4 +64,21 @@
 	right:10,
 	backgroundColor: '#ffe1b5',
 	bottom: 0	
+},
+"#menu":{
+	top: 45,
+	right: 0,
+	height: 100,
+	width: 100,
+	backgroundColor: 'black',
+	borderColor: 'white',
+	layout: 'vertical',
+	visible: false
+},
+".menuItem":{
+	width: Ti.UI.FILL,
+	height: 45	
+},
+".menuText":{
+	touchEnabled: false
 }

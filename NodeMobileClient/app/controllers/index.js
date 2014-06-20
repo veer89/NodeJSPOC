@@ -15,6 +15,7 @@ Alloy.Globals.Login.init({
 $.index.add(Alloy.Globals.Login.getView());
 
 function initHome(userData){
+	Alloy.Globals.Login.hideActivityIndicator();
 	var loginData = {
 		emailId : userData.username,
 		password : userData.password

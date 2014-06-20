@@ -4,6 +4,10 @@ var settings = {
  	createCallback: null,
  	resetPwdCallback:null
 };
+
+var actInd;
+var actIndParent;
+
 $.forgotPwd = function() {
   forgotPwd();
 };
@@ -34,17 +38,31 @@ function loginClick() {
 		$.usernameTxt.blur();
 	    $.passwordTxt.blur();
 	    $.loginLbl.text = "";
-	    var actInd = activityIndicator();
-	    $.loginBtn.add(actInd);
-	    actInd.show();
+	   if (!actInd) {
+			actInd = activityIndicator();
+		}
+
+		$.loginBtn.add(actInd);
+		actIndParent = 'loginBtn';
+		actInd.show();		
+	   
 	    settings.loginCallback && settings.loginCallback({
 	    	username: $.usernameTxt.value,
 	    	password: $.passwordTxt.value
 	    });
+	}else {
+		alert("Please provide your credentials.");
 	}
   
 }
 
+//Hide the activity indicator placed on the login button.
+$.hideActivityIndicator = function(){
+   if(actInd != null){				
+   		$[actIndParent].remove(actInd);
+   		$.loginLbl.text = "Login";
+   } 
+};
 
 function forgotPwd() {
 	var alertDialog = Ti.UI.createAlertDialog({

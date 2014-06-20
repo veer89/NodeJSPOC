@@ -1,5 +1,6 @@
 <Alloy>
 	<View id="wrapper">
+	<View id="container">
 		<Require id="navBar" src="navBar" backBtn="false" settings="true"/>
 		<View id="topSection">
 			<View id="leftSection" >
@@ -40,5 +41,15 @@
 				<View class="separator"/>
 			</View>			
 		</ScrollView>
+	</View>
+	<View id="menu" onSingletap="OpenMenu">
+		<View class="menuItem" top="5" id="editProfile">
+			<Label text="Edit Profile" class="menuText" />
+		</View>
+		<View class="separator" left="0" right="0"/>
+		<View class="menuItem" id="logout">
+			<Label text="Logout" class="menuText"/>
+		</View>
+	</View>
 	</View>
 </Alloy>

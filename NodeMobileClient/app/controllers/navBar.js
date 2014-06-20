@@ -19,7 +19,4 @@ function closeEdit(){
 	Alloy.Globals.mainWindow.remove(Alloy.Globals.mainWindow.children[Alloy.Globals.mainWindow.children.length-1]);
 }
 
-function editProfile(){
-	var editProfile = Alloy.createController('editProfile').getView();
-	Alloy.Globals.mainWindow.add(editProfile);
-}
+

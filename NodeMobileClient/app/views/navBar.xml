@@ -4,7 +4,7 @@
 			<ImageView id="backImg">
 		</View>
 		<Label text="User Profile" id="header" />		
-		<View id="settings" onClick="editProfile" >
+		<View id="settings" >
 			<ImageView id="settingsImg">
 		</View>
 		

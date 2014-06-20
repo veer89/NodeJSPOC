@@ -1,4 +1,4 @@
-var params = arguments[0] || {}, apiClient = require('apiClient'), endPoints = require('endPoints');
+var params = arguments[0] || {}, apiClient = require('apiClient'), endPoints = require('endPoints'), isMenuOpen = false;
 
 // if ios7, set top as 20
 if (Alloy.Globals.iOS7) {
@@ -124,6 +124,38 @@ function openProjectDetails(_event){
 		detailWin.open();
 	}
 };
+
+/**
+ * Function to navigate to edit profile screen
+ */
+function editProfile(){
+	var editProfile = Alloy.createController('editProfile').getView();
+	Alloy.Globals.mainWindow.add(editProfile);
+}
+
+/**
+ * Event listener to open menu items from settings btn
+ */
+function OpenMenu(_event){
+	if(_event.source.id === 'editProfile'){
+		editProfile();
+	}else if(_event.source.id === 'logout'){		
+		Alloy.Globals.mainWindow.remove(Alloy.Globals.mainWindow.children[Alloy.Globals.mainWindow.children.length-1]);		
+	}
+};
+
+/**
+ * Event listener of setting button click
+ */
+$.navBar.settings.addEventListener('singletap', function(){
+	if(!isMenuOpen){
+		$.menu.visible=  true;
+		isMenuOpen = true;
+	}else{
+		$.menu.visible=  false;
+		isMenuOpen = false;
+	}
+});
 
 // initial logic
 init();
