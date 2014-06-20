@@ -14,33 +14,63 @@
 		</View>
 		<View class="separator" left="0" right="0"/>
 		<ScrollView id="bottomSection">
-			<Label text="Address" class="leftItem" textAlign="center" width="90%"/>
+			<Label text="Permanent Address" class="leftItem" textAlign="center" width="90%"/>
 			<View class="subRow">
 				<Label class="leftItem header" text="House Number:"/>
-				<TextField class="rightItem" id="house_number"/>
+				<TextField class="rightItem" id="house_number1"/>
 			</View>
 			<View class="subRow">
 				<Label class="leftItem header" text="Street:"/>
-				<TextField class="rightItem" id="street"/>
+				<TextField class="rightItem" id="street1"/>
 			</View>
 			<View class="subRow">
 				<Label class="leftItem header" text="City:"/>
-				<TextField class="rightItem" id="city"/>
+				<TextField class="rightItem" id="city1"/>
 			</View>
 			<View class="subRow">
 				<Label class="leftItem header" text="State:"/>
-				<TextField class="rightItem" id="state"/>
+				<TextField class="rightItem" id="state1"/>
 			</View>
 			<View class="subRow">
 				<Label class="leftItem header" text="Country:"/>
-				<TextField class="rightItem" id="country"/>
+				<TextField class="rightItem" id="country1"/>
 			</View>
 			<View class="subRow">
 				<Label class="leftItem header" text="PIN Code:"/>
-				<TextField class="rightItem" id="pin"/>
+				<TextField class="rightItem" id="pin1"/>
 			</View>
 			<View class="subRow">
-				<Button class="updateBtn" id="btnAddress" />
+				<Button class="updateBtn" id="btnAddress1" onClick="updatePermanentAddress"/>
+			</View>
+			<View class="separator"/>
+			
+			<Label text="Temporary Address" class="leftItem" textAlign="center" width="90%"/>
+			<View class="subRow">
+				<Label class="leftItem header" text="House Number:"/>
+				<TextField class="rightItem" id="house_number2"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="Street:"/>
+				<TextField class="rightItem" id="street2"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="City:"/>
+				<TextField class="rightItem" id="city2"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="State:"/>
+				<TextField class="rightItem" id="state2"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="Country:"/>
+				<TextField class="rightItem" id="country2"/>
+			</View>
+			<View class="subRow">
+				<Label class="leftItem header" text="PIN Code:"/>
+				<TextField class="rightItem" id="pin2"/>
+			</View>
+			<View class="subRow">
+				<Button class="updateBtn" id="btnAddress2" onClick="updateTemporaryAddress"/>
 			</View>
 			<View class="separator"/>
 			
@@ -58,7 +88,7 @@
 				<TextField class="rightItem" id="linkedIn"/>
 			</View>
 			<View class="subRow">
-				<Button class="updateBtn" id="btnSocial"  />
+				<Button class="updateBtn" id="btnSocial" onClick="updateSocialLinks" />
 			</View>
 			<View class="separator"/>
 			
@@ -76,7 +106,7 @@
 				<TextField class="rightItem" id="projectDuration"/>
 			</View>
 			<View class="subRow">
-				<Button class="updateBtn" id="btnProject" />
+				<Button class="updateBtn" id="btnProject" onClick="updateProjects" />
 			</View>
 		</ScrollView>
 		<View id="bottom" height="10"/>

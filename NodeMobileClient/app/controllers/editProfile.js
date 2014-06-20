@@ -10,7 +10,7 @@ function init() {
 	// hit the get user profile API
 	// declared the parameters
 	var apiData = {
-		userId : Alloy.Globals.user_id, //TODO: remove hard coded local value
+		userId : Alloy.Globals.user_id,
 		callback : {
 			successCallback : userSuccessCallback,
 			errorCallback : errorCallback
@@ -31,14 +31,8 @@ function setUserData(data) {
 		$.emailId.value = data.user.emailId ? data.user.emailId : '';
 		$.phoneNumber.value = data.user.phone_number ? data.user.phone_number : '';
 	}
-	if(data && data.address){
-		$.house_number.value = data.address.house_number ? data.address.house_number: '';
-		$.street.value = data.address.street ? data.address.street : '';
-		$.city.value = data.address.city ? data.address.city : '';
-		$.state.value = data.address.state ? data.address.state : '';
-		$.country.value = data.address.country ? data.address.country : '';
-		$.pin.value = data.address.pin ? data.address.pin : '';
-	}
+	var addressResult = data.address ? data.address : null;
+	setAddressData(addressResult);
 	if(data && data.social){
 		$.twitter.value = data.social.twitter ? data.social.twitter : '';
 		$.facebook.value = data.social.facebook ? data.social.facebook : '';
@@ -48,6 +42,24 @@ function setUserData(data) {
 		$.projectName.value = data.projects.projectName ? data.projects.projectName : '';
 		$.projectLocation.value = data.projects.projectLocation ? data.projects.projectLocation : '';
 		$.projectDuration.value = data.projects.projectDuration ? data.projects.projectDuration : '';
+	}
+};
+
+/**
+ * Function to set Address Details
+ */
+function setAddressData(addressResult) {
+	console.log(" address data " + JSON.stringify(addressResult));
+	if (addressResult) {
+		for (var i = 0, length = addressResult.length; i < length; i++) {
+			var addressData = addressResult[i];
+			$["house_number" + (i + 1)].value = addressData.house_number ? addressData.house_number: '';
+			$["street" + (i + 1)].value = addressData.street ? addressData.street : '';
+			$["city" + (i + 1)].value = addressData.city ? addressData.city : '';
+			$["state" + (i + 1)].value = addressData.state ? addressData.state : '';
+			$["country" + (i + 1)].value = addressData.country ? addressData.country : '';
+			$["pin" + (i + 1)].value = addressData.pin ? addressData.pin : '';
+		}
 	}
 };
 
@@ -80,6 +92,100 @@ function errorCallback(event) {
 	});
 	alertDialog.show();
 };
+
+/**
+ * Error Function on update user info api
+ * @param {Object} event
+ */
+function updateErrorCallback(event) {
+	var alertDialog = Ti.UI.createAlertDialog({
+		title : event.title ? event.title : 'NodeJSPOC',
+		message : event.message ? event.message : 'Error while updating data'
+	});
+	alertDialog.show();
+};
+
+/**
+ * Error Function on update user info api
+ * @param {Object} event
+ */
+function updateSuccessCallback(event) {
+	var alertDialog = Ti.UI.createAlertDialog({
+		title : event.title ? event.title : 'NodeJSPOC',
+		message : event.message ? event.message : 'Data successfully updated'
+	});
+	alertDialog.show();
+};
+
+function updatePermanentAddress() {
+	var apiData = {
+		userId : Alloy.Globals.user_id,
+		callback : {
+			successCallback : updateSuccessCallback,
+			errorCallback : updateErrorCallback
+		}
+	};
+	var addressData = {
+		house_number : $.house_number1.value,
+		street : $.street1.value,
+		city : $.city1.value,
+		state : $.state1.value,
+		country : $.country1.value,
+		pin : $.pin1.value,
+	};
+	apiClient.sendRequest(endPoints.address.update, addressData, null, [apiData.userId], apiData.callback);
+}
+
+function updateTemporaryAddress(){
+	var apiData = {
+		userId : Alloy.Globals.user_id,
+		callback : {
+			successCallback : updateSuccessCallback,
+			errorCallback : updateErrorCallback
+		}
+	};
+	var addressData = {
+		house_number : $.house_number2.value,
+		street : $.street2.value,
+		city : $.city2.value,
+		state : $.state2.value,
+		country : $.country2.value,
+		pin : $.pin2.value,
+	};
+	apiClient.sendRequest(endPoints.address.update, addressData, null, [apiData.userId], apiData.callback);
+}
+
+function updateSocialLinks(){
+	var apiData = {
+		userId : Alloy.Globals.user_id,
+		callback : {
+			successCallback : updateSuccessCallback,
+			errorCallback : updateErrorCallback
+		}
+	};
+	var socialData = {
+		twitter : $.twitter.value,
+		facebook : $.facebook.value,
+		linkedIn : $.linkedIn.value,
+	};
+	apiClient.sendRequest(endPoints.socials.update, socialData, null, [apiData.userId], apiData.callback);
+}
+
+function updateProjects() {
+	var apiData = {
+		userId : Alloy.Globals.user_id,
+		callback : {
+			successCallback : updateSuccessCallback,
+			errorCallback : updateErrorCallback
+		}
+	};
+	var projectData = {
+		projectName : $.projectName.value,
+		projectLocation : $.projectLocation.value,
+		projectDuration : $.projectDuration.value
+	};
+	apiClient.sendRequest(endPoints.projects.update, projectData, null, [apiData.userId], apiData.callback);
+}
 
 // initial logic
 init();

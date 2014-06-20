@@ -42,7 +42,6 @@ socialSchema.update = function (req, res, next) {
     schema.socialModel.findById(req.params.id, function (socialErr, socialData) {
     	if(socialErr)
     		return next(socialErr);
-            socialData.empId = req.body.empId,
             socialData.twitter = req.body.twitter,
             socialData.facebook = req.body.facebook,
             socialData.linkedIn = req.body.linkedIn,
