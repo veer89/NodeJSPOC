@@ -6,3 +6,4 @@ NodeMobileClient/tmp
 NodeMobileClient/.map
 NodeMobileClient/Resources
 ApiServer/node_modules
+ApiServer/serverLogs.log
