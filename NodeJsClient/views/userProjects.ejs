@@ -56,23 +56,30 @@
 
 			<div class="col-lg-6">
 				<div class="control-group">
-					Name : <%= userData.user.first_name%> <%= userData.user.last_name%>
-					<br />
-					Existing Projects : 
+					<span style="font-size: medium;">Name : </span><span style="text-transform: capitalize;"><%= userData.user.first_name%> <%= userData.user.last_name%></span>
+					
+				</div>
+				<br />
+				<div>
+					<span style="font-size: medium;">Existing Projects :</span>
 					<% if(userProjectList && userProjectList.length> 0){ 
 					var projects = userProjectList; 
-					projects.forEach(function(el,index) { %> 
-					<form method="post" action="/removeUserFromProject" class="userProjects">
-					 <span><%=el.projectName%><button type="submit" class="removeBtn"></button></span>
-					 <input type="hidden" name="del_projId" value="<%=el._id%>">
-					 
-					 </form>
-					 <% });} else {%> 
+					projects.forEach(function(el,index) { %>
+					<form method="post" action="/removeUserFromProject"
+						class="userProjects">
+						<span><%=el.projectName%></span> <span><button
+								type="submit" class="removeBtn"></button> <input type="hidden"
+							name="del_projId" value="<%=el._id%>"> </span>
+					</form>
+					<% });} else {%> 
 					 	No Projects Found
 					<% } %><br />
+					</div>
+					<div>
 					<table>
 						<tr>
-							<td style="vertical-align:top; padding-top : 5px;">Add to Project : <select name="project" id="project">
+							<td style="vertical-align:top; padding-top : 5px;">
+							<span style="font-size: medium;">Add to Project : </span><select name="project" id="project">
 									<option value="">No Project Selected</option> <%if(projectList
 									&& projectList.length > 0){ projectList.forEach(function(el,
 									index) { %>
@@ -162,11 +169,11 @@
 							});
 					
 					var hoverIn = function(){
-						var btn = $(this).find("span").eq(0).find("button").eq(0);
+						var btn = $(this).find("span").eq(1).find("button").eq(0);
 						$(btn).css('display','block');
 					}; 
 					var hoverOut = function(){
-						var btn = $(this).find("span").eq(0).find("button").eq(0);
+						var btn = $(this).find("span").eq(1).find("button").eq(0);
 						$(btn).css('display','none');
 					};
 					
