@@ -62,10 +62,10 @@
 					<% if(userProjectList && userProjectList.length> 0){ 
 					var projects = userProjectList; 
 					projects.forEach(function(el,index) { %> 
-					<form method="post" action="/removeUserFromProject" style="width:350px;height:35px;">
-					 <%=el.projectName%>
+					<form method="post" action="/removeUserFromProject" style="width:350px;height:35px;" class="userProjects">
+					 <span><%=el.projectName%><button type="submit" class="removeBtn"></button></span>
 					 <input type="hidden" name="del_projId" value="<%=el._id%>">
-					 <button type="submit" class="btn btn-info" style="float:right;width: 50px; font-size: 12px;height:27px;margin-top:5px;">Remove</button>
+					 
 					 </form>
 					 <% });} else {%> 
 					 	No Projects Found
@@ -160,6 +160,18 @@
 											.addClass('hideDiv');
 								}
 							});
+					
+					var hoverIn = function(){
+						var btn = $(this).find("span").eq(0).find("button").eq(0);
+						$(btn).css('display','block');
+					}; 
+					var hoverOut = function(){
+						var btn = $(this).find("span").eq(0).find("button").eq(0);
+						$(btn).css('display','none');
+					};
+					
+					$(".userProjects").hover(hoverIn, hoverOut);
+					
 				});
 	</script>
 </body>

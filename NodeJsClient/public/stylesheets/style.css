@@ -26,3 +26,13 @@
 .showDiv{
 	display : block;
 }
+
+.removeBtn{
+  background: url('../assets/img/close-icon.png') no-repeat scroll 0 0 transparent;
+  display:none;
+  color: #000000;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  float:right;
+}
