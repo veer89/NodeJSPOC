@@ -40,48 +40,50 @@
 
 
 								<input type="text" name="empId" placeholder="Username"
-									class="form-control" /> <span id="imagePlaceHolder"></span>
+									required="required" class="form-control" /> <span
+									id="imagePlaceHolder"></span>
 							</div>
 							<div class="form-group">
 
-								<input type="password" name="password" placeholder="Password"
+								<input type="password" name="password" placeholder="Password" required="required"
 									class="form-control" />
 
 							</div>
 							<div class="form-group">
-								<input type="text" name="first_name" placeholder="First Name"
+								<input type="text" name="first_name" placeholder="First Name" required="required"
 									class="form-control" />
 							</div>
 							<div class="form-group">
-								<input type="text" name="last_name" placeholder="Last Name"
+								<input type="text" name="last_name" placeholder="Last Name" required="required"
 									class="form-control" />
 
 							</div>
 							<div class="form-group">
-								<input type="text" name="phone_number"
+								<input type="text" name="phone_number" required="required"
 									placeholder="Phone Number" class="form-control" />
 							</div>
 							<div class="form-group">
-								<input type="text" name="designation" placeholder="Designation"
+								<input type="text" name="designation" placeholder="Designation" required="required"
 									class="form-control" />
 							</div>
 							<div class="form-group">
-								<input type="text" name="emailId" placeholder="Email"
+								<input type="text" name="emailId" placeholder="Email" required="required"
 									class="form-control" />
 							</div>
 						</fieldset>
 
+						<div class="modal-footer">
+
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<button class="btn btn-primary" type="submit">Create
+								Account</button>
+
+
+						</div>
 
 
 					</form>
-
-
-				</div>
-				<div class="modal-footer">
-
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button class="btn btn-primary" type="submit">Create
-						Account</button>
 
 
 				</div>
@@ -129,20 +131,17 @@
 	</div>
 
 	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					$('[id*=loginEmailId]').change(
-							function() {
-								$('span#error').removeClass('showErrorMessage')
-										.addClass('hideErrorMessage');
-							});
-					$('[id*=loginPassword]').change(
-							function() {
-								$('span#error').removeClass('showErrorMessage')
-										.addClass('hideErrorMessage');
-							});
+		$(document).ready(function() {
+					$('[id*=loginEmailId]').change(function() {
+						$('span#error').removeClass('showErrorMessage')
+							.addClass('hideErrorMessage');
+					});
+					$('[id*=loginPassword]').change(function() {
+						$('span#error').removeClass('showErrorMessage')
+							.addClass('hideErrorMessage');
+					});
 
-				});
+		});
 	</script>
 </body>
 </html>

@@ -52,15 +52,14 @@
 
 			 <div class="col-lg-6">
 			 <div class="modal fade bs-example-modal-sm" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-			 
-			<div class="modal-dialog modal-sm">
-    <div class="modal-content">
-					<form method='post' action='/uploadImage'
-						enctype='multipart/form-data'>
-						<input type='file' name='photo' />
-						<button class="btn btn-primary" type="submit">Change</button>
-					</form>
-					</div>
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<form method='post' action='/uploadImage'
+								enctype='multipart/form-data' style="margin:10% 5% 15% 5%;">
+								<input type='file' name='photo' /><br/>
+								<button class="btn btn-primary pull-right" type="submit">Change</button>
+							</form>
+						</div>
 					</div>
 				</div>
 
