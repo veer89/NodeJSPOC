@@ -19,7 +19,7 @@ module.exports = function(app){
     app.post('/projects/addUser', filter.keyFilter, filter.userFilter, routes.projects.addUserToProject);
     app.post('/projects/addProject', filter.keyFilter,  routes.projects.addProject);
     app.put('/projects/update/:id', filter.keyFilter, routes.projects.update);
-    app.delete('/projects/removeUser', filter.keyFilter,filter.userFilter, routes.projects.removeUserFromProject);
+    app.delete('/projects/removeUserFromProject', filter.keyFilter,filter.userFilter, routes.projects.removeUserFromProject);
     app.delete('/projects/removeProject', filter.keyFilter, routes.projects.delete);
     app.get('/projects/show/:id', filter.keyFilter, routes.projects.show);
 

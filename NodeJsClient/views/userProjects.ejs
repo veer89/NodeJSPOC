@@ -48,7 +48,7 @@
 
 
 
-		<h3>Profile Page</h3>
+		<h3>Add/Remove User from Projects</h3>
 		<div class="row">
 
 
@@ -56,10 +56,19 @@
 
 			<div class="col-lg-6">
 				<div class="control-group">
-					Name : <%= userData.user.first_name%> <%= userData.user.last_name%><br />
-					Existing Projects : <% if(userProjectList && userProjectList.length
-					> 0){ var projects = userProjectList; projects.forEach(function(el,
-					index) { %> <%=el.projectName%> <% });} else {%> No Projects Found
+					Name : <%= userData.user.first_name%> <%= userData.user.last_name%>
+					<br />
+					Existing Projects : 
+					<% if(userProjectList && userProjectList.length> 0){ 
+					var projects = userProjectList; 
+					projects.forEach(function(el,index) { %> 
+					<form method="post" action="/removeUserFromProject" style="width:350px;height:35px;">
+					 <%=el.projectName%>
+					 <input type="hidden" name="del_projId" value="<%=el._id%>">
+					 <button type="submit" class="btn btn-info" style="float:right;width: 50px; font-size: 12px;height:27px;margin-top:5px;">Remove</button>
+					 </form>
+					 <% });} else {%> 
+					 	No Projects Found
 					<% } %><br />
 					<table>
 						<tr>
