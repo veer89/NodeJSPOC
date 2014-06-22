@@ -62,7 +62,7 @@
 					<% if(userProjectList && userProjectList.length> 0){ 
 					var projects = userProjectList; 
 					projects.forEach(function(el,index) { %> 
-					<form method="post" action="/removeUserFromProject" style="width:350px;height:35px;" class="userProjects">
+					<form method="post" action="/removeUserFromProject" class="userProjects">
 					 <span><%=el.projectName%><button type="submit" class="removeBtn"></button></span>
 					 <input type="hidden" name="del_projId" value="<%=el._id%>">
 					 

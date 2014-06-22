@@ -32,3 +32,14 @@
 [2014-04-20 13:56:44.748] [ERROR] server - Error occured in processing. CastError: Cast to ObjectId failed for value "undefined" at path "_id"
 [2014-04-20 14:14:47.882] [DEBUG] server - Express server listening on port 8000
 [2014-06-20 13:23:39.181] [DEBUG] server - Express server listening on port 8000
+[2014-06-22 17:35:57.417] [DEBUG] server - Express server listening on port 8000
+[2014-06-22 17:36:26.790] [DEBUG] server - 127.0.0.1 - - "GET / HTTP/1.1" 200 83 "" "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0"
+[2014-06-22 17:36:26.790] [ERROR] server - Please specify correct path
+[2014-06-22 18:45:37.922] [DEBUG] server - Express server listening on port 8000
+[2014-06-22 18:48:57.902] [DEBUG] server - Express server listening on port 8000
+[2014-06-22 18:49:02.823] [DEBUG] server - Express server listening on port 8000
+[2014-06-22 18:49:07.826] [DEBUG] server - Express server listening on port 8000
+[2014-06-22 18:49:48.012] [DEBUG] server - Express server listening on port 8000
+[2014-06-22 18:52:13.743] [DEBUG] server - Express server listening on port 8000
+[2014-06-22 19:39:36.557] [DEBUG] server - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0"
+[2014-06-22 19:39:36.558] [ERROR] server - Please specify correct path
