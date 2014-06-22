@@ -75,6 +75,16 @@ index = {
 					}
 				});
 				
-			}
+			},
+		logout : function(req, res, next) {
+			req.session.user_id = null;
+			req.session.userObj = null;
+			res.render('index', {
+				showMsg : 'hideErrorMessage',
+				errorMsg : '',
+				emailId : '',
+				password : ''
+			});
+		}
 }
 module.exports = index;
