@@ -17,22 +17,10 @@ index = {
 			password : ''
 		});
 	},
-		getProfilePage : function(req, res, next){ 
-			var empId = req.session.user_id
-			var profileData = {};
-			helper.sendRequest(endPoints.users.showDetails, null, null, [empId], function(result) {
-				if (result && result.meta) {
-					if (result.meta.status == '200') {
-						req.session.userObj = result.data;
-						res.render('profilePage', { profileData: result.data });
-					} else {
-						res.send('Error Occured');
-					}
-
-				}
-			});
-		},
-		signup : function(req, res, next){
+	getProfilePage : function(req, res, next) {
+			showProfile(req, res, next, "")
+	},
+			signup : function(req, res, next){
 			var data = {
 				password : req.body.password,
 				empId : req.body.empId,
@@ -76,6 +64,48 @@ index = {
 				});
 				
 			},
+			forgotPassword: function(req, res, next){
+		var email = req.body.emailId;
+		helper.sendRequest(endPoints.login.forgotPassword, {emailId: email}, null, null, function(
+				result) {
+			if (result && result.meta) {
+				if (result.meta.status == '200') {
+					res.render('index', {
+						showMsg : 'showErrorMessage',
+						errorMsg : "new password is sent to your email id",
+						emailId : "",
+						password : ""
+					});
+				} else {
+					res.render('index', {
+						showMsg : 'showErrorMessage',
+						errorMsg : "unable to set password",
+						emailId : "",
+						password : ""
+					});
+				}
+
+			}
+		});
+		
+	},
+	changePassword: function(req, res, next){
+		console.log("req.session.user_id",req.session.user_id)
+		var password = req.body.password;
+		helper.sendRequest(endPoints.login.changePassword, {password: password}, null, [req.session.user_id], function(
+				result) {
+			if (result && result.meta) {
+				console.log(result)
+				if (result.meta.status == '200') {
+					showProfile(req, res, next, "Password changed successfully");
+				} else {
+					showProfile(req, res, next, "Unable to change password");
+				}
+
+			}
+		});
+},
+
 		logout : function(req, res, next) {
 			req.session.user_id = null;
 			req.session.userObj = null;
@@ -86,5 +116,25 @@ index = {
 				password : ''
 			});
 		}
+}
+function showProfile(req, res, next, error){
+	var empId = req.session.user_id
+	var profileData = {};
+	helper.sendRequest(endPoints.users.showDetails, null, null, [ empId ],
+			function(result) {
+				if (result && result.meta) {
+					if (result.meta.status == '200') {
+						req.session.userObj = result.data;
+						res.render('profilePage', {
+							profileData : result.data,
+							errorMsg: error
+						});
+					} else {
+						res.send('Error Occured');
+					}
+
+				}
+			});
+
 }
 module.exports = index;

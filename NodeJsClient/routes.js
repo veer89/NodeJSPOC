@@ -7,6 +7,8 @@ module.exports = function(app){
 	app.get('/profile', routes.index.getProfilePage);
 	app.post('/login', routes.index.signin);
 	app.get('/logout', routes.index.logout);
+	app.post('/forgotPassword', routes.index.forgotPassword);
+	app.post('/changePassword', routes.index.changePassword);
 	//user
 	app.get('/settings', routes.user.editProfile);
 	app.post('/uploadImage', routes.user.uploadImage);

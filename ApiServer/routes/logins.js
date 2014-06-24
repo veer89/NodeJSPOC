@@ -12,7 +12,7 @@ var loginSchema = {};
  params{next} : errorcallback
  */
 var generateHash = function (objectId, password, msg, res, next) {
-    schema.loginModel.findById(objectId, function (loginErr, userData) {
+    schema.loginModel.findOne({user_id: objectId}, function (loginErr, userData) {
         if (loginErr)
             return res.json(helper.genarateResponse(400, null, null, "Invalid Id"));
         if (userData) {
@@ -78,7 +78,7 @@ loginSchema.resetPassword = function (req, res, next) {
                 var newPwd = helper.getResetPassword();
                 helper.sendEmail("Reset Password", userData.emailId, newPwd, false, function () {
                     // save password into logins table
-                    generateHash(userData.id, newPwd, 'Password is sent to user email id ,Please check it!', res, next);
+                    generateHash(userData.user_id, newPwd, 'Password is sent to user email id ,Please check it!', res, next);
                 });
             }
             else

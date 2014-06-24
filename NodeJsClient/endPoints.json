@@ -108,6 +108,10 @@
 			"method_type" : "POST",
 			"end_point" : "/login"
 		},
+		"forgotPassword" :{
+			"method_type" : "POST",
+			"end_point" : "/resetPassword"
+		},
 		"changePassword" :{
 			"method_type" : "POST",
 			"end_point" : "/changePassword"

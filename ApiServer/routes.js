@@ -39,7 +39,7 @@ module.exports = function(app){
 
 // declaring routes for login
     app.post('/login', filter.keyFilter, routes.logins.authenticate);
-    app.post('/changePassword/:id/', filter.keyFilter, routes.logins.changePassword);
+    app.post('/changePassword/:id', filter.keyFilter, routes.logins.changePassword);
     app.post('/resetPassword', filter.keyFilter, routes.logins.resetPassword);
     app.post('logout', filter.keyFilter, routes.logins.logout);
 
